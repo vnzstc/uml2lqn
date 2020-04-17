@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<project default="main">
+	<target name="loadModels">
+		<epsilon.emf.loadModel name="UML" modelFile="umlModel/sample.uml" 
+			metamodelUri="http://www.eclipse.org/uml2/5.0.0/UML" read="true" store="false"/>
+		<epsilon.emf.loadXmlModel name="LQN" modelFile="output.xml" xsdFile="lqnxsd/lqn.xsd" read="false" store="true"/>
+	</target>
+	
+	<target name="main" depends="loadModels">		
+		<epsilon.etl src="uml2lqn.etl">
+			<model ref="UML"/>
+			<model ref="LQN"/>
+		</epsilon.etl>
+	</target>
+</project>
