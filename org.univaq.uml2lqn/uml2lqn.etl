@@ -12,23 +12,34 @@ rule Device2Processor
 	{
 		// All the "deployment" relationships of s
 		var deps = s.getDependencies();
-		
 		t.name = s.name;
-		t.task ::= deps;	
+		t.task ::= deps;
 	}
 	
-rule Lifeline2Task 
+rule TaskDeployment
 	transform s: UML!Deployment
-	to t: LQN!TaskType 
-	{	
-		// Each "deployment" dependency has only one target (i.e., deployment artifact)
-		var artif = s.deployedArtifacts.first();		
-		var manif = artif.getArtifactManif();
-		var prop = manif.getProperties();
-		t.name = prop.name;
-		prop.upper.type().println();	
-		t.multiplicity = prop.upper.toString();	
-	}	
+	to t: LQN!TaskType
+	{
+		var emfTool : new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
+		//The Artifact related to the asssociation "deployment"
+		var artif = s.deployedArtifacts.first;
+		
+		// Artifact Manifestations (i.e., Interactions)
+		var intercts = artif.getManifestations();
+		var interctsMembers = intercts.collect(i | i.ownedMembers).flatten;
+		var lifelns = interctsMembers.select(i | i.isTypeOf(UML!Lifeline));
+		
+		//An Artifact is transformed to a Task
+		t.name = artif.name + s.name;
+		t.entry ::= lifelns;	
+	}
+	
+rule Lifeline2Entry
+	transform s: UML!Lifeline
+	to t: LQN!EntryType
+	{
+		t.name = s.name;
+	} 
 	
 // It returns all the dependencies having the "self" UML!Node as a client.
 operation  UML!NamedElement getDependencies(): Sequence
@@ -37,18 +48,12 @@ operation  UML!NamedElement getDependencies(): Sequence
 } 
 
 // It returns the element represented by an Artifact in the Deployment View
-operation UML!Artifact getArtifactManif(): UML!NamedElement
+operation UML!Artifact getManifestations(): Sequence
 {
 	// All the manifestations of the artifact self
-	var manif = self.getDependencies().first();
-	// Unique supplier of the manifestation;
-	return manif.supplier.first();
-}
-
-operation UML!Class getProperties(): UML!Property
-{
-	var props = UML!Property.all();
-	return props.select(i | i.type = self).first;
+	var manifs = self.getDependencies();
+	// Manifestation suppliers 
+	return manifs.collect(i | i.supplier).flatten();
 }
 
 

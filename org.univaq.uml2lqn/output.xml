@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LqnModelType name="PrecisionAgricultureModel">
   <processor name="Leon3">
-    <task multiplicity="3" name="state1"/>
-    <task multiplicity="4" name="state2"/>
+    <task name="art1dply1"/>
+    <task name="art2dply3"/>
   </processor>
   <processor name="atmega328p">
-    <task multiplicity="3" name="state1"/>
+    <task name="art1dply2">
+      <entry name="visit"/>
+      <entry name="visiting"/>
+    </task>
   </processor>
 </LqnModelType>
