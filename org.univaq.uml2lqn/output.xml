@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LqnModelType name="PrecisionAgricultureModel">
-  <processor name="Leon3">
-    <task name="art1dply1"/>
-    <task name="art2dply3"/>
+  <processor name="ARMCortex-M">
+    <task name="pu1-drone-stats"/>
+    <task name="dply3-drone-controller"/>
+    <task name="-drone-planner"/>
+    <task name="dply6-env-sensor"/>
   </processor>
-  <processor name="atmega328p">
-    <task name="art1dply2">
-      <entry name="visit"/>
-      <entry name="visiting"/>
-    </task>
+  <processor name="sensors">
+    <task name="sensor1-drone-stats"/>
+  </processor>
+  <processor name="Nvidia GeForce8800">
+    <task name="dply4-drone-planner"/>
+  </processor>
+  <processor name="tempSensor"/>
+  <processor name="speedSensor"/>
+  <processor name="imageSensor">
+    <task name="dply5-drone-planner"/>
   </processor>
 </LqnModelType>

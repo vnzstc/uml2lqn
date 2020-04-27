@@ -20,15 +20,18 @@ rule TaskDeployment
 	transform s: UML!Deployment
 	to t: LQN!TaskType
 	{
-	 	//Artifact related to the asssociation "deployment"
+		var emfTool : new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
+		//The Artifact related to the asssociation "deployment"
 		var artif = s.deployedArtifacts.first;
-		// Artifact Manifestations (i.e., Component)
-		var compnts = artif.getManifestations().first;
-		var lifelns = compnts.select(i | i.isTypeOf(UML!Lifeline));
-
+		
+		// Artifact Manifestations (i.e., Interactions)
+		var intercts = artif.getManifestations();
+		var interctsMembers = intercts.collect(i | i.ownedMembers).flatten;
+		var lifelns = interctsMembers.select(i | i.isTypeOf(UML!Lifeline));
+		
 		//An Artifact is transformed to a Task
-		t.name = s.name + '-' + artif.name;
-		t.entry ::= lifelns;
+		t.name = artif.name + s.name;
+		t.entry ::= lifelns;	
 	}
 	
 rule Lifeline2Entry
@@ -37,9 +40,6 @@ rule Lifeline2Entry
 	{
 		t.name = s.name;
 	} 
-	
-	
-	
 	
 // It returns all the dependencies having the "self" UML!Node as a client.
 operation  UML!NamedElement getDependencies(): Sequence
