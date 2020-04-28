@@ -20,18 +20,13 @@ rule TaskDeployment
 	transform s: UML!Deployment
 	to t: LQN!TaskType
 	{
-		var emfTool : new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
-		//The Artifact related to the asssociation "deployment"
+	 	// Artifact related to the asssociation "deployment"
 		var artif = s.deployedArtifacts.first;
-		
-		// Artifact Manifestations (i.e., Interactions)
-		var intercts = artif.getManifestations();
-		var interctsMembers = intercts.collect(i | i.ownedMembers).flatten;
-		var lifelns = interctsMembers.select(i | i.isTypeOf(UML!Lifeline));
-		
+		// Assumption: Each artifact represents a component
+		var cmpnt = artif.manifestation.collect(i | i.supplier).flatten.first;
 		//An Artifact is transformed to a Task
-		t.name = artif.name + s.name;
-		t.entry ::= lifelns;	
+		t.name = s.name + '-' + artif.name;
+		t.entry ::= cmpnt.getLifelines();		
 	}
 	
 rule Lifeline2Entry
@@ -39,7 +34,8 @@ rule Lifeline2Entry
 	to t: LQN!EntryType
 	{
 		t.name = s.name;
-	} 
+	} 	
+	
 	
 // It returns all the dependencies having the "self" UML!Node as a client.
 operation  UML!NamedElement getDependencies(): Sequence
@@ -47,13 +43,8 @@ operation  UML!NamedElement getDependencies(): Sequence
 	return UML!Dependency.all.select(i|i.client.includes(self));
 } 
 
-// It returns the element represented by an Artifact in the Deployment View
-operation UML!Artifact getManifestations(): Sequence
-{
-	// All the manifestations of the artifact self
-	var manifs = self.getDependencies();
-	// Manifestation suppliers 
-	return manifs.collect(i | i.supplier).flatten();
+operation UML!Component getLifelines(): Any
+{	
+	var lifelns = UML!Lifeline.all.select(i | i.represents.type == self);
+	return lifelns;
 }
-
-

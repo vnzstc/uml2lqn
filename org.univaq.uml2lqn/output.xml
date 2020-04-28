@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LqnModelType name="PrecisionAgricultureModel">
+  <processor name="imageSensor"/>
   <processor name="ARMCortex-M">
-    <task name="pu1-drone-stats"/>
-    <task name="dply3-drone-controller"/>
-    <task name="-drone-planner"/>
-    <task name="dply6-env-sensor"/>
+    <task name="drone-stats"/>
+    <task name="drone-controller"/>
+    <task name="env-sensor">
+      <entry name="env-lifeln">
+        <entry-phase-activities>
+          <activity name="getCond2"/>
+        </entry-phase-activities>
+      </entry>
+    </task>
   </processor>
-  <processor name="sensors">
-    <task name="sensor1-drone-stats"/>
-  </processor>
+  <processor name="sensors"/>
   <processor name="Nvidia GeForce8800">
-    <task name="dply4-drone-planner"/>
-  </processor>
-  <processor name="tempSensor"/>
-  <processor name="speedSensor"/>
-  <processor name="imageSensor">
-    <task name="dply5-drone-planner"/>
+    <task name="drone-planner">
+      <entry name="cntr1-lifeln">
+        <entry-phase-activities>
+          <activity name="startDrone"/>
+          <activity name="getCond1"/>
+        </entry-phase-activities>
+      </entry>
+    </task>
   </processor>
 </LqnModelType>

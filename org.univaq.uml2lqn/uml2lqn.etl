@@ -11,49 +11,47 @@ rule Device2Processor
 	to t: LQN!ProcessorType
 	{
 		// All the "deployment" relationships of s
-		var deps = s.getDependencies();
 		t.name = s.name;
-		t.task ::= deps;
+		t.task ::= s.deployment.collect(i | i.supplier).flatten;
 	}
 	
-rule TaskDeployment
-	transform s: UML!Deployment
+rule Artifact2Task
+	transform s: UML!Artifact
 	to t: LQN!TaskType
 	{
-	 	//Artifact related to the asssociation "deployment"
-		var artif = s.deployedArtifacts.first;
-		// Artifact Manifestations (i.e., Component)
-		var compnts = artif.getManifestations().first;
-		var lifelns = compnts.select(i | i.isTypeOf(UML!Lifeline));
+		// Get the component associated to the artifact		
+		var cmpnt = s.manifestation.supplier.flatten.first;
 
-		//An Artifact is transformed to a Task
-		t.name = s.name + '-' + artif.name;
-		t.entry ::= lifelns;
+		t.name = s.name;
+		t.entry ::= cmpnt.getLifelines();
 	}
 	
 rule Lifeline2Entry
 	transform s: UML!Lifeline
 	to t: LQN!EntryType
 	{
+		var ownedMessages = s.getMessages().select(i | i.covered.includes(s));
 		t.name = s.name;
+		t.entryPhaseActivities = new LQN!PhaseActivities;
+		t.entryPhaseActivities.activity ::= ownedMessages;		
 	} 
 	
+rule Operation2Activity
+	transform s: UML!MessageOccurrenceSpecification
+	to t: LQN!ActivityPhasesType
+	{
+		t.name = s.name;
+	}
 	
-	
-	
-// It returns all the dependencies having the "self" UML!Node as a client.
-operation  UML!NamedElement getDependencies(): Sequence
+// Given a Lifeline, it returns all the messages included to the related Interaction
+operation UML!Lifeline getMessages(): Any
 {	
-	return UML!Dependency.all.select(i|i.client.includes(self));
-} 
-
-// It returns the element represented by an Artifact in the Deployment View
-operation UML!Artifact getManifestations(): Sequence
-{
-	// All the manifestations of the artifact self
-	var manifs = self.getDependencies();
-	// Manifestation suppliers 
-	return manifs.collect(i | i.supplier).flatten();
+	var interaction = self.namespace;
+	return interaction.ownedMember.select(i | i.isTypeOf(UML!MessageOccurrenceSpecification));
 }
 
-
+operation UML!Component getLifelines(): Sequence
+{	
+	var lifelns = UML!Lifeline.all.select(i | i.represents.type == self);
+	return lifelns;
+}
