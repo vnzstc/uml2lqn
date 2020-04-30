@@ -14,10 +14,10 @@ rule Node2Processor
 		guard : (not s.deployment.isEmpty) and s.checkStereotype("GaExecHost")
 		// Get the associated artifact for each deployment of the Node
 		var artifs = s.deployments.collect(i | i.deployedArtifact.first).flatten;
-		// Get the object representing the "GaExecHost" 
+		// Get the object representing the "GaExecHost" stereotype
 		var strtypeObj = s.getAppliedStereotypes().selectOne(i | i.name == "GaExecHost");	
 		var resMult = s.getValue(strtypeObj, "resMult");
-		// The replication attribute is of type "BigInteger". This statement performs a cast. 
+		// The replication attribute has type "BigInteger". This statement performs a cast. 
 		var castMul= new Native("java.math.BigInteger")(resMult);
 		t.name = s.name;
 		t.task ::= artifs;
@@ -40,8 +40,18 @@ rule Lifeline2Entry
 	transform s: UML!Lifeline
 	to t: LQN!EntryType
 	{
+		var lifelnMessages = s.coveredBy.select(i | i.isTypeOf(UML!MessageOccurrenceSpecification));
+		var lifelnActivities = lifelnMessages.select(i | i.message.sendEvent == i);		
 		t.name = s.name;
 		t.entryPhaseActivities = new LQN!PhaseActivities;
+		t.entryPhaseActivities.activity ::= lifelnActivities;		
+	}
+	
+rule Operation2Activity
+	transform s: UML!MessageOccurrenceSpecification
+	to t: LQN!ActivityPhasesType
+	{
+		t.name = s.name;
 	}
 	
 operation UML!NamedElement checkStereotype(stereotypeName : String) : Boolean
