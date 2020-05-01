@@ -2,20 +2,29 @@
 <LqnModelType name="PrecisionAgricultureModel">
   <processor name="ARMCortex-M" replication="3">
     <task name="drone-controller"/>
-    <task name="drone-stats"/>
-    <task name="env-sensor">
-      <entry name="env-lifeln">
+    <task name="drone-stats">
+      <entry name="sta1">
         <entry-phase-activities>
-          <activity name="ackEnv"/>
+          <activity name="getCond">
+            <synch-call dest="env-lifeln"/>
+          </activity>
         </entry-phase-activities>
       </entry>
+    </task>
+    <task name="env-sensor">
+      <entry name="env-lifeln"/>
     </task>
   </processor>
   <processor name="nvidiaGeForce8800" replication="1">
     <task name="drone-planner">
       <entry name="cntr1-lifeln">
         <entry-phase-activities>
-          <activity name="getCondCntr"/>
+          <activity name="getCond2">
+            <synch-call dest="env-lifeln"/>
+          </activity>
+          <activity name="getConditions">
+            <synch-call dest="env-lifeln"/>
+          </activity>
         </entry-phase-activities>
       </entry>
     </task>

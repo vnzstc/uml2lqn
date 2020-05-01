@@ -3,48 +3,85 @@ rule Model2Schema
 	to t : LQN!LqnModelType
 	{
 		t.name = s.name;
-		t.processor ::= UML!Device.all();
+		t.processor ::= UML!Node.all();
 	}
 	
-rule Device2Processor
-	transform s: UML!Device
-	to t: LQN!ProcessorType
-	{
-		// All the "deployment" relationships of s
-		var deps = s.getDependencies();
+rule Node2Processor
+	transform s : UML!Node
+	to t: LQN!ProcessorType 
+	{		
+		// Apply the transformation only if a Node has at least a deployed artifact
+		guard : (not s.deployment.isEmpty) and s.checkStereotype("GaExecHost")
+		// Get the associated artifact for each deployment of the Node
+		var artifs = s.deployments.collect(i | i.deployedArtifact.first).flatten;
+		// Get the object representing the "GaExecHost" stereotype
+		var strtypeObj = s.getAppliedStereotypes().selectOne(i | i.name == "GaExecHost");	
+		var resMult = s.getValue(strtypeObj, "resMult");
+		// The replication attribute has type "BigInteger". This statement performs a cast. 
+		var castMul= new Native("java.math.BigInteger")(resMult);
 		t.name = s.name;
-		t.task ::= deps;
+		t.task ::= artifs;
+		t.replication = castMul;	
 	}
 	
-rule TaskDeployment
-	transform s: UML!Deployment
+rule Artifact2Task
+	transform s: UML!Artifact
 	to t: LQN!TaskType
-	{
-	 	// Artifact related to the asssociation "deployment"
-		var artif = s.deployedArtifacts.first;
-		// Assumption: Each artifact represents a component
-		var cmpnt = artif.manifestation.collect(i | i.supplier).flatten.first;
-		//An Artifact is transformed to a Task
-		t.name = s.name + '-' + artif.name;
-		t.entry ::= cmpnt.getLifelines();		
+	{	
+		// Each Artifact has a single manifestation
+		guard : s.manifestation.size() == 1
+		// Retrieve the manifestation
+		var manif = s.manifestation.first;
+		t.name = s.name;
+		t.entry ::= manif.getLifelines();
 	}
 	
 rule Lifeline2Entry
 	transform s: UML!Lifeline
 	to t: LQN!EntryType
 	{
+		var sentMessages = s.getSentMessages();
 		t.name = s.name;
-	} 	
+		
+		// Create the activities block only if the lifeline is covered by messages
+		if(not sentMessages.isEmpty)
+		{
+			t.entryPhaseActivities = new LQN!PhaseActivities;
+			t.entryPhaseActivities.activity ::= s.getSentMessages();
+		}		
+	}
 	
-	
-// It returns all the dependencies having the "self" UML!Node as a client.
-operation  UML!NamedElement getDependencies(): Sequence
-{	
-	return UML!Dependency.all.select(i|i.client.includes(self));
-} 
+rule MessSpec2Activity
+	transform s: UML!Message
+	to t: LQN!ActivityPhasesType
+	{		
+		t.name = s.name;
+	}
 
-operation UML!Component getLifelines(): Any
-{	
-	var lifelns = UML!Lifeline.all.select(i | i.represents.type == self);
-	return lifelns;
+operation UML!NamedElement checkStereotype(stereotypeName : String) : Boolean
+{
+	return self.getAppliedStereotypes().exists(i|i.name = stereotypeName);
 }
+/* 
+ * Given a Lifeline it returns all the messages sent by the lifeline;
+ * The message should have a well-defined signature
+ */
+operation UML!Lifeline getSentMessages(): Set
+{
+	// Collects all the MessageOccurrenceSpecification of a Lifeline
+	var messages = self.coveredBy.
+					select(i | i.isTypeOf(UML!MessageOccurrenceSpecification));
+	// It takes only messages having a well-defined signature
+	var fullyDefMess = messages.select(i | i.message.signature.isDefined());	
+	// It selects only the messages sent by the lifeline
+	return fullyDefMess.select(i | i.message.sendEvent == i);	
+}		
+// Given an Artifact, the function returns the lifelines representing its behavior
+operation UML!Manifestation getLifelines(): Sequence
+{
+	var element = self.supplier.first;
+	// All the lifelines of the Model
+	var lifelns = UML!Lifeline.all();
+	// Get all the lifelines involving "element"
+	return lifelns.select(i | i.represents.type == element);
+}	
