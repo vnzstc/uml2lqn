@@ -16,12 +16,19 @@ rule Node2Processor
 		var artifs = s.deployments.collect(i | i.deployedArtifact.first).flatten;
 		// Get the object representing the "GaExecHost" stereotype
 		var strtypeObj = s.getAppliedStereotypes().selectOne(i | i.name == "GaExecHost");	
+		
 		var resMult = s.getValue(strtypeObj, "resMult");
+		var speedFactor = s.getValue(strtypeObj, "speedFactor");
+		var schedulingType = s.getValue(strtypeObj, "otherSchedPolicy");
+		
 		// The replication attribute has type "BigInteger". This statement performs a cast. 
-		var castMul= new Native("java.math.BigInteger")(resMult);
+		var castMul = new Native("java.math.BigInteger")(resMult);
+		
 		t.name = s.name;
 		t.task ::= artifs;
 		t.replication = castMul;	
+		//t.scheduling = schedulingType;	
+		//t.speedFactor = speedFactor;
 	}
 	
 rule Artifact2Task
@@ -30,65 +37,68 @@ rule Artifact2Task
 	{	
 		// Each Artifact has a single manifestation
 		guard : s.manifestation.size() == 1
-		// Retrieve the manifestation
 		var manif = s.manifestation.first;
+		var lifelines = manif.getLifelines();
+		var entries = lifelines.collect(i | i.getCalls()).flatten;
+
+		//t.activityGraph = LQN!TaskOptionType#NO; 
 		t.name = s.name;
-		t.entry ::= manif.getLifelines();
+		t.entry ::= entries;
 	}
 	
-rule Lifeline2Entry
-	transform s: UML!Lifeline
-	to t: LQN!EntryType
-	{
-		// Messages associated to the lifeline
-		var messages = s.getCalls().collect(i | i.message);	
+rule MsgSpec2Entry
+	transform msgSpec: UML!MessageOccurrenceSpecification
+	to entry: LQN!EntryType
+	{	
+		var relatedMessage = msgSpec.message;
+		var msgSort = relatedMessage.messageSort;
 		
-		t.name = s.name;
-		// Creates the activities block only if the lifeline is covered by messages
-		if(not messages.isEmpty)
+		var activitySeq = new Sequence();
+		var callSeq = new Sequence();
+		var activity = new LQN!ActivityPhasesType;
+		var call = new LQN!ActivityMakingCallType;
+		callSeq.add(call);
+		
+		entry.name = relatedMessage.name;		
+		entry.type = LQN!TypeType#PH1PH2;			
+		entry.entryPhaseActivities = new LQN!PhaseActivities;	
+		
+		// The Message Specification is the sender
+		if(relatedMessage.sendEvent == msgSpec)
 		{
-			t.entryPhaseActivities = new LQN!PhaseActivities;
-			t.entryPhaseActivities.activity ::= messages;
-		}			
+			var dest = relatedMessage.receiveEvent.covered.name.first;
+			
+			// Set the characteristics of the Activity
+			switch(msgSort)
+			{	
+				case UML!MessageSort#synchCall :
+					activity.synchCall = callSeq;
+					activity.synchCall.first.dest = dest;
+													
+				case UML!MessageSort#asynchCall :
+					activity.asynchCall = callSeq;
+					activity.asynchCall.first.dest = dest;
+			}
+			
+		}	
+			
+		activitySeq.add(activity);
+		entry.entryPhaseActivities.activity = activitySeq;
+					
 	}
-	
-rule Message2ActivityPhase
-	transform s: UML!Message
-	to t: LQN!ActivityPhasesType
-	{
-	
-		guard : s.receiveEvent.isDefined()
 		
-		// For each Message create a call type
-		var currentSort = s.messageSort;
-		var activityCall = new Sequence();		
-		var currentCall = new LQN!ActivityMakingCallType; 
-		// Name of the Entry that receives the message
-		var destName = s.receiveEvent.covered.name.first;
-
-		activityCall.add(currentCall);
-		t.name = s.name;
-		
-		
-		switch(currentSort)
-		{	
-			case UML!MessageSort#synchCall :
-				t.synchCall = activityCall;
-				t.synchCall.first.dest = destName;
-												
-			case UML!MessageSort#asynchCall :
-				t.asynchCall = activityCall;
-				t.asynchCall.first.dest = destName;
-
-		}		
-	}
-
-operation UML!NamedElement checkStereotype(stereotypeName : String) : Boolean
+operation UML!Manifestation getLifelines(): Sequence
 {
-	return self.getAppliedStereotypes().exists(i|i.name = stereotypeName);
-}
+	// Given an Artifact, the function returns the lifelines representing its behavior
+	var element = self.supplier.first;
+	// All the lifelines of the Model
+	var lifelns = UML!Lifeline.all();
+	// Get all the lifelines involving "element"
+	return lifelns.select(i | i.represents.type == element);
+} 
+
 /* 
- * Given a Lifeline it returns all the messages sent by the lifeline;
+ * Given a Lifeline it returns all the messages sent and received by the lifeline;
  * The message should have a well-defined signature
  * return: a set of UML!MessageOccurrenceSpecification
  */
@@ -98,16 +108,10 @@ operation UML!Lifeline getCalls(): Set
 	var messages = self.coveredBy.
 					select(i | i.isTypeOf(UML!MessageOccurrenceSpecification));
 	// It takes only messages having a well-defined signature
-	var fullyDefMess = messages.select(i | i.message.signature.isDefined());	
-	// It selects only the messages sent by the lifeline
-	return fullyDefMess.select(i | i.message.sendEvent == i);	
-}			
-// Given an Artifact, the function returns the lifelines representing its behavior
-operation UML!Manifestation getLifelines(): Sequence
-{
-	var element = self.supplier.first;
-	// All the lifelines of the Model
-	var lifelns = UML!Lifeline.all();
-	// Get all the lifelines involving "element"
-	return lifelns.select(i | i.represents.type == element);
+	return messages.select(i | i.message.signature.isDefined());	
 }	
+	 
+operation UML!NamedElement checkStereotype(stereotypeName : String) : Boolean
+{
+	return self.getAppliedStereotypes().exists(i|i.name = stereotypeName);
+}		
