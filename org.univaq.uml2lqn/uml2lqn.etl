@@ -12,11 +12,13 @@ rule Node2Processor
 	{		
 		// Apply the transformation only if a Node has at least a deployed artifact
 		guard : (not s.deployment.isEmpty) and s.checkStereotype("GaExecHost")
+
 		// Get the associated artifact for each deployment of the Node
 		var artifs = s.deployments.collect(i | i.deployedArtifact.first).flatten;
 		// Get the object representing the "GaExecHost" stereotype
 		var strtypeObj = s.getAppliedStereotypes().selectOne(i | i.name == "GaExecHost");	
-		
+
+		// Stereotype tags 
 		var resMult = s.getValue(strtypeObj, "resMult");
 		var speedFactor = s.getValue(strtypeObj, "speedFactor");
 		var schedulingType = s.getValue(strtypeObj, "otherSchedPolicy");
@@ -26,9 +28,7 @@ rule Node2Processor
 		
 		t.name = s.name;
 		t.task ::= artifs;
-		t.replication = castMul;	
-		//t.scheduling = schedulingType;	
-		//t.speedFactor = speedFactor;
+		t.replication = castMul;
 	}
 	
 rule Artifact2Task
@@ -37,12 +37,14 @@ rule Artifact2Task
 	{	
 		// Each Artifact has a single manifestation
 		guard : s.manifestation.size() == 1
+		
 		var manif = s.manifestation.first;
-		var lifelines = manif.getLifelines();
+		var cmpnt = manif.supplier.first;
+		
+		var lifelines = cmpnt.getLifelines();
 		var entries = lifelines.collect(i | i.getCalls()).flatten;
 
-		//t.activityGraph = LQN!TaskOptionType#NO; 
-		t.name = s.name;
+		t.name = cmpnt.name;
 		t.entry ::= entries;
 	}
 	
@@ -57,44 +59,53 @@ rule MsgSpec2Entry
 		var callSeq = new Sequence();
 		var activity = new LQN!ActivityPhasesType;
 		var call = new LQN!ActivityMakingCallType;
+		
+		var clientName = "client_" + relatedMessage.name;
+		var serverName = "server_" + relatedMessage.name;
+		
 		callSeq.add(call);
+		
+		
 		
 		entry.name = relatedMessage.name;		
 		entry.type = LQN!TypeType#PH1PH2;			
 		entry.entryPhaseActivities = new LQN!PhaseActivities;	
 		
+		
 		// The Message Specification is the sender
 		if(relatedMessage.sendEvent == msgSpec)
 		{
-			var dest = relatedMessage.receiveEvent.covered.name.first;
+			activity.name = clientName;
 			
 			// Set the characteristics of the Activity
 			switch(msgSort)
 			{	
 				case UML!MessageSort#synchCall :
 					activity.synchCall = callSeq;
-					activity.synchCall.first.dest = dest;
+					activity.synchCall.first.dest = serverName;
 													
 				case UML!MessageSort#asynchCall :
 					activity.asynchCall = callSeq;
-					activity.asynchCall.first.dest = dest;
+					activity.asynchCall.first.dest = serverName;
 			}
-			
 		}	
+		
+		if(relatedMessage.receiveEvent == msgSpec)
+		{
+			activity.name = serverName;
+		}
 			
 		activitySeq.add(activity);
 		entry.entryPhaseActivities.activity = activitySeq;
 					
 	}
 		
-operation UML!Manifestation getLifelines(): Sequence
+operation UML!Component getLifelines(): Sequence
 {
-	// Given an Artifact, the function returns the lifelines representing its behavior
-	var element = self.supplier.first;
 	// All the lifelines of the Model
 	var lifelns = UML!Lifeline.all();
 	// Get all the lifelines involving "element"
-	return lifelns.select(i | i.represents.type == element);
+	return lifelns.select(i | i.represents.type == self);
 } 
 
 /* 
