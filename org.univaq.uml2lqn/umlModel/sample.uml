@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DataTypes="http:///schemas/DataTypes/_dl-AMJD8EeqrzrqF15mLUg/0" xmlns:GQAM="http:///schemas/GQAM/_dkPh4JD8EeqrzrqF15mLUg/0" xmlns:MagicDrawProfile="http://www.omg.org/spec/UML/20131001/MagicDrawProfile" xmlns:NFPs="http:///schemas/NFPs/_dmlEMJD8EeqrzrqF15mLUg/0" xmlns:Time="http:///schemas/Time/_dl0PMJD8EeqrzrqF15mLUg/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/DataTypes/_dl-AMJD8EeqrzrqF15mLUg/0 MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_eA_I_5D8EeqrzrqF15mLUg http:///schemas/GQAM/_dkPh4JD8EeqrzrqF15mLUg/0 MARTE.MARTE_AnalysisModel.GQAM.profile.uml#_eBPAFJD8EeqrzrqF15mLUg http://www.omg.org/spec/UML/20131001/MagicDrawProfile UML_Standard_Profile.MagicDraw_Profile.profile.uml#_eBAXJ5D8EeqrzrqF15mLUg http:///schemas/NFPs/_dmlEMJD8EeqrzrqF15mLUg/0 MARTE.MARTE_Foundations.NFPs.profile.uml#_eBOZsJD8EeqrzrqF15mLUg http:///schemas/Time/_dl0PMJD8EeqrzrqF15mLUg/0 MARTE.MARTE_Foundations.Time.profile.uml#_eBIShZD8EeqrzrqF15mLUg">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DataTypes="http:///schemas/DataTypes/_S4g-8JHAEeqpv90Q_aTzUg/0" xmlns:GQAM="http:///schemas/GQAM/_S4d7oJHAEeqpv90Q_aTzUg/0" xmlns:MagicDrawProfile="http://www.omg.org/spec/UML/20131001/MagicDrawProfile" xmlns:NFPs="http:///schemas/NFPs/_S4GvQJHAEeqpv90Q_aTzUg/0" xmlns:Time="http:///schemas/Time/_S3iukJHAEeqpv90Q_aTzUg/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/DataTypes/_S4g-8JHAEeqpv90Q_aTzUg/0 MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_TH9KzJHAEeqpv90Q_aTzUg http:///schemas/GQAM/_S4d7oJHAEeqpv90Q_aTzUg/0 MARTE.MARTE_AnalysisModel.GQAM.profile.uml#_TH5flpHAEeqpv90Q_aTzUg http://www.omg.org/spec/UML/20131001/MagicDrawProfile UML_Standard_Profile.MagicDraw_Profile.profile.uml#_TH9LQJHAEeqpv90Q_aTzUg http:///schemas/NFPs/_S4GvQJHAEeqpv90Q_aTzUg/0 MARTE.MARTE_Foundations.NFPs.profile.uml#_TH7UU5HAEeqpv90Q_aTzUg http:///schemas/Time/_S3iukJHAEeqpv90Q_aTzUg/0 MARTE.MARTE_Foundations.Time.profile.uml#_TH45hJHAEeqpv90Q_aTzUg">
   <uml:Model xmi:id="eee_1045467100313_135436_1" name="PrecisionAgricultureModel" visibility="public" URI="" viewpoint="">
     <ownedComment xmi:id="_18_1beta_8c90288_1415101994820_370998_4336" annotatedElement="eee_1045467100313_135436_1" body="Author:xeder.&#xA;Created:4/13/20 4:07 PM.&#xA;Title:.&#xA;Comment:.&#xA;"/>
     <packageImport xmi:id="_0primitiveTypesPrecisionAgricultureModel">
@@ -57,7 +57,7 @@
         </packagedElement>
         <packagedElement xmi:type="uml:Component" xmi:id="_19_0_3_6590219_1587999708712_803811_4969" name="drone-controller" visibility="public">
           <interfaceRealization xmi:id="_19_0_3_6590219_1588008742821_358262_5685" name="" visibility="public" client="_19_0_3_6590219_1587999708712_803811_4969" supplier="_19_0_3_6590219_1588008730365_583379_5662" contract="_19_0_3_6590219_1588008730365_583379_5662"/>
-          <ownedOperation xmi:id="_19_0_3_6590219_1588009321358_979600_5753" name="startDrone" visibility="public">
+          <ownedOperation xmi:id="_19_0_3_6590219_1588009321358_979600_5753" name="start_drone" visibility="public">
             <ownedParameter xmi:id="_19_0_3_6590219_1588009332112_5859_5754" name="" visibility="public" direction="return">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
             </ownedParameter>
@@ -73,20 +73,20 @@
           <packagedElement xmi:type="uml:Usage" xmi:id="_19_0_3_6590219_1588002014358_187225_5227" name="" visibility="public" client="_19_0_3_6590219_1587999848005_797213_5076" supplier="_19_0_3_6590219_1587999708712_803811_4969"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Interface" xmi:id="_19_0_3_6590219_1588000465318_303159_5138" name="environment" visibility="public">
-          <ownedOperation xmi:id="_19_0_3_6590219_1588008371161_774520_5650" name="getConditions" visibility="public"/>
+          <ownedOperation xmi:id="_19_0_3_6590219_1588008371161_774520_5650" name="get_cond" visibility="public"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Interface" xmi:id="_19_0_3_6590219_1588001135191_964920_5194" name="droneStatus" visibility="public">
-          <ownedOperation xmi:id="_19_0_3_6590219_1588008574122_262364_5651" name="getPowerLevel" visibility="public">
+          <ownedOperation xmi:id="_19_0_3_6590219_1588008574122_262364_5651" name="get_power" visibility="public">
             <ownedParameter xmi:id="_19_0_3_6590219_1588008590450_14111_5652" name="" visibility="public" direction="return">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:id="_19_0_3_6590219_1588008593392_247099_5653" name="getAltitude" visibility="public">
+          <ownedOperation xmi:id="_19_0_3_6590219_1588008593392_247099_5653" name="get_altitude" visibility="public">
             <ownedParameter xmi:id="_19_0_3_6590219_1588008611223_523499_5654" name="" visibility="public" direction="return">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:id="_19_0_3_6590219_1588008614486_478671_5655" name="getSpeed" visibility="public">
+          <ownedOperation xmi:id="_19_0_3_6590219_1588008614486_478671_5655" name="get_speed" visibility="public">
             <ownedParameter xmi:id="_19_0_3_6590219_1588008620029_708153_5656" name="" visibility="public" direction="return">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
             </ownedParameter>
@@ -98,14 +98,14 @@
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:id="_19_0_3_6590219_1588008647997_529268_5659" name="visitNodes" visibility="public">
+          <ownedOperation xmi:id="_19_0_3_6590219_1588008647997_529268_5659" name="visit_nodes" visibility="public">
             <ownedParameter xmi:id="_19_0_3_6590219_1588008659065_549582_5660" name="" visibility="public" direction="return">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
             </ownedParameter>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Interface" xmi:id="_19_0_3_6590219_1588008730365_583379_5662" name="drone" visibility="public">
-          <ownedOperation xmi:id="_19_0_3_6590219_1588008785091_372913_5687" name="toBase" visibility="public">
+          <ownedOperation xmi:id="_19_0_3_6590219_1588008785091_372913_5687" name="to_base" visibility="public">
             <ownedParameter xmi:id="_19_0_3_6590219_1588008792405_310571_5688" name="" visibility="public" direction="return">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
             </ownedParameter>
@@ -120,7 +120,7 @@
           <ownedAttribute xmi:id="_19_0_3_6590219_1588009278189_195664_5708" name="farm" visibility="private" type="_19_0_3_6590219_1587999343690_266560_4935"/>
           <ownedAttribute xmi:id="_19_0_3_6590219_1588772901101_827210_5320" name="controller1" visibility="private" type="_19_0_3_6590219_1587999708712_803811_4969"/>
           <lifeline xmi:id="_19_0_3_6590219_1588008916441_454232_5693" name="controller1" visibility="public" represents="_19_0_3_6590219_1588772901101_827210_5320" coveredBy="_19_0_3_6590219_1588096123978_260071_4878 _19_0_3_6590219_1588096130500_961122_4888 _19_0_3_6590219_1588862298103_60384_5130"/>
-          <lifeline xmi:id="_19_0_3_6590219_1588009278186_947230_5707" name="env-lifeln" visibility="public" represents="_19_0_3_6590219_1588009278189_195664_5708" coveredBy="_19_0_3_6590219_1588096130503_192498_4889 _19_0_3_6590219_1588862298102_619446_5129 _19_0_3_6590219_1588096130503_192498_4889Start _19_0_3_6590219_1588096130503_192498_4889Finish"/>
+          <lifeline xmi:id="_19_0_3_6590219_1588009278186_947230_5707" name="env-lifeln" visibility="public" represents="_19_0_3_6590219_1588009278189_195664_5708" coveredBy="_19_0_3_6590219_1588096130503_192498_4889 _19_0_3_6590219_1588096130503_192498_4889Start _19_0_3_6590219_1588096130503_192498_4889Finish _19_0_3_6590219_1588862298102_619446_5129"/>
           <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_19_0_3_6590219_1588096123978_260071_4878" name="" visibility="public" covered="_19_0_3_6590219_1588008916441_454232_5693" message="_19_0_3_6590219_1588096123969_25407_4876"/>
           <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_19_0_3_6590219_1588096130500_961122_4888" name="" visibility="public" covered="_19_0_3_6590219_1588008916441_454232_5693" message="_19_0_3_6590219_1588096130496_349559_4887"/>
           <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_19_0_3_6590219_1588096130503_192498_4889" name="" visibility="public" covered="_19_0_3_6590219_1588009278186_947230_5707" message="_19_0_3_6590219_1588096130496_349559_4887"/>
@@ -128,8 +128,8 @@
           <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_19_0_3_6590219_1588096130503_192498_4889Finish" covered="_19_0_3_6590219_1588009278186_947230_5707" execution="_19_0_3_6590219_1588096130503_192498_4889Start"/>
           <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_19_0_3_6590219_1588862298102_619446_5129" name="" visibility="public" covered="_19_0_3_6590219_1588009278186_947230_5707" message="_19_0_3_6590219_1588862298099_649345_5128"/>
           <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_19_0_3_6590219_1588862298103_60384_5130" name="" visibility="public" covered="_19_0_3_6590219_1588008916441_454232_5693" message="_19_0_3_6590219_1588862298099_649345_5128"/>
-          <message xmi:id="_19_0_3_6590219_1588096123969_25407_4876" name="startDrone" visibility="public" messageSort="asynchCall" receiveEvent="_19_0_3_6590219_1588096123978_260071_4878" signature="_19_0_3_6590219_1588009321358_979600_5753"/>
-          <message xmi:id="_19_0_3_6590219_1588096130496_349559_4887" name="getConditions" visibility="public" receiveEvent="_19_0_3_6590219_1588096130503_192498_4889" sendEvent="_19_0_3_6590219_1588096130500_961122_4888" signature="_19_0_3_6590219_1588008371161_774520_5650"/>
+          <message xmi:id="_19_0_3_6590219_1588096123969_25407_4876" name="start_drone" visibility="public" messageSort="asynchCall" receiveEvent="_19_0_3_6590219_1588096123978_260071_4878" signature="_19_0_3_6590219_1588009321358_979600_5753"/>
+          <message xmi:id="_19_0_3_6590219_1588096130496_349559_4887" name="get_condition" visibility="public" receiveEvent="_19_0_3_6590219_1588096130503_192498_4889" sendEvent="_19_0_3_6590219_1588096130500_961122_4888" signature="_19_0_3_6590219_1588008371161_774520_5650"/>
           <message xmi:id="_19_0_3_6590219_1588862298099_649345_5128" name="ack" visibility="public" messageSort="reply" receiveEvent="_19_0_3_6590219_1588862298103_60384_5130" sendEvent="_19_0_3_6590219_1588862298102_619446_5129"/>
         </ownedBehavior>
       </packagedElement>
@@ -178,9 +178,6 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_19_0_3_6590219_1588712006188_150239_5164" name="marteResources" visibility="public" URI="">
       <packagedElement xmi:type="uml:OpaqueBehavior" xmi:id="_19_0_3_6590219_1588712029543_452903_5165" name="a" visibility="public" isReentrant="true"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="magicdraw_uml_standard_profile_v_0001" name="UML Standard Profile" visibility="public" URI="">
-      <ownedComment xmi:id="_be00301_1078843546940_242228_131" annotatedElement="magicdraw_uml_standard_profile_v_0001" body="UML Standard Profile contains a UML metamodel (metaclasses without properties and associations), Standard UML stereotypes defined in the annex C of UML specification, validation suites for UML model correctness and completeness checking, and stereotypes used by MagicDraw internally."/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_uBlQkA73EdyML4mHwjNDrw" name="MARTE_Library" visibility="public" URI="">
       <packageImport xmi:id="_uBlQkQ73EdyML4mHwjNDrw">
@@ -1015,8 +1012,8 @@
           <ownedLiteral xmi:id="_jrlSwDJSEd211cMdxu944g" name="kg" visibility="public"/>
         </packagedElement>
         <profileApplication xmi:id="_74GHwJ6HEd2RT_WlaEpTrw">
-          <eAnnotations xmi:id="_eGdeIJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.NFPs.profile.uml#_eBOZsJD8EeqrzrqF15mLUg"/>
+          <eAnnotations xmi:id="_TJ1YcJHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.NFPs.profile.uml#_TH7UU5HAEeqpv90Q_aTzUg"/>
           </eAnnotations>
           <appliedProfile href="MARTE.MARTE_Foundations.NFPs.profile.uml#_U_GAoAPMEdyuUt-4qHuVvQ"/>
         </profileApplication>
@@ -1073,12 +1070,12 @@
         <packagedElement xmi:type="uml:DataType" xmi:id="_1PcnULAlEd-yV8TR_8efwQ" name="ScheduleSpecification" visibility="public">
           <ownedAttribute xmi:id="_Am_uYLAmEd-yV8TR_8efwQ" name="ttd" type="_5ulsILAlEd-yV8TR_8efwQ">
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NCAdkLAmEd-yV8TR_8efwQ" name="" visibility="public"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260279_154470_116" name="" visibility="public" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611042_400767_75" name="" visibility="public" value="1"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_PlREgLAmEd-yV8TR_8efwQ" name="other">
             <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#OpaqueExpression"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_S-MIILAmEd-yV8TR_8efwQ" name="" visibility="public"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260263_665063_74" name="" visibility="public" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611047_388440_96" name="" visibility="public" value="1"/>
           </ownedAttribute>
         </packagedElement>
         <packagedElement xmi:type="uml:DataType" xmi:id="_Ng1kMAeOEdytasR0-Ec7ew" name="EDF_Parameters" visibility="public">
@@ -1145,10 +1142,10 @@
         <packagedElement xmi:type="uml:DataType" xmi:id="_5ulsILAlEd-yV8TR_8efwQ" name="TableDrivenSchedule" visibility="public">
           <ownedAttribute xmi:id="_YIozwLAmEd-yV8TR_8efwQ" name="frameCycleTime" type="_kMwX8BFREdyUJeMeN__D-A">
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gwn9QLAmEd-yV8TR_8efwQ" name="" visibility="public"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260271_740957_84" name="" visibility="public" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611043_612567_76" name="" visibility="public" value="1"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_huTGcLAmEd-yV8TR_8efwQ" name="entries" type="_9Rt0oLAlEd-yV8TR_8efwQ">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260279_73901_115" name="" visibility="public" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611048_17323_105" name="" visibility="public" value="1"/>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qUWWQLAmEd-yV8TR_8efwQ" name="" visibility="public" value="*"/>
           </ownedAttribute>
         </packagedElement>
@@ -1156,20 +1153,20 @@
           <ownedAttribute xmi:id="_sXmncLAmEd-yV8TR_8efwQ" name="entryKey">
             <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#OpaqueExpression"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0hWVwLAmEd-yV8TR_8efwQ" name="" visibility="public"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260272_991846_91" name="" visibility="public" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611052_846472_114" name="" visibility="public" value="1"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_2axVgLAmEd-yV8TR_8efwQ" name="timeSlot" type="_kMwX8BFREdyUJeMeN__D-A" isOrdered="true">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260265_425223_75" name="" visibility="public" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611042_37395_74" name="" visibility="public" value="1"/>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QD2BcLAnEd-yV8TR_8efwQ" name="" visibility="public" value="*"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_SqR4MLAnEd-yV8TR_8efwQ" name="offset" type="_kMwX8BFREdyUJeMeN__D-A" isOrdered="true">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260278_75121_110" name="" visibility="public" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611044_170530_81" name="" visibility="public" value="1"/>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Y6f5ELAnEd-yV8TR_8efwQ" name="" visibility="public" value="*"/>
           </ownedAttribute>
         </packagedElement>
         <profileApplication xmi:id="_P8HR4J6XEd2RT_WlaEpTrw">
-          <eAnnotations xmi:id="_eFNg8JD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_eA_I_5D8EeqrzrqF15mLUg"/>
+          <eAnnotations xmi:id="_TK6WgJHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_TH9KzJHAEeqpv90Q_aTzUg"/>
           </eAnnotations>
           <appliedProfile href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_9FdqwA-MEdyLh7muGbCqMw"/>
         </profileApplication>
@@ -1239,8 +1236,8 @@
               <defaultValue xmi:type="uml:LiteralString" xmi:id="_HSkssRQnEdyxdNz5FjtZ_g" name="" visibility="public" value=""/>
             </ownedParameter>
             <ownedParameter xmi:id="_Mux2sBQnEdyxdNz5FjtZ_g" name="" type="_Ddte8AnqEdy9WM11hWri2g" direction="return">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260274_719773_96" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260274_463421_97" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611046_387996_94" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611046_517474_95" name="" visibility="public" value="1"/>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="__JbJYBQoEdyxdNz5FjtZ_g" name="lt" isStatic="true">
@@ -1250,8 +1247,8 @@
               <defaultValue xmi:type="uml:LiteralString" xmi:id="_Hh7FYBQpEdyxdNz5FjtZ_g" name="" visibility="public" value=""/>
             </ownedParameter>
             <ownedParameter xmi:id="_RY9KABQrEdyxdNz5FjtZ_g" name="" type="_Ddte8AnqEdy9WM11hWri2g" direction="return">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260273_474965_92" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260273_638497_93" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611048_96313_108" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611048_291814_109" name="" visibility="public" value="1"/>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_kjUQoBQsEdyxdNz5FjtZ_g" name="gt" isStatic="true">
@@ -1261,8 +1258,8 @@
               <defaultValue xmi:type="uml:LiteralString" xmi:id="_kjUQpBQsEdyxdNz5FjtZ_g" name="" visibility="public" value=""/>
             </ownedParameter>
             <ownedParameter xmi:id="_kjUQpRQsEdyxdNz5FjtZ_g" name="" type="_Ddte8AnqEdy9WM11hWri2g" direction="return">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260273_352596_94" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260273_758026_95" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611047_899042_101" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611047_257354_102" name="" visibility="public" value="1"/>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_k7_2YBQsEdyxdNz5FjtZ_g" name="le" isStatic="true">
@@ -1272,8 +1269,8 @@
               <defaultValue xmi:type="uml:LiteralString" xmi:id="_k7_2ZBQsEdyxdNz5FjtZ_g" name="" visibility="public" value=""/>
             </ownedParameter>
             <ownedParameter xmi:id="_k7_2ZRQsEdyxdNz5FjtZ_g" name="" type="_Ddte8AnqEdy9WM11hWri2g" direction="return">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260266_639137_76" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260268_782492_77" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611045_774022_90" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611046_435996_91" name="" visibility="public" value="1"/>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_LJfvYBQxEdyCa-N9ek5e_w" name="ge" isStatic="true">
@@ -1283,8 +1280,8 @@
               <defaultValue xmi:type="uml:LiteralString" xmi:id="_LJfvZBQxEdyCa-N9ek5e_w" name="" visibility="public" value=""/>
             </ownedParameter>
             <ownedParameter xmi:id="_LJfvZRQxEdyCa-N9ek5e_w" name="" type="_Ddte8AnqEdy9WM11hWri2g" direction="return">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260277_645470_108" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260277_29466_109" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611048_591276_106" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611048_611861_107" name="" visibility="public" value="1"/>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_LsyCoBQxEdyCa-N9ek5e_w" name="ne" isStatic="true">
@@ -1294,8 +1291,8 @@
               <defaultValue xmi:type="uml:LiteralString" xmi:id="_LsyCpBQxEdyCa-N9ek5e_w" name="" visibility="public" value=""/>
             </ownedParameter>
             <ownedParameter xmi:id="_LsyCpRQxEdyCa-N9ek5e_w" name="" type="_Ddte8AnqEdy9WM11hWri2g" direction="return">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260277_478700_106" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260277_985907_107" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611052_830501_115" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611052_255818_116" name="" visibility="public" value="1"/>
             </ownedParameter>
           </ownedOperation>
         </packagedElement>
@@ -1408,8 +1405,8 @@
           </ownedOperation>
         </packagedElement>
         <profileApplication xmi:id="_tzPeMJ6NEd2RT_WlaEpTrw">
-          <eAnnotations xmi:id="_eFOIAJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_eA_I_5D8EeqrzrqF15mLUg"/>
+          <eAnnotations xmi:id="_TK6WgZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_TH9KzJHAEeqpv90Q_aTzUg"/>
           </eAnnotations>
           <appliedProfile href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_9FdqwA-MEdyLh7muGbCqMw"/>
         </profileApplication>
@@ -1691,60 +1688,60 @@
           </ownedAttribute>
           <ownedOperation xmi:id="_sTlOQG01Ed2Ua4_dHwAW8g" name="bernoulli">
             <ownedParameter xmi:id="_3_KroG01Ed2Ua4_dHwAW8g" name="prob" type="_beo90AnpEdy9WM11hWri2g">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260272_996293_89" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260272_695635_90" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611045_445716_88" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611045_53364_89" name="" visibility="public" value="1"/>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_qlje0G04Ed2Ua4_dHwAW8g" name="binomial">
             <ownedParameter xmi:id="_sBMWYG04Ed2Ua4_dHwAW8g" name="prob" type="_beo90AnpEdy9WM11hWri2g">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260278_578140_111" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260278_551333_112" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611049_473337_110" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611049_862980_111" name="" visibility="public" value="1"/>
             </ownedParameter>
             <ownedParameter xmi:id="_TFVq4G06Ed2Ua4_dHwAW8g" name="trials" type="_HJ1zcAnfEdy9WM11hWri2g">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260269_740309_78" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260269_424137_79" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611043_998643_77" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611043_106966_78" name="" visibility="public" value="1"/>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_bbQM8G06Ed2Ua4_dHwAW8g" name="exp">
             <ownedParameter xmi:id="_cr3gQG06Ed2Ua4_dHwAW8g" name="mean" type="_beo90AnpEdy9WM11hWri2g">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260271_160832_87" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260272_114873_88" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611044_174120_79" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611044_521041_80" name="" visibility="public" value="1"/>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_OOJyIG09Ed2Ua4_dHwAW8g" name="gamma">
             <ownedParameter xmi:id="_PhmXAG09Ed2Ua4_dHwAW8g" name="k" type="_HJ1zcAnfEdy9WM11hWri2g">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260278_260518_113" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260278_695809_114" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611045_520737_86" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611045_944837_87" name="" visibility="public" value="1"/>
             </ownedParameter>
             <ownedParameter xmi:id="_VvKFcG09Ed2Ua4_dHwAW8g" name="mean" type="_beo90AnpEdy9WM11hWri2g">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260276_778410_102" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260276_827254_103" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611047_356716_97" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611047_515085_98" name="" visibility="public" value="1"/>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_TUCt4G09Ed2Ua4_dHwAW8g" name="normal">
             <ownedParameter xmi:id="_Y3SUAG09Ed2Ua4_dHwAW8g" name="mean" type="_beo90AnpEdy9WM11hWri2g">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260275_51106_100" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260275_594191_101" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611047_621984_99" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611047_841294_100" name="" visibility="public" value="1"/>
             </ownedParameter>
             <ownedParameter xmi:id="_ZYzssG09Ed2Ua4_dHwAW8g" name="standDev" type="_beo90AnpEdy9WM11hWri2g">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260270_13746_80" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260270_357536_81" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611046_32280_92" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611046_743586_93" name="" visibility="public" value="1"/>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_hOrcwG09Ed2Ua4_dHwAW8g" name="poisson">
             <ownedParameter xmi:id="_j70_gG09Ed2Ua4_dHwAW8g" name="mean" type="_beo90AnpEdy9WM11hWri2g">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260274_365471_98" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260274_747619_99" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611047_538431_103" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611048_662207_104" name="" visibility="public" value="1"/>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_iNRL8G09Ed2Ua4_dHwAW8g" name="uniform">
             <ownedParameter xmi:id="_kvFocG09Ed2Ua4_dHwAW8g" name="min" type="_beo90AnpEdy9WM11hWri2g">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260271_879381_85" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260271_484348_86" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611044_180201_84" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611045_91816_85" name="" visibility="public" value="1"/>
             </ownedParameter>
             <ownedParameter xmi:id="_kzQ90G09Ed2Ua4_dHwAW8g" name="max" type="_beo90AnpEdy9WM11hWri2g">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260276_323662_104" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260276_782398_105" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611044_149893_82" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611044_173912_83" name="" visibility="public" value="1"/>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_dYnkIECGEd6UTJZnztgOLw" name="bernoulli">
@@ -1981,14 +1978,14 @@
           </ownedAttribute>
         </packagedElement>
         <profileApplication xmi:id="_t51Y8J6OEd2RT_WlaEpTrw">
-          <eAnnotations xmi:id="_eGesQJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.NFPs.profile.uml#_eBOZsJD8EeqrzrqF15mLUg"/>
+          <eAnnotations xmi:id="_TJ3NoJHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.NFPs.profile.uml#_TH7UU5HAEeqpv90Q_aTzUg"/>
           </eAnnotations>
           <appliedProfile href="MARTE.MARTE_Foundations.NFPs.profile.uml#_U_GAoAPMEdyuUt-4qHuVvQ"/>
         </profileApplication>
         <profileApplication xmi:id="_t7LcwZ6OEd2RT_WlaEpTrw">
-          <eAnnotations xmi:id="_eFPWIJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_eA_I_5D8EeqrzrqF15mLUg"/>
+          <eAnnotations xmi:id="_TK69kJHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_TH9KzJHAEeqpv90Q_aTzUg"/>
           </eAnnotations>
           <appliedProfile href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_9FdqwA-MEdyLh7muGbCqMw"/>
         </profileApplication>
@@ -2069,26 +2066,26 @@
         <packagedElement xmi:type="uml:Class" xmi:id="_BKyhUBBREdyt6tGzWCpUVA" name="IdealClock" visibility="public">
           <ownedOperation xmi:id="_oPkhUA-JEdyNj8xzjk-DoA" name="currentTime">
             <ownedParameter xmi:id="_pz2XgA-JEdyNj8xzjk-DoA" name="" type="_beo90AnpEdy9WM11hWri2g" direction="return">
-              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1588922260270_906770_82" name="" visibility="public" value="1"/>
-              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1588922260271_165846_83" name="" visibility="public" value="1"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1589002611050_71387_112" name="" visibility="public" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1589002611051_85729_113" name="" visibility="public" value="1"/>
             </ownedParameter>
           </ownedOperation>
         </packagedElement>
         <profileApplication xmi:id="_eetYoJ6XEd2RT_WlaEpTrw">
-          <eAnnotations xmi:id="_eGghcJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.NFPs.profile.uml#_eBOZsJD8EeqrzrqF15mLUg"/>
+          <eAnnotations xmi:id="_TJ7fEJHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.NFPs.profile.uml#_TH7UU5HAEeqpv90Q_aTzUg"/>
           </eAnnotations>
           <appliedProfile href="MARTE.MARTE_Foundations.NFPs.profile.uml#_U_GAoAPMEdyuUt-4qHuVvQ"/>
         </profileApplication>
         <profileApplication xmi:id="_efATkZ6XEd2RT_WlaEpTrw">
-          <eAnnotations xmi:id="_eFRyYJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_eA_I_5D8EeqrzrqF15mLUg"/>
+          <eAnnotations xmi:id="_TK7koJHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_TH9KzJHAEeqpv90Q_aTzUg"/>
           </eAnnotations>
           <appliedProfile href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_9FdqwA-MEdyLh7muGbCqMw"/>
         </profileApplication>
         <profileApplication xmi:id="_efTOgZ6XEd2RT_WlaEpTrw">
-          <eAnnotations xmi:id="_eE5-8JD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.Time.profile.uml#_eBIShZD8EeqrzrqF15mLUg"/>
+          <eAnnotations xmi:id="_TIpssJHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.Time.profile.uml#_TH45hJHAEeqpv90Q_aTzUg"/>
           </eAnnotations>
           <appliedProfile href="MARTE.MARTE_Foundations.Time.profile.uml#_WStkoAPMEdyuUt-4qHuVvQ"/>
         </profileApplication>
@@ -2120,8 +2117,8 @@
           </ownedAttribute>
         </packagedElement>
         <profileApplication xmi:id="_Uqt5kJ6YEd2RT_WlaEpTrw">
-          <eAnnotations xmi:id="_eFRyYZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_eA_I_5D8EeqrzrqF15mLUg"/>
+          <eAnnotations xmi:id="_TK7koZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+            <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_TH9KzJHAEeqpv90Q_aTzUg"/>
           </eAnnotations>
           <appliedProfile href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_9FdqwA-MEdyLh7muGbCqMw"/>
         </profileApplication>
@@ -2130,369 +2127,372 @@
         <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
       </profileApplication>
     </packagedElement>
-    <profileApplication xmi:id="_bmL7UBJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eBbNIJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwCommunication.profile.uml#_eApKApD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwCommunication.profile.uml#_bmL7UBJwEdygQ5HMNSpiZw"/>
-    </profileApplication>
-    <profileApplication xmi:id="_4bV20APMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eBp2oZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_AnalysisModel.GQAM.profile.uml#_eBPAFJD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_AnalysisModel.GQAM.profile.uml#_4bV20APMEdyuUt-4qHuVvQ"/>
-    </profileApplication>
-    <profileApplication xmi:id="_2dtsgAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eB2D4ZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.profile.uml#_eA_vapD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.profile.uml#_2dtsgAPMEdyuUt-4qHuVvQ"/>
-    </profileApplication>
-    <profileApplication xmi:id="_ar8OsAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eCDfQZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.Alloc.profile.uml#_eBOY0JD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_Foundations.Alloc.profile.uml#_ar8OsAPMEdyuUt-4qHuVvQ"/>
-    </profileApplication>
-    <profileApplication xmi:id="_XVWGUAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eCSIwJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.GRM.profile.uml#_eBMjoZD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_Foundations.GRM.profile.uml#_XVWGUAPMEdyuUt-4qHuVvQ"/>
-    </profileApplication>
-    <profileApplication xmi:id="_16_8beta_62a020a_1256807755193_508228_378profileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eCdu8ZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.StandardProfileL3.profile.uml#_eA_vcJD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="UML_Standard_Profile.StandardProfileL3.profile.uml#_16_8beta_62a020a_1256807755193_508228_378"/>
-    </profileApplication>
-    <profileApplication xmi:id="_16_6_8f90291_1254846042821_86742_517profileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eCm44ZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.MagicDraw_Profile.Traceability_customization.profile.uml#_eBNLTJD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="UML_Standard_Profile.MagicDraw_Profile.Traceability_customization.profile.uml#_16_6_8f90291_1254846042821_86742_517"/>
-    </profileApplication>
-    <profileApplication xmi:id="_9UgzYA-MEdyLh7muGbCqMwprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eCwC0ZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.VSL.Variables.profile.uml#_eA3Mj5D8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_Annexes.VSL.Variables.profile.uml#_9UgzYA-MEdyLh7muGbCqMw"/>
-    </profileApplication>
-    <profileApplication xmi:id="_11_5_be00301_1153310565718_226811_161profileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eC4lsZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.MagicDraw_Profile.DSL_Customization.profile.uml#_eBSqQpD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="UML_Standard_Profile.MagicDraw_Profile.DSL_Customization.profile.uml#_11_5_be00301_1153310565718_226811_161"/>
-    </profileApplication>
-    <profileApplication xmi:id="_17_0_4beta_8ca0285_1361349406965_180847_3086profileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eDAhgZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.Dependency_Matrix_Profile.profile.uml#_eAwewpD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="UML_Standard_Profile.Dependency_Matrix_Profile.profile.uml#_17_0_4beta_8ca0285_1361349406965_180847_3086"/>
-    </profileApplication>
-    <profileApplication xmi:id="_11_5_f720368_1159529670215_231387_1profileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eDH2QZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.Validation_Profile.profile.uml#_eBKIPJD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="UML_Standard_Profile.Validation_Profile.profile.uml#_11_5_f720368_1159529670215_231387_1"/>
-    </profileApplication>
-    <profileApplication xmi:id="_ZJjPoEIbEd6dmI2dd6jVFQprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eDPyEZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwStorage.profile.uml#_eBOZqpD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwStorage.profile.uml#_ZJjPoEIbEd6dmI2dd6jVFQ"/>
-    </profileApplication>
-    <profileApplication xmi:id="_19_0beta_8bb027e_1484121177637_661582_4502profileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eDWfwZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.MagicDraw_Profile.Find_By_Text.profile.uml#_eA_I75D8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="UML_Standard_Profile.MagicDraw_Profile.Find_By_Text.profile.uml#_19_0beta_8bb027e_1484121177637_661582_4502"/>
-    </profileApplication>
-    <profileApplication xmi:id="_ja8REBJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eDd0gJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwDevice.profile.uml#_eBUf8ZD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwDevice.profile.uml#_ja8REBJwEdygQ5HMNSpiZw"/>
-    </profileApplication>
-    <profileApplication xmi:id="_-wEewECLEd6UTJZnztgOLwprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eDmXYJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.CoreElements.profile.uml#_eBLWDZD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_Foundations.CoreElements.profile.uml#_-wEewECLEd6UTJZnztgOLw"/>
-    </profileApplication>
-    <profileApplication xmi:id="_-1fcUBJdEdy3Td9UhuLFPgprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eDtFEZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.SRM.SW_ResourceCore.profile.uml#_eBKH4ZD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.SRM.SW_ResourceCore.profile.uml#_-1fcUBJdEdy3Td9UhuLFPg"/>
-    </profileApplication>
-    <profileApplication xmi:id="_be00301_1073394351331_445580_2profileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eD1n8ZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.MagicDraw_Profile.profile.uml#_eBAXJ5D8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="UML_Standard_Profile.MagicDraw_Profile.profile.uml#_be00301_1073394351331_445580_2"/>
-    </profileApplication>
-    <profileApplication xmi:id="_hst0sBJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eD88sJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwStorage.HwStorageManager.profile.uml#_eBI5tpD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwStorage.HwStorageManager.profile.uml#_hst0sBJwEdygQ5HMNSpiZw"/>
-    </profileApplication>
-    <profileApplication xmi:id="_A_vtYBJeEdy3Td9UhuLFPgprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eEGGoZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.SRM.SW_Concurrency.profile.uml#_eAuCspD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.SRM.SW_Concurrency.profile.uml#_A_vtYBJeEdy3Td9UhuLFPg"/>
-    </profileApplication>
-    <profileApplication xmi:id="_vrbyUBJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eEOpgZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwPhysical.HwPower.profile.uml#_eBHr_ZD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwPhysical.HwPower.profile.uml#_vrbyUBJwEdygQ5HMNSpiZw"/>
-    </profileApplication>
-    <profileApplication xmi:id="_3VS0wAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eEdTAZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.SRM.profile.uml#_eA7eG5D8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.SRM.profile.uml#_3VS0wAPMEdyuUt-4qHuVvQ"/>
-    </profileApplication>
-    <profileApplication xmi:id="_WStkoAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eEoSIJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.Time.profile.uml#_eBIShZD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_Foundations.Time.profile.uml#_WStkoAPMEdyuUt-4qHuVvQ"/>
-    </profileApplication>
-    <profileApplication xmi:id="_uAf6gBJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eE6mAZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwPhysical.HwLayout.profile.uml#_eA3zj5D8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwPhysical.HwLayout.profile.uml#_uAf6gBJwEdygQ5HMNSpiZw"/>
-    </profileApplication>
-    <profileApplication xmi:id="_zaC5cAPHEdyeNfbOYuD9pgprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eFAsoZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.profile.uml#_eA3MvJD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.profile.uml#_zaC5cAPHEdyeNfbOYuD9pg"/>
-    </profileApplication>
-    <profileApplication xmi:id="_9FdqwA-MEdyLh7muGbCqMwprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eFIocZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_eA_I_5D8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_9FdqwA-MEdyLh7muGbCqMw"/>
-    </profileApplication>
-    <profileApplication xmi:id="_EIfnABJeEdy3Td9UhuLFPgprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eFSZcZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.SRM.SW_Interaction.profile.uml#_eBLWWZD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.SRM.SW_Interaction.profile.uml#_EIfnABJeEdy3Td9UhuLFPg"/>
-    </profileApplication>
-    <profileApplication xmi:id="_R7sL8BJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eFfNwJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwPhysical.profile.uml#_eA_vY5D8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwPhysical.profile.uml#_R7sL8BJwEdygQ5HMNSpiZw"/>
-    </profileApplication>
-    <profileApplication xmi:id="_P80EcBJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eFlUYJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwLogical.profile.uml#_eA3MiJD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwLogical.profile.uml#_P80EcBJwEdygQ5HMNSpiZw"/>
-    </profileApplication>
-    <profileApplication xmi:id="_WGZ44BJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eFvFYJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwGeneral.profile.uml#_eBVGgpD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwGeneral.profile.uml#_WGZ44BJwEdygQ5HMNSpiZw"/>
-    </profileApplication>
-    <profileApplication xmi:id="_Cf874BJeEdy3Td9UhuLFPgprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eF1MAJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.SRM.SW_Brokering.profile.uml#_eA5BtpD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.SRM.SW_Brokering.profile.uml#_Cf874BJeEdy3Td9UhuLFPg"/>
-    </profileApplication>
-    <profileApplication xmi:id="_5ZCOIAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eF9u4ZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_AnalysisModel.SAM.profile.uml#_eA0Ja5D8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_AnalysisModel.SAM.profile.uml#_5ZCOIAPMEdyuUt-4qHuVvQ"/>
-    </profileApplication>
-    <profileApplication xmi:id="_YgAioAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eGD1gJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.GCM.profile.uml#_eBJhApD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.GCM.profile.uml#_YgAioAPMEdyuUt-4qHuVvQ"/>
-    </profileApplication>
-    <profileApplication xmi:id="_6c2bkAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eGJVEZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_AnalysisModel.PAM.profile.uml#_eA_vdpD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_AnalysisModel.PAM.profile.uml#_6c2bkAPMEdyuUt-4qHuVvQ"/>
-    </profileApplication>
-    <profileApplication xmi:id="_CHiIYA-LEdyNj8xzjk-DoAprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eGPbsJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.VSL.profile.uml#_eBPADpD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_Annexes.VSL.profile.uml#_CHiIYA-LEdyNj8xzjk-DoA"/>
-    </profileApplication>
-    <profileApplication xmi:id="_yNSZIAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eGViUJD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HLAM.profile.uml#_eAqYQZD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.HLAM.profile.uml#_yNSZIAPMEdyuUt-4qHuVvQ"/>
-    </profileApplication>
-    <profileApplication xmi:id="_U_GAoAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eGbB4ZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.NFPs.profile.uml#_eBOZsJD8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_Foundations.NFPs.profile.uml#_U_GAoAPMEdyuUt-4qHuVvQ"/>
-    </profileApplication>
-    <profileApplication xmi:id="_dG2c0BJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eGhIgZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwTiming.profile.uml#_eBHE35D8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwTiming.profile.uml#_dG2c0BJwEdygQ5HMNSpiZw"/>
-    </profileApplication>
-    <profileApplication xmi:id="_gHI-ABJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eGnPIZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwStorage.HwMemory.profile.uml#_eAyUB5D8EeqrzrqF15mLUg"/>
-      </eAnnotations>
-      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwStorage.HwMemory.profile.uml#_gHI-ABJwEdygQ5HMNSpiZw"/>
-    </profileApplication>
+    <packagedElement xmi:type="uml:Package" xmi:id="magicdraw_uml_standard_profile_v_0001" name="UML Standard Profile" visibility="public" URI="">
+      <ownedComment xmi:id="_be00301_1078843546940_242228_131" annotatedElement="magicdraw_uml_standard_profile_v_0001" body="UML Standard Profile contains a UML metamodel (metaclasses without properties and associations), Standard UML stereotypes defined in the annex C of UML specification, validation suites for UML model correctness and completeness checking, and stereotypes used by MagicDraw internally."/>
+    </packagedElement>
     <profileApplication xmi:id="_aMhZsBJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eGsusZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwComputing.profile.uml#_eA5owpD8EeqrzrqF15mLUg"/>
+      <eAnnotations xmi:id="_TIEfcpHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwComputing.profile.uml#_TIAM75HAEeqpv90Q_aTzUg"/>
       </eAnnotations>
       <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwComputing.profile.uml#_aMhZsBJwEdygQ5HMNSpiZw"/>
     </profileApplication>
+    <profileApplication xmi:id="_11_5_be00301_1153310565718_226811_161profileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TIJ9cZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.MagicDraw_Profile.DSL_Customization.profile.uml#_TH0mQpHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="UML_Standard_Profile.MagicDraw_Profile.DSL_Customization.profile.uml#_11_5_be00301_1153310565718_226811_161"/>
+    </profileApplication>
+    <profileApplication xmi:id="_-wEewECLEd6UTJZnztgOLwprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TIPdAJHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.CoreElements.profile.uml#_TH6G9ZHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_Foundations.CoreElements.profile.uml#_-wEewECLEd6UTJZnztgOLw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_5ZCOIAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TIWxwZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_AnalysisModel.SAM.profile.uml#_TH8i4ZHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_AnalysisModel.SAM.profile.uml#_5ZCOIAPMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_CHiIYA-LEdyNj8xzjk-DoAprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TIcRUZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.VSL.profile.uml#_TH2cqpHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_Annexes.VSL.profile.uml#_CHiIYA-LEdyNj8xzjk-DoA"/>
+    </profileApplication>
+    <profileApplication xmi:id="_WStkoAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TImCUZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.Time.profile.uml#_TH45hJHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_Foundations.Time.profile.uml#_WStkoAPMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
     <profileApplication xmi:id="_DIIJoAPNEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
-      <eAnnotations xmi:id="_eGy1UZD8EeqrzrqF15mLUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.RSM.profile.uml#_eA_IQpD8EeqrzrqF15mLUg"/>
+      <eAnnotations xmi:id="_TIqTwZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.RSM.profile.uml#_TH4415HAEeqpv90Q_aTzUg"/>
       </eAnnotations>
       <appliedProfile href="MARTE.MARTE_Annexes.RSM.profile.uml#_DIIJoAPNEdyuUt-4qHuVvQ"/>
     </profileApplication>
+    <profileApplication xmi:id="_zaC5cAPHEdyeNfbOYuD9pgprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TItXEZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.profile.uml#_TIEd8ZHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.profile.uml#_zaC5cAPHEdyeNfbOYuD9pg"/>
+    </profileApplication>
+    <profileApplication xmi:id="_ja8REBJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TIxogZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwDevice.profile.uml#_TH_nX5HAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwDevice.profile.uml#_ja8REBJwEdygQ5HMNSpiZw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_vrbyUBJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TI1S4ZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwPhysical.HwPower.profile.uml#_TIBc3ZHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwPhysical.HwPower.profile.uml#_vrbyUBJwEdygQ5HMNSpiZw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_2dtsgAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TI6ycZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.profile.uml#_TH3DKJHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.profile.uml#_2dtsgAPMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_uAf6gBJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TI-c0ZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwPhysical.HwLayout.profile.uml#_TIEeNJHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwPhysical.HwLayout.profile.uml#_uAf6gBJwEdygQ5HMNSpiZw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_EIfnABJeEdy3Td9UhuLFPgprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TJCHMZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.SRM.SW_Interaction.profile.uml#_TH4SbpHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.SRM.SW_Interaction.profile.uml#_EIfnABJeEdy3Td9UhuLFPg"/>
+    </profileApplication>
+    <profileApplication xmi:id="_ar8OsAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TJHmwJHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.Alloc.profile.uml#_TIBakpHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_Foundations.Alloc.profile.uml#_ar8OsAPMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_gHI-ABJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TJO7gZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwStorage.HwMemory.profile.uml#_TICDDJHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwStorage.HwMemory.profile.uml#_gHI-ABJwEdygQ5HMNSpiZw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_YgAioAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TJTM8JHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.GCM.profile.uml#_TH77sJHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.GCM.profile.uml#_YgAioAPMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_P80EcBJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TJW3UZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwLogical.profile.uml#_TH6G7pHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwLogical.profile.uml#_P80EcBJwEdygQ5HMNSpiZw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_3VS0wAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TJezIZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.SRM.profile.uml#_TIAO5ZHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.SRM.profile.uml#_3VS0wAPMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_dG2c0BJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TJkSsJHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwTiming.profile.uml#_TICCFpHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwTiming.profile.uml#_dG2c0BJwEdygQ5HMNSpiZw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_11_5_f720368_1159529670215_231387_1profileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TJn9EZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.Validation_Profile.profile.uml#_TICovZHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="UML_Standard_Profile.Validation_Profile.profile.uml#_11_5_f720368_1159529670215_231387_1"/>
+    </profileApplication>
+    <profileApplication xmi:id="_19_0beta_8bb027e_1484121177637_661582_4502profileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TJs1kZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.MagicDraw_Profile.Find_By_Text.profile.uml#_TICC_JHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="UML_Standard_Profile.MagicDraw_Profile.Find_By_Text.profile.uml#_19_0beta_8bb027e_1484121177637_661582_4502"/>
+    </profileApplication>
+    <profileApplication xmi:id="_U_GAoAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TJxuEZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.NFPs.profile.uml#_TH7UU5HAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_Foundations.NFPs.profile.uml#_U_GAoAPMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_WGZ44BJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TJ8GIZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwGeneral.profile.uml#_TID5I5HAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwGeneral.profile.uml#_WGZ44BJwEdygQ5HMNSpiZw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_A_vtYBJeEdy3Td9UhuLFPgprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TKDa4JHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.SRM.SW_Concurrency.profile.uml#_TH11PZHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.SRM.SW_Concurrency.profile.uml#_A_vtYBJeEdy3Td9UhuLFPg"/>
+    </profileApplication>
+    <profileApplication xmi:id="_ZJjPoEIbEd6dmI2dd6jVFQprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TKHFQZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwStorage.profile.uml#_TH3DIpHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwStorage.profile.uml#_ZJjPoEIbEd6dmI2dd6jVFQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_16_8beta_62a020a_1256807755193_508228_378profileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TKOaAJHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.StandardProfileL3.profile.uml#_TICC9pHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="UML_Standard_Profile.StandardProfileL3.profile.uml#_16_8beta_62a020a_1256807755193_508228_378"/>
+    </profileApplication>
+    <profileApplication xmi:id="_yNSZIAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TKVHsZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HLAM.profile.uml#_TH3qMZHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.HLAM.profile.uml#_yNSZIAPMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_6c2bkAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TKbOUZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_AnalysisModel.PAM.profile.uml#_TH3DLpHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_AnalysisModel.PAM.profile.uml#_6c2bkAPMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_-1fcUBJdEdy3Td9UhuLFPgprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TKjKIZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.SRM.SW_ResourceCore.profile.uml#_TICBu5HAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.SRM.SW_ResourceCore.profile.uml#_-1fcUBJdEdy3Td9UhuLFPg"/>
+    </profileApplication>
+    <profileApplication xmi:id="_16_6_8f90291_1254846042821_86742_517profileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TKp30ZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.MagicDraw_Profile.Traceability_customization.profile.uml#_TH4RGJHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="UML_Standard_Profile.MagicDraw_Profile.Traceability_customization.profile.uml#_16_6_8f90291_1254846042821_86742_517"/>
+    </profileApplication>
+    <profileApplication xmi:id="_17_0_4beta_8ca0285_1361349406965_180847_3086profileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TKvXYZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.Dependency_Matrix_Profile.profile.uml#_TIAzgpHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="UML_Standard_Profile.Dependency_Matrix_Profile.profile.uml#_17_0_4beta_8ca0285_1361349406965_180847_3086"/>
+    </profileApplication>
+    <profileApplication xmi:id="_4bV20APMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TK2FEJHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_AnalysisModel.GQAM.profile.uml#_TH5flpHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_AnalysisModel.GQAM.profile.uml#_4bV20APMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_9FdqwA-MEdyLh7muGbCqMwprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TK5IYZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_TH9KzJHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_Annexes.VSL.DataTypes.profile.uml#_9FdqwA-MEdyLh7muGbCqMw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_9UgzYA-MEdyLh7muGbCqMwprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TK7ko5HAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Annexes.VSL.Variables.profile.uml#_TH77g5HAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_Annexes.VSL.Variables.profile.uml#_9UgzYA-MEdyLh7muGbCqMw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_be00301_1073394351331_445580_2profileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TK_2EZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.MagicDraw_Profile.profile.uml#_TH9LQJHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="UML_Standard_Profile.MagicDraw_Profile.profile.uml#_be00301_1073394351331_445580_2"/>
+    </profileApplication>
+    <profileApplication xmi:id="_Cf874BJeEdy3Td9UhuLFPgprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TLC5YJHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.SRM.SW_Brokering.profile.uml#_TH6tBJHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.SRM.SW_Brokering.profile.uml#_Cf874BJeEdy3Td9UhuLFPg"/>
+    </profileApplication>
+    <profileApplication xmi:id="_XVWGUAPMEdyuUt-4qHuVvQprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TLHK0JHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_Foundations.GRM.profile.uml#_TIA06JHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_Foundations.GRM.profile.uml#_XVWGUAPMEdyuUt-4qHuVvQ"/>
+    </profileApplication>
+    <profileApplication xmi:id="_bmL7UBJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TLLcQZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwCommunication.profile.uml#_TH2csJHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwCommunication.profile.uml#_bmL7UBJwEdygQ5HMNSpiZw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_hst0sBJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TLPGoZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwStorage.HwStorageManager.profile.uml#_TIBbbJHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwLogical.HwStorage.HwStorageManager.profile.uml#_hst0sBJwEdygQ5HMNSpiZw"/>
+    </profileApplication>
+    <profileApplication xmi:id="_R7sL8BJwEdygQ5HMNSpiZwprofileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_TLXpgZHAEeqpv90Q_aTzUg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="MARTE.MARTE_DesignModel.HRM.HwPhysical.profile.uml#_TICotpHAEeqpv90Q_aTzUg"/>
+      </eAnnotations>
+      <appliedProfile href="MARTE.MARTE_DesignModel.HRM.HwPhysical.profile.uml#_R7sL8BJwEdygQ5HMNSpiZw"/>
+    </profileApplication>
   </uml:Model>
-  <GQAM:GaWorkloadGenerator xmi:id="_eHQIUJD8EeqrzrqF15mLUg" base_Behavior="_19_0_3_6590219_1588712029543_452903_5165"/>
-  <GQAM:GaScenario xmi:id="_eHR9gJD8EeqrzrqF15mLUg" base_NamedElement="_19_0_3_6590219_1587459521315_399114_5649"/>
-  <GQAM:GaStep xmi:id="_eHTLoJD8EeqrzrqF15mLUg" base_NamedElement="_19_0_3_6590219_1588008629241_506784_5657"/>
-  <GQAM:GaStep xmi:id="_eHTysJD8EeqrzrqF15mLUg" base_NamedElement="_19_0_3_6590219_1588008371161_774520_5650"/>
-  <GQAM:GaExecHost xmi:id="_eHUZwJD8EeqrzrqF15mLUg" resMult="3" base_Classifier="_19_0_3_6590219_1588156154451_439294_5177" otherSchedPolicy="ppr"/>
-  <GQAM:GaExecHost xmi:id="_eHVA0JD8EeqrzrqF15mLUg" base_Classifier="_19_0_3_6590219_1588156290412_201184_5262"/>
-  <MagicDrawProfile:auxiliaryResource xmi:id="_eIyZYJD8EeqrzrqF15mLUg" base_Element="magicdraw_uml_standard_profile_v_0001"/>
-  <Time:Clock xmi:id="_eJeV4JD8EeqrzrqF15mLUg" base_InstanceSpecification="_42TqEA-JEdyNj8xzjk-DoA"/>
-  <Time:ClockType xmi:id="_eJeV4ZD8EeqrzrqF15mLUg" nature="dense" unitType="_DY4Q8A-KEdyNj8xzjk-DoA" getTime="_oPkhUA-JEdyNj8xzjk-DoA" base_Class="_BKyhUBBREdyt6tGzWCpUVA"/>
-  <NFPs:Unit xmi:id="_eJe88JD8EeqrzrqF15mLUg" base_EnumerationLiteral="_FahYkA-KEdyNj8xzjk-DoA"/>
-  <NFPs:Unit xmi:id="_eJe88ZD8EeqrzrqF15mLUg" convFactor="24.0" baseUnit="_eJe88pD8EeqrzrqF15mLUg" base_EnumerationLiteral="_F8fdMA-KEdyNj8xzjk-DoA"/>
-  <NFPs:Unit xmi:id="_eJe88pD8EeqrzrqF15mLUg" convFactor="60.0" baseUnit="_eJe885D8EeqrzrqF15mLUg" base_EnumerationLiteral="_F3SNEA-KEdyNj8xzjk-DoA"/>
-  <NFPs:Unit xmi:id="_eJe885D8EeqrzrqF15mLUg" convFactor="60.0" baseUnit="_eJe88JD8EeqrzrqF15mLUg" base_EnumerationLiteral="_FyEV4A-KEdyNj8xzjk-DoA"/>
-  <NFPs:Unit xmi:id="_eJe89JD8EeqrzrqF15mLUg" convFactor="0.001" baseUnit="_eJe89ZD8EeqrzrqF15mLUg" base_EnumerationLiteral="_FsjjwA-KEdyNj8xzjk-DoA"/>
-  <NFPs:Unit xmi:id="_eJe89ZD8EeqrzrqF15mLUg" convFactor="0.001" baseUnit="_eJfkAJD8EeqrzrqF15mLUg" base_EnumerationLiteral="_Fm5AoA-KEdyNj8xzjk-DoA"/>
-  <NFPs:Unit xmi:id="_eJfkAJD8EeqrzrqF15mLUg" convFactor="0.001" baseUnit="_eJe88JD8EeqrzrqF15mLUg" base_EnumerationLiteral="_Fh-EYA-KEdyNj8xzjk-DoA"/>
-  <NFPs:Unit xmi:id="_eJfkAZD8EeqrzrqF15mLUg" base_EnumerationLiteral="_b_v5AA-KEdyNj8xzjk-DoA"/>
-  <NFPs:Unit xmi:id="_eJfkApD8EeqrzrqF15mLUg" convFactor="1024.0" baseUnit="_eJfkA5D8EeqrzrqF15mLUg" base_EnumerationLiteral="_IzfCUA4zEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJfkA5D8EeqrzrqF15mLUg" convFactor="1024.0" baseUnit="_eJfkBJD8EeqrzrqF15mLUg" base_EnumerationLiteral="_InkGMA4zEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJfkBJD8EeqrzrqF15mLUg" base_EnumerationLiteral="_IdlDwA4zEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJfkBZD8EeqrzrqF15mLUg" convFactor="1.0E-6" baseUnit="_eJfkBpD8EeqrzrqF15mLUg" base_EnumerationLiteral="_XeM6UBFUEdyUJeMeN__D-A"/>
-  <NFPs:Unit xmi:id="_eJfkBpD8EeqrzrqF15mLUg" base_EnumerationLiteral="_XV22oBFUEdyUJeMeN__D-A"/>
-  <NFPs:Unit xmi:id="_eJfkB5D8EeqrzrqF15mLUg" convFactor="0.001" baseUnit="_eJfkCZD8EeqrzrqF15mLUg" base_EnumerationLiteral="_XCiiAA4zEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJfkCJD8EeqrzrqF15mLUg" convFactor="1000.0" baseUnit="_eJfkCZD8EeqrzrqF15mLUg" base_EnumerationLiteral="_W6pKQA4zEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJfkCZD8EeqrzrqF15mLUg" convFactor="2.778E-4" baseUnit="_eJfkC5D8EeqrzrqF15mLUg" base_EnumerationLiteral="_WzL3YA4zEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJfkCpD8EeqrzrqF15mLUg" convFactor="1000.0" baseUnit="_eJfkC5D8EeqrzrqF15mLUg" base_EnumerationLiteral="_Wr48kA4zEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJfkC5D8EeqrzrqF15mLUg" base_EnumerationLiteral="_WkvLsA4zEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgLEJD8EeqrzrqF15mLUg" convFactor="0.001" baseUnit="_eJgLEpD8EeqrzrqF15mLUg" base_EnumerationLiteral="_oxQmgA4zEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgLEZD8EeqrzrqF15mLUg" convFactor="0.01" baseUnit="_eJgLEpD8EeqrzrqF15mLUg" base_EnumerationLiteral="_opXOwA4zEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgLEpD8EeqrzrqF15mLUg" base_EnumerationLiteral="_oeL5gA4zEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgLE5D8EeqrzrqF15mLUg" convFactor="1000.0" baseUnit="_eJgLFZD8EeqrzrqF15mLUg" base_EnumerationLiteral="_jrlSwDJSEd211cMdxu944g"/>
-  <NFPs:Unit xmi:id="_eJgLFJD8EeqrzrqF15mLUg" convFactor="0.001" baseUnit="_eJgLFZD8EeqrzrqF15mLUg" base_EnumerationLiteral="_jleDsDJSEd211cMdxu944g"/>
-  <NFPs:Unit xmi:id="_eJgLFZD8EeqrzrqF15mLUg" base_EnumerationLiteral="_jcYZIDJSEd211cMdxu944g"/>
-  <NFPs:Unit xmi:id="_eJgLFpD8EeqrzrqF15mLUg" convFactor="1024.0" baseUnit="_eJgLF5D8EeqrzrqF15mLUg" base_EnumerationLiteral="_7-bbcA4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgLF5D8EeqrzrqF15mLUg" convFactor="1024.0" baseUnit="_eJgLGJD8EeqrzrqF15mLUg" base_EnumerationLiteral="_717mwA4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgLGJD8EeqrzrqF15mLUg" convFactor="1024.0" baseUnit="_eJgLGZD8EeqrzrqF15mLUg" base_EnumerationLiteral="_7pHSwA4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgLGZD8EeqrzrqF15mLUg" convFactor="8.0" baseUnit="_eJgLGpD8EeqrzrqF15mLUg" base_EnumerationLiteral="_7df4oA4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgLGpD8EeqrzrqF15mLUg" base_EnumerationLiteral="_7OS_AA4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgyIJD8EeqrzrqF15mLUg" convFactor="0.0167" baseUnit="_eJgyJJD8EeqrzrqF15mLUg" base_EnumerationLiteral="_uA8z8A4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgyIZD8EeqrzrqF15mLUg" convFactor="1.0E9" baseUnit="_eJgyJJD8EeqrzrqF15mLUg" base_EnumerationLiteral="_t46SQA4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgyIpD8EeqrzrqF15mLUg" convFactor="1000000.0" baseUnit="_eJgyJJD8EeqrzrqF15mLUg" base_EnumerationLiteral="_twkOkA4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgyI5D8EeqrzrqF15mLUg" convFactor="1000.0" baseUnit="_eJgyJJD8EeqrzrqF15mLUg" base_EnumerationLiteral="_tmRqIA4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgyJJD8EeqrzrqF15mLUg" base_EnumerationLiteral="_tcvToA4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgyJZD8EeqrzrqF15mLUg" convFactor="1000.0" baseUnit="_eJgyJ5D8EeqrzrqF15mLUg" base_EnumerationLiteral="_lXXvAA4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgyJpD8EeqrzrqF15mLUg" convFactor="0.001" baseUnit="_eJgyJ5D8EeqrzrqF15mLUg" base_EnumerationLiteral="_lMpFsA4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgyJ5D8EeqrzrqF15mLUg" base_EnumerationLiteral="_lBxScA4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgyKJD8EeqrzrqF15mLUg" convFactor="24.0" baseUnit="_eJgyKZD8EeqrzrqF15mLUg" base_EnumerationLiteral="_PU1E4A4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgyKZD8EeqrzrqF15mLUg" convFactor="60.0" baseUnit="_eJgyKpD8EeqrzrqF15mLUg" base_EnumerationLiteral="_O8F0wA4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgyKpD8EeqrzrqF15mLUg" convFactor="60.0" baseUnit="_eJhZMpD8EeqrzrqF15mLUg" base_EnumerationLiteral="_OsmAMA4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJgyK5D8EeqrzrqF15mLUg" convFactor="0.001" baseUnit="_eJhZMJD8EeqrzrqF15mLUg" base_EnumerationLiteral="_LTCqcA4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJhZMJD8EeqrzrqF15mLUg" convFactor="0.001" baseUnit="_eJhZMpD8EeqrzrqF15mLUg" base_EnumerationLiteral="_LK_hsA4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJhZMZD8EeqrzrqF15mLUg" base_EnumerationLiteral="_LDGJ8A4yEdysTsAUPnp57Q"/>
-  <NFPs:Unit xmi:id="_eJhZMpD8EeqrzrqF15mLUg" base_EnumerationLiteral="_KvuiAA4yEdysTsAUPnp57Q"/>
-  <NFPs:NfpType xmi:id="_eJhZM5D8EeqrzrqF15mLUg" base_DataType="_TyXpQDJQEd211cMdxu944g" unitAttrib="_XPkv8DJQEd211cMdxu944g"/>
-  <NFPs:NfpType xmi:id="_eJhZNJD8EeqrzrqF15mLUg" base_DataType="_sMCi0DJQEd211cMdxu944g" unitAttrib="_0pa-0DJQEd211cMdxu944g"/>
-  <NFPs:NfpType xmi:id="_eJhZNZD8EeqrzrqF15mLUg" base_DataType="_ZPC-IBFaEdyUJeMeN__D-A" unitAttrib="_bD3xwBFaEdyUJeMeN__D-A"/>
-  <NFPs:NfpType xmi:id="_eJhZNpD8EeqrzrqF15mLUg" base_DataType="_0KmCwBFTEdyUJeMeN__D-A" unitAttrib="_0KmCwhFTEdyUJeMeN__D-A"/>
-  <NFPs:NfpType xmi:id="_eJhZN5D8EeqrzrqF15mLUg" base_DataType="_g4VH4BFTEdyUJeMeN__D-A" unitAttrib="_g4VH4hFTEdyUJeMeN__D-A"/>
-  <NFPs:NfpType xmi:id="_eJiAQJD8EeqrzrqF15mLUg" base_DataType="_QmcNwBFTEdyUJeMeN__D-A" unitAttrib="_QmcNwhFTEdyUJeMeN__D-A"/>
-  <NFPs:NfpType xmi:id="_eJiAQZD8EeqrzrqF15mLUg" base_DataType="_5LrMcBFSEdyUJeMeN__D-A" unitAttrib="_5LrMchFSEdyUJeMeN__D-A"/>
-  <NFPs:NfpType xmi:id="_eJiAQpD8EeqrzrqF15mLUg" base_DataType="_nWsu8BFSEdyUJeMeN__D-A" unitAttrib="_nWsu8hFSEdyUJeMeN__D-A"/>
-  <NFPs:NfpType xmi:id="_eJiAQ5D8EeqrzrqF15mLUg" base_DataType="_UDZSQBFSEdyUJeMeN__D-A" unitAttrib="_UDZSQhFSEdyUJeMeN__D-A"/>
-  <NFPs:NfpType xmi:id="_eJiARJD8EeqrzrqF15mLUg" base_DataType="__NI1EBFREdyUJeMeN__D-A" unitAttrib="_B7LvsBFSEdyUJeMeN__D-A"/>
-  <NFPs:NfpType xmi:id="_eJiARZD8EeqrzrqF15mLUg" base_DataType="_kMwX8BFREdyUJeMeN__D-A" unitAttrib="_kMwX8hFREdyUJeMeN__D-A"/>
-  <NFPs:NfpType xmi:id="_eJiARpD8EeqrzrqF15mLUg" base_DataType="_NIDGMBFREdyUJeMeN__D-A" valueAttrib="_NIDGMhFREdyUJeMeN__D-A"/>
-  <NFPs:NfpType xmi:id="_eJiAR5D8EeqrzrqF15mLUg" base_DataType="_0KWSgBFQEdyUJeMeN__D-A" valueAttrib="_0KWSghFQEdyUJeMeN__D-A"/>
-  <NFPs:NfpType xmi:id="_eJiASJD8EeqrzrqF15mLUg" base_DataType="_Yq-MQBFQEdyUJeMeN__D-A" valueAttrib="_Yq-MQhFQEdyUJeMeN__D-A"/>
-  <NFPs:NfpType xmi:id="_eJinUJD8EeqrzrqF15mLUg" base_DataType="_B5VngBFQEdyUJeMeN__D-A" valueAttrib="_B5VnghFQEdyUJeMeN__D-A"/>
-  <NFPs:NfpType xmi:id="_eJinUZD8EeqrzrqF15mLUg" base_DataType="_Asy1gBFIEdyUJeMeN__D-A" valueAttrib="_Asy1ghFIEdyUJeMeN__D-A"/>
-  <NFPs:NfpType xmi:id="_eJinUpD8EeqrzrqF15mLUg" base_DataType="_55fyMBFGEdyBd9q9NMDXUQ" valueAttrib="_76_I0BFGEdyBd9q9NMDXUQ"/>
-  <NFPs:NfpType xmi:id="_eJinU5D8EeqrzrqF15mLUg" base_DataType="_ACuvABD_EdyybZnLxHsjyA" exprAttrib="_EC4KsBD_EdyybZnLxHsjyA"/>
-  <NFPs:Dimension xmi:id="_eJinVJD8EeqrzrqF15mLUg" baseDimension="_eJinWJD8EeqrzrqF15mLUg _eJjOY5D8EeqrzrqF15mLUg" base_Enumeration="_DyNg0A4zEdysTsAUPnp57Q">
+  <DataTypes:IntervalType xmi:id="_TMTdqJHAEeqpv90Q_aTzUg" intervalAttrib="_9CLk8B18EdyUAqqkOL30sg" base_DataType="_rq2FsB18EdyUAqqkOL30sg"/>
+  <DataTypes:IntervalType xmi:id="_TMTdqZHAEeqpv90Q_aTzUg" intervalAttrib="_GZC_8B14EdyUAqqkOL30sg" base_DataType="_DaoHAB14EdyUAqqkOL30sg"/>
+  <DataTypes:IntervalType xmi:id="_TMTdqpHAEeqpv90Q_aTzUg" intervalAttrib="_94t6EBXWEdyC88-N-gXBsQ" base_DataType="_6ekucBXWEdyC88-N-gXBsQ"/>
+  <DataTypes:IntervalType xmi:id="_TMUEsJHAEeqpv90Q_aTzUg" intervalAttrib="_iG-lkBEBEdyx6M3BlUjlCQ" base_DataType="_ehpdoBEBEdyx6M3BlUjlCQ"/>
+  <DataTypes:IntervalType xmi:id="_TMUEsZHAEeqpv90Q_aTzUg" intervalAttrib="_Uc9xMB15EdyUAqqkOL30sg" base_DataType="_TKe1oB15EdyUAqqkOL30sg"/>
+  <DataTypes:CollectionType xmi:id="_TMUEspHAEeqpv90Q_aTzUg" collectionAttrib="_M7eyYEB9Ed6UTJZnztgOLw" base_DataType="_F0-CsEB9Ed6UTJZnztgOLw"/>
+  <DataTypes:CollectionType xmi:id="_TMUEs5HAEeqpv90Q_aTzUg" collectionAttrib="_NK0O4EB9Ed6UTJZnztgOLw" base_DataType="_I11ysEB9Ed6UTJZnztgOLw"/>
+  <DataTypes:CollectionType xmi:id="_TMUEtJHAEeqpv90Q_aTzUg" collectionAttrib="_8nS6sBmVEdyKYph7niDrbQ" base_DataType="_5jgZkBmVEdyKYph7niDrbQ"/>
+  <DataTypes:CollectionType xmi:id="_TMUEtZHAEeqpv90Q_aTzUg" collectionAttrib="_gdsBoBEDEdyx6M3BlUjlCQ" base_DataType="_MgXXkBEDEdyx6M3BlUjlCQ"/>
+  <DataTypes:CollectionType xmi:id="_TMUEtpHAEeqpv90Q_aTzUg" collectionAttrib="_2qGWQBD_EdyybZnLxHsjyA" base_DataType="_yhmP0BD_EdyybZnLxHsjyA"/>
+  <DataTypes:CollectionType xmi:id="_TMUEt5HAEeqpv90Q_aTzUg" collectionAttrib="_YqhkIBD_EdyybZnLxHsjyA" base_DataType="_WkRCQBD_EdyybZnLxHsjyA"/>
+  <DataTypes:TupleType xmi:id="_TMUEuJHAEeqpv90Q_aTzUg" base_DataType="_9Rt0oLAlEd-yV8TR_8efwQ"/>
+  <DataTypes:TupleType xmi:id="_TMUEuZHAEeqpv90Q_aTzUg" base_DataType="_5ulsILAlEd-yV8TR_8efwQ"/>
+  <DataTypes:TupleType xmi:id="_TMUEupHAEeqpv90Q_aTzUg" base_DataType="_hwFnsBmVEdyKYph7niDrbQ"/>
+  <DataTypes:TupleType xmi:id="_TMUrwJHAEeqpv90Q_aTzUg" base_DataType="_xV1ksA75EdyML4mHwjNDrw"/>
+  <DataTypes:TupleType xmi:id="_TMUrwZHAEeqpv90Q_aTzUg" base_DataType="_Ng1kMAeOEdytasR0-Ec7ew"/>
+  <DataTypes:TupleType xmi:id="_TMUrwpHAEeqpv90Q_aTzUg" base_DataType="_LBY6sBFcEdyUJeMeN__D-A"/>
+  <DataTypes:TupleType xmi:id="_TMUrw5HAEeqpv90Q_aTzUg" base_DataType="_yayYYBFbEdyUJeMeN__D-A"/>
+  <DataTypes:TupleType xmi:id="_TMUrxJHAEeqpv90Q_aTzUg" base_DataType="_rnEo4BFbEdyUJeMeN__D-A"/>
+  <DataTypes:TupleType xmi:id="_TMUrxZHAEeqpv90Q_aTzUg" base_DataType="_iyYAcBFYEdyUJeMeN__D-A"/>
+  <DataTypes:TupleType xmi:id="_TMUrxpHAEeqpv90Q_aTzUg" base_DataType="_LYgXABFYEdyUJeMeN__D-A"/>
+  <DataTypes:TupleType xmi:id="_TMUrx5HAEeqpv90Q_aTzUg" base_DataType="_69YoYBFXEdyUJeMeN__D-A"/>
+  <DataTypes:TupleType xmi:id="_TMUryJHAEeqpv90Q_aTzUg" base_DataType="_YOIbEBFXEdyUJeMeN__D-A"/>
+  <DataTypes:TupleType xmi:id="_TMUryZHAEeqpv90Q_aTzUg" base_DataType="_xuG1YBFXEdyUJeMeN__D-A"/>
+  <DataTypes:TupleType xmi:id="_TMUrypHAEeqpv90Q_aTzUg" base_DataType="_cb3rIDJPEd211cMdxu944g"/>
+  <DataTypes:TupleType xmi:id="_TMUry5HAEeqpv90Q_aTzUg" base_DataType="_n4-jUBFXEdyUJeMeN__D-A"/>
+  <DataTypes:ChoiceType xmi:id="_TMVS0JHAEeqpv90Q_aTzUg" base_DataType="_1PcnULAlEd-yV8TR_8efwQ"/>
+  <DataTypes:ChoiceType xmi:id="_TMVS0ZHAEeqpv90Q_aTzUg" base_DataType="_d6I-0BFbEdyUJeMeN__D-A"/>
+  <DataTypes:ChoiceType xmi:id="_TMVS0pHAEeqpv90Q_aTzUg" base_DataType="_VDec8BFXEdyUJeMeN__D-A"/>
+  <Time:Clock xmi:id="_TMVS05HAEeqpv90Q_aTzUg" base_InstanceSpecification="_42TqEA-JEdyNj8xzjk-DoA"/>
+  <Time:ClockType xmi:id="_TMVS1JHAEeqpv90Q_aTzUg" nature="dense" unitType="_DY4Q8A-KEdyNj8xzjk-DoA" getTime="_oPkhUA-JEdyNj8xzjk-DoA" base_Class="_BKyhUBBREdyt6tGzWCpUVA"/>
+  <NFPs:Unit xmi:id="_TMV54JHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_FahYkA-KEdyNj8xzjk-DoA"/>
+  <NFPs:Unit xmi:id="_TMV54ZHAEeqpv90Q_aTzUg" convFactor="24.0" baseUnit="_TMV54pHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_F8fdMA-KEdyNj8xzjk-DoA"/>
+  <NFPs:Unit xmi:id="_TMV54pHAEeqpv90Q_aTzUg" convFactor="60.0" baseUnit="_TMV545HAEeqpv90Q_aTzUg" base_EnumerationLiteral="_F3SNEA-KEdyNj8xzjk-DoA"/>
+  <NFPs:Unit xmi:id="_TMV545HAEeqpv90Q_aTzUg" convFactor="60.0" baseUnit="_TMV54JHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_FyEV4A-KEdyNj8xzjk-DoA"/>
+  <NFPs:Unit xmi:id="_TMWg8JHAEeqpv90Q_aTzUg" convFactor="0.001" baseUnit="_TMWg8ZHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_FsjjwA-KEdyNj8xzjk-DoA"/>
+  <NFPs:Unit xmi:id="_TMWg8ZHAEeqpv90Q_aTzUg" convFactor="0.001" baseUnit="_TMWg8pHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_Fm5AoA-KEdyNj8xzjk-DoA"/>
+  <NFPs:Unit xmi:id="_TMWg8pHAEeqpv90Q_aTzUg" convFactor="0.001" baseUnit="_TMV54JHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_Fh-EYA-KEdyNj8xzjk-DoA"/>
+  <NFPs:Unit xmi:id="_TMWg85HAEeqpv90Q_aTzUg" base_EnumerationLiteral="_b_v5AA-KEdyNj8xzjk-DoA"/>
+  <NFPs:Unit xmi:id="_TMWg9JHAEeqpv90Q_aTzUg" convFactor="1024.0" baseUnit="_TMWg9ZHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_IzfCUA4zEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMWg9ZHAEeqpv90Q_aTzUg" convFactor="1024.0" baseUnit="_TMWg9pHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_InkGMA4zEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMWg9pHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_IdlDwA4zEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMWg95HAEeqpv90Q_aTzUg" convFactor="1.0E-6" baseUnit="_TMWg-JHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_XeM6UBFUEdyUJeMeN__D-A"/>
+  <NFPs:Unit xmi:id="_TMWg-JHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_XV22oBFUEdyUJeMeN__D-A"/>
+  <NFPs:Unit xmi:id="_TMXIAJHAEeqpv90Q_aTzUg" convFactor="0.001" baseUnit="_TMYWIJHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_XCiiAA4zEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMXvEJHAEeqpv90Q_aTzUg" convFactor="1000.0" baseUnit="_TMYWIJHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_W6pKQA4zEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMYWIJHAEeqpv90Q_aTzUg" convFactor="2.778E-4" baseUnit="_TMYWIpHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_WzL3YA4zEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMYWIZHAEeqpv90Q_aTzUg" convFactor="1000.0" baseUnit="_TMYWIpHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_Wr48kA4zEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMYWIpHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_WkvLsA4zEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMYWI5HAEeqpv90Q_aTzUg" convFactor="0.001" baseUnit="_TMYWJZHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_oxQmgA4zEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMYWJJHAEeqpv90Q_aTzUg" convFactor="0.01" baseUnit="_TMYWJZHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_opXOwA4zEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMYWJZHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_oeL5gA4zEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMYWJpHAEeqpv90Q_aTzUg" convFactor="1000.0" baseUnit="_TMYWKJHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_jrlSwDJSEd211cMdxu944g"/>
+  <NFPs:Unit xmi:id="_TMYWJ5HAEeqpv90Q_aTzUg" convFactor="0.001" baseUnit="_TMYWKJHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_jleDsDJSEd211cMdxu944g"/>
+  <NFPs:Unit xmi:id="_TMYWKJHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_jcYZIDJSEd211cMdxu944g"/>
+  <NFPs:Unit xmi:id="_TMYWKZHAEeqpv90Q_aTzUg" convFactor="1024.0" baseUnit="_TMYWKpHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_7-bbcA4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMYWKpHAEeqpv90Q_aTzUg" convFactor="1024.0" baseUnit="_TMY9MJHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_717mwA4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMY9MJHAEeqpv90Q_aTzUg" convFactor="1024.0" baseUnit="_TMY9MZHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_7pHSwA4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMY9MZHAEeqpv90Q_aTzUg" convFactor="8.0" baseUnit="_TMY9MpHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_7df4oA4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMY9MpHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_7OS_AA4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMY9M5HAEeqpv90Q_aTzUg" convFactor="0.0167" baseUnit="_TMY9N5HAEeqpv90Q_aTzUg" base_EnumerationLiteral="_uA8z8A4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMY9NJHAEeqpv90Q_aTzUg" convFactor="1.0E9" baseUnit="_TMY9N5HAEeqpv90Q_aTzUg" base_EnumerationLiteral="_t46SQA4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMY9NZHAEeqpv90Q_aTzUg" convFactor="1000000.0" baseUnit="_TMY9N5HAEeqpv90Q_aTzUg" base_EnumerationLiteral="_twkOkA4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMY9NpHAEeqpv90Q_aTzUg" convFactor="1000.0" baseUnit="_TMY9N5HAEeqpv90Q_aTzUg" base_EnumerationLiteral="_tmRqIA4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMY9N5HAEeqpv90Q_aTzUg" base_EnumerationLiteral="_tcvToA4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMY9OJHAEeqpv90Q_aTzUg" convFactor="1000.0" baseUnit="_TMY9OpHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_lXXvAA4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMY9OZHAEeqpv90Q_aTzUg" convFactor="0.001" baseUnit="_TMY9OpHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_lMpFsA4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMY9OpHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_lBxScA4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMY9O5HAEeqpv90Q_aTzUg" convFactor="24.0" baseUnit="_TMY9PJHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_PU1E4A4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMY9PJHAEeqpv90Q_aTzUg" convFactor="60.0" baseUnit="_TMY9PZHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_O8F0wA4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMY9PZHAEeqpv90Q_aTzUg" convFactor="60.0" baseUnit="_TMZkQpHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_OsmAMA4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMY9PpHAEeqpv90Q_aTzUg" convFactor="0.001" baseUnit="_TMZkQJHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_LTCqcA4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMZkQJHAEeqpv90Q_aTzUg" convFactor="0.001" baseUnit="_TMZkQpHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_LK_hsA4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMZkQZHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_LDGJ8A4yEdysTsAUPnp57Q"/>
+  <NFPs:Unit xmi:id="_TMZkQpHAEeqpv90Q_aTzUg" base_EnumerationLiteral="_KvuiAA4yEdysTsAUPnp57Q"/>
+  <NFPs:NfpType xmi:id="_TMZkQ5HAEeqpv90Q_aTzUg" base_DataType="_TyXpQDJQEd211cMdxu944g" unitAttrib="_XPkv8DJQEd211cMdxu944g"/>
+  <NFPs:NfpType xmi:id="_TMZkRJHAEeqpv90Q_aTzUg" base_DataType="_sMCi0DJQEd211cMdxu944g" unitAttrib="_0pa-0DJQEd211cMdxu944g"/>
+  <NFPs:NfpType xmi:id="_TMZkRZHAEeqpv90Q_aTzUg" base_DataType="_ZPC-IBFaEdyUJeMeN__D-A" unitAttrib="_bD3xwBFaEdyUJeMeN__D-A"/>
+  <NFPs:NfpType xmi:id="_TMZkRpHAEeqpv90Q_aTzUg" base_DataType="_0KmCwBFTEdyUJeMeN__D-A" unitAttrib="_0KmCwhFTEdyUJeMeN__D-A"/>
+  <NFPs:NfpType xmi:id="_TMZkR5HAEeqpv90Q_aTzUg" base_DataType="_g4VH4BFTEdyUJeMeN__D-A" unitAttrib="_g4VH4hFTEdyUJeMeN__D-A"/>
+  <NFPs:NfpType xmi:id="_TMZkSJHAEeqpv90Q_aTzUg" base_DataType="_QmcNwBFTEdyUJeMeN__D-A" unitAttrib="_QmcNwhFTEdyUJeMeN__D-A"/>
+  <NFPs:NfpType xmi:id="_TMaLUJHAEeqpv90Q_aTzUg" base_DataType="_5LrMcBFSEdyUJeMeN__D-A" unitAttrib="_5LrMchFSEdyUJeMeN__D-A"/>
+  <NFPs:NfpType xmi:id="_TMaLUZHAEeqpv90Q_aTzUg" base_DataType="_nWsu8BFSEdyUJeMeN__D-A" unitAttrib="_nWsu8hFSEdyUJeMeN__D-A"/>
+  <NFPs:NfpType xmi:id="_TMaLUpHAEeqpv90Q_aTzUg" base_DataType="_UDZSQBFSEdyUJeMeN__D-A" unitAttrib="_UDZSQhFSEdyUJeMeN__D-A"/>
+  <NFPs:NfpType xmi:id="_TMaLU5HAEeqpv90Q_aTzUg" base_DataType="__NI1EBFREdyUJeMeN__D-A" unitAttrib="_B7LvsBFSEdyUJeMeN__D-A"/>
+  <NFPs:NfpType xmi:id="_TMaLVJHAEeqpv90Q_aTzUg" base_DataType="_kMwX8BFREdyUJeMeN__D-A" unitAttrib="_kMwX8hFREdyUJeMeN__D-A"/>
+  <NFPs:NfpType xmi:id="_TMaLVZHAEeqpv90Q_aTzUg" base_DataType="_NIDGMBFREdyUJeMeN__D-A" valueAttrib="_NIDGMhFREdyUJeMeN__D-A"/>
+  <NFPs:NfpType xmi:id="_TMaLVpHAEeqpv90Q_aTzUg" base_DataType="_0KWSgBFQEdyUJeMeN__D-A" valueAttrib="_0KWSghFQEdyUJeMeN__D-A"/>
+  <NFPs:NfpType xmi:id="_TMaLV5HAEeqpv90Q_aTzUg" base_DataType="_Yq-MQBFQEdyUJeMeN__D-A" valueAttrib="_Yq-MQhFQEdyUJeMeN__D-A"/>
+  <NFPs:NfpType xmi:id="_TMaLWJHAEeqpv90Q_aTzUg" base_DataType="_B5VngBFQEdyUJeMeN__D-A" valueAttrib="_B5VnghFQEdyUJeMeN__D-A"/>
+  <NFPs:NfpType xmi:id="_TMaLWZHAEeqpv90Q_aTzUg" base_DataType="_Asy1gBFIEdyUJeMeN__D-A" valueAttrib="_Asy1ghFIEdyUJeMeN__D-A"/>
+  <NFPs:NfpType xmi:id="_TMaLWpHAEeqpv90Q_aTzUg" base_DataType="_55fyMBFGEdyBd9q9NMDXUQ" valueAttrib="_76_I0BFGEdyBd9q9NMDXUQ"/>
+  <NFPs:NfpType xmi:id="_TMaLW5HAEeqpv90Q_aTzUg" base_DataType="_ACuvABD_EdyybZnLxHsjyA" exprAttrib="_EC4KsBD_EdyybZnLxHsjyA"/>
+  <NFPs:Dimension xmi:id="_TMaLXJHAEeqpv90Q_aTzUg" baseDimension="_TMayYpHAEeqpv90Q_aTzUg _TMayZpHAEeqpv90Q_aTzUg" base_Enumeration="_DyNg0A4zEdysTsAUPnp57Q">
     <baseExponent>1</baseExponent>
     <baseExponent>-1</baseExponent>
   </NFPs:Dimension>
-  <NFPs:Dimension xmi:id="_eJinVZD8EeqrzrqF15mLUg" baseDimension="_eJjOYZD8EeqrzrqF15mLUg _eJjOYJD8EeqrzrqF15mLUg _eJjOY5D8EeqrzrqF15mLUg" base_Enumeration="_UaKKgA4zEdysTsAUPnp57Q">
+  <NFPs:Dimension xmi:id="_TMaLXZHAEeqpv90Q_aTzUg" baseDimension="_TMayZJHAEeqpv90Q_aTzUg _TMayY5HAEeqpv90Q_aTzUg _TMayZpHAEeqpv90Q_aTzUg" base_Enumeration="_UaKKgA4zEdysTsAUPnp57Q">
     <baseExponent>2</baseExponent>
     <baseExponent>1</baseExponent>
     <baseExponent>-2</baseExponent>
   </NFPs:Dimension>
-  <NFPs:Dimension xmi:id="_eJinVpD8EeqrzrqF15mLUg" baseDimension="_eJjOY5D8EeqrzrqF15mLUg" base_Enumeration="_qFaygA4yEdysTsAUPnp57Q">
+  <NFPs:Dimension xmi:id="_TMayYJHAEeqpv90Q_aTzUg" baseDimension="_TMayZpHAEeqpv90Q_aTzUg" base_Enumeration="_qFaygA4yEdysTsAUPnp57Q">
     <baseExponent>-1</baseExponent>
   </NFPs:Dimension>
-  <NFPs:Dimension xmi:id="_eJinV5D8EeqrzrqF15mLUg" baseDimension="_eJjOYZD8EeqrzrqF15mLUg" base_Enumeration="_Sw5dsBFUEdyUJeMeN__D-A">
+  <NFPs:Dimension xmi:id="_TMayYZHAEeqpv90Q_aTzUg" baseDimension="_TMayZJHAEeqpv90Q_aTzUg" base_Enumeration="_Sw5dsBFUEdyUJeMeN__D-A">
     <baseExponent>2</baseExponent>
   </NFPs:Dimension>
-  <NFPs:Dimension xmi:id="_eJinWJD8EeqrzrqF15mLUg" symbol="D" base_Enumeration="_2pVmEA4yEdysTsAUPnp57Q"/>
-  <NFPs:Dimension xmi:id="_eJjOYJD8EeqrzrqF15mLUg" symbol="M" base_Enumeration="_fuoVADJSEd211cMdxu944g"/>
-  <NFPs:Dimension xmi:id="_eJjOYZD8EeqrzrqF15mLUg" symbol="L" base_Enumeration="_g5AQ0A4zEdysTsAUPnp57Q"/>
-  <NFPs:Dimension xmi:id="_eJjOYpD8EeqrzrqF15mLUg" baseDimension="_eJjOYZD8EeqrzrqF15mLUg _eJjOYJD8EeqrzrqF15mLUg _eJjOY5D8EeqrzrqF15mLUg" base_Enumeration="_ijhHUA4yEdysTsAUPnp57Q">
+  <NFPs:Dimension xmi:id="_TMayYpHAEeqpv90Q_aTzUg" symbol="D" base_Enumeration="_2pVmEA4yEdysTsAUPnp57Q"/>
+  <NFPs:Dimension xmi:id="_TMayY5HAEeqpv90Q_aTzUg" symbol="M" base_Enumeration="_fuoVADJSEd211cMdxu944g"/>
+  <NFPs:Dimension xmi:id="_TMayZJHAEeqpv90Q_aTzUg" symbol="L" base_Enumeration="_g5AQ0A4zEdysTsAUPnp57Q"/>
+  <NFPs:Dimension xmi:id="_TMayZZHAEeqpv90Q_aTzUg" baseDimension="_TMayZJHAEeqpv90Q_aTzUg _TMayY5HAEeqpv90Q_aTzUg _TMayZpHAEeqpv90Q_aTzUg" base_Enumeration="_ijhHUA4yEdysTsAUPnp57Q">
     <baseExponent>2</baseExponent>
     <baseExponent>1</baseExponent>
     <baseExponent>-3</baseExponent>
   </NFPs:Dimension>
-  <NFPs:Dimension xmi:id="_eJjOY5D8EeqrzrqF15mLUg" symbol="T" base_Enumeration="_Iaa3gA4yEdysTsAUPnp57Q"/>
-  <DataTypes:IntervalType xmi:id="_eJjOZJD8EeqrzrqF15mLUg" intervalAttrib="_9CLk8B18EdyUAqqkOL30sg" base_DataType="_rq2FsB18EdyUAqqkOL30sg"/>
-  <DataTypes:IntervalType xmi:id="_eJj1cJD8EeqrzrqF15mLUg" intervalAttrib="_GZC_8B14EdyUAqqkOL30sg" base_DataType="_DaoHAB14EdyUAqqkOL30sg"/>
-  <DataTypes:IntervalType xmi:id="_eJj1cZD8EeqrzrqF15mLUg" intervalAttrib="_94t6EBXWEdyC88-N-gXBsQ" base_DataType="_6ekucBXWEdyC88-N-gXBsQ"/>
-  <DataTypes:IntervalType xmi:id="_eJj1cpD8EeqrzrqF15mLUg" intervalAttrib="_iG-lkBEBEdyx6M3BlUjlCQ" base_DataType="_ehpdoBEBEdyx6M3BlUjlCQ"/>
-  <DataTypes:IntervalType xmi:id="_eJj1c5D8EeqrzrqF15mLUg" intervalAttrib="_Uc9xMB15EdyUAqqkOL30sg" base_DataType="_TKe1oB15EdyUAqqkOL30sg"/>
-  <DataTypes:CollectionType xmi:id="_eJj1dJD8EeqrzrqF15mLUg" collectionAttrib="_M7eyYEB9Ed6UTJZnztgOLw" base_DataType="_F0-CsEB9Ed6UTJZnztgOLw"/>
-  <DataTypes:CollectionType xmi:id="_eJj1dZD8EeqrzrqF15mLUg" collectionAttrib="_NK0O4EB9Ed6UTJZnztgOLw" base_DataType="_I11ysEB9Ed6UTJZnztgOLw"/>
-  <DataTypes:CollectionType xmi:id="_eJj1dpD8EeqrzrqF15mLUg" collectionAttrib="_8nS6sBmVEdyKYph7niDrbQ" base_DataType="_5jgZkBmVEdyKYph7niDrbQ"/>
-  <DataTypes:CollectionType xmi:id="_eJj1d5D8EeqrzrqF15mLUg" collectionAttrib="_gdsBoBEDEdyx6M3BlUjlCQ" base_DataType="_MgXXkBEDEdyx6M3BlUjlCQ"/>
-  <DataTypes:CollectionType xmi:id="_eJj1eJD8EeqrzrqF15mLUg" collectionAttrib="_2qGWQBD_EdyybZnLxHsjyA" base_DataType="_yhmP0BD_EdyybZnLxHsjyA"/>
-  <DataTypes:CollectionType xmi:id="_eJj1eZD8EeqrzrqF15mLUg" collectionAttrib="_YqhkIBD_EdyybZnLxHsjyA" base_DataType="_WkRCQBD_EdyybZnLxHsjyA"/>
-  <DataTypes:TupleType xmi:id="_eJj1epD8EeqrzrqF15mLUg" base_DataType="_9Rt0oLAlEd-yV8TR_8efwQ"/>
-  <DataTypes:TupleType xmi:id="_eJkcgJD8EeqrzrqF15mLUg" base_DataType="_5ulsILAlEd-yV8TR_8efwQ"/>
-  <DataTypes:TupleType xmi:id="_eJkcgZD8EeqrzrqF15mLUg" base_DataType="_hwFnsBmVEdyKYph7niDrbQ"/>
-  <DataTypes:TupleType xmi:id="_eJkcgpD8EeqrzrqF15mLUg" base_DataType="_xV1ksA75EdyML4mHwjNDrw"/>
-  <DataTypes:TupleType xmi:id="_eJkcg5D8EeqrzrqF15mLUg" base_DataType="_Ng1kMAeOEdytasR0-Ec7ew"/>
-  <DataTypes:TupleType xmi:id="_eJkchJD8EeqrzrqF15mLUg" base_DataType="_LBY6sBFcEdyUJeMeN__D-A"/>
-  <DataTypes:TupleType xmi:id="_eJkchZD8EeqrzrqF15mLUg" base_DataType="_yayYYBFbEdyUJeMeN__D-A"/>
-  <DataTypes:TupleType xmi:id="_eJkchpD8EeqrzrqF15mLUg" base_DataType="_rnEo4BFbEdyUJeMeN__D-A"/>
-  <DataTypes:TupleType xmi:id="_eJkch5D8EeqrzrqF15mLUg" base_DataType="_iyYAcBFYEdyUJeMeN__D-A"/>
-  <DataTypes:TupleType xmi:id="_eJkciJD8EeqrzrqF15mLUg" base_DataType="_LYgXABFYEdyUJeMeN__D-A"/>
-  <DataTypes:TupleType xmi:id="_eJkciZD8EeqrzrqF15mLUg" base_DataType="_69YoYBFXEdyUJeMeN__D-A"/>
-  <DataTypes:TupleType xmi:id="_eJkcipD8EeqrzrqF15mLUg" base_DataType="_YOIbEBFXEdyUJeMeN__D-A"/>
-  <DataTypes:TupleType xmi:id="_eJkci5D8EeqrzrqF15mLUg" base_DataType="_xuG1YBFXEdyUJeMeN__D-A"/>
-  <DataTypes:TupleType xmi:id="_eJkcjJD8EeqrzrqF15mLUg" base_DataType="_cb3rIDJPEd211cMdxu944g"/>
-  <DataTypes:TupleType xmi:id="_eJkcjZD8EeqrzrqF15mLUg" base_DataType="_n4-jUBFXEdyUJeMeN__D-A"/>
-  <DataTypes:ChoiceType xmi:id="_eJlDkJD8EeqrzrqF15mLUg" base_DataType="_1PcnULAlEd-yV8TR_8efwQ"/>
-  <DataTypes:ChoiceType xmi:id="_eJlDkZD8EeqrzrqF15mLUg" base_DataType="_d6I-0BFbEdyUJeMeN__D-A"/>
-  <DataTypes:ChoiceType xmi:id="_eJlDkpD8EeqrzrqF15mLUg" base_DataType="_VDec8BFXEdyUJeMeN__D-A"/>
+  <NFPs:Dimension xmi:id="_TMayZpHAEeqpv90Q_aTzUg" symbol="T" base_Enumeration="_Iaa3gA4yEdysTsAUPnp57Q"/>
+  <GQAM:GaWorkloadGenerator xmi:id="_TMbZcJHAEeqpv90Q_aTzUg" base_Behavior="_19_0_3_6590219_1588712029543_452903_5165"/>
+  <GQAM:GaScenario xmi:id="_TMbZcZHAEeqpv90Q_aTzUg" base_NamedElement="_19_0_3_6590219_1587459521315_399114_5649"/>
+  <GQAM:GaStep xmi:id="_TMbZcpHAEeqpv90Q_aTzUg" base_NamedElement="_19_0_3_6590219_1588008371161_774520_5650"/>
+  <GQAM:GaStep xmi:id="_TMcAgJHAEeqpv90Q_aTzUg" base_NamedElement="_19_0_3_6590219_1588008629241_506784_5657"/>
+  <GQAM:GaExecHost xmi:id="_TMcAgZHAEeqpv90Q_aTzUg" resMult="3" base_Classifier="_19_0_3_6590219_1588156154451_439294_5177" otherSchedPolicy="ppr"/>
+  <GQAM:GaExecHost xmi:id="_TMcnkJHAEeqpv90Q_aTzUg" base_Classifier="_19_0_3_6590219_1588156290412_201184_5262"/>
+  <MagicDrawProfile:auxiliaryResource xmi:id="_TMx-wJHAEeqpv90Q_aTzUg" base_Element="magicdraw_uml_standard_profile_v_0001"/>
 </xmi:XMI>

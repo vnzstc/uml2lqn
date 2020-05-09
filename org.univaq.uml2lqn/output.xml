@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LqnModelType name="PrecisionAgricultureModel">
   <processor name="ARMCortex-M" replication="3">
-    <task name="drone-stats"/>
     <task name="env-sensor">
-      <entry name="getConditions" type="PH1PH2">
+      <entry name="get_condition" type="PH1PH2">
         <entry-phase-activities>
-          <activity name="server_getConditions"/>
+          <activity name="server_get_condition"/>
         </entry-phase-activities>
       </entry>
     </task>
   </processor>
   <processor name="nvidiaGeForce8800" replication="1">
     <task name="drone-controller">
-      <entry name="startDrone" type="PH1PH2">
+      <entry name="get_condition" type="PH1PH2">
         <entry-phase-activities>
-          <activity name="server_startDrone"/>
+          <activity name="client_get_condition">
+            <synch-call dest="server_get_condition"/>
+          </activity>
         </entry-phase-activities>
       </entry>
-      <entry name="getConditions" type="PH1PH2">
+      <entry name="start_drone" type="PH1PH2">
         <entry-phase-activities>
-          <activity name="client_getConditions">
-            <synch-call dest="server_getConditions"/>
-          </activity>
+          <activity name="server_start_drone"/>
         </entry-phase-activities>
       </entry>
     </task>

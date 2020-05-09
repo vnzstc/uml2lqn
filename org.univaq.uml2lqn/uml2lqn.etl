@@ -11,10 +11,8 @@ rule Node2Processor
 	to t: LQN!ProcessorType 
 	{		
 		// Apply the transformation only if a Node has at least a deployed artifact
-		guard : (not s.deployment.isEmpty) and s.checkStereotype("GaExecHost")
-
-		// Get the associated artifact for each deployment of the Node
-		var artifs = s.deployments.collect(i | i.deployedArtifact.first).flatten;
+		guard : (not s.deployment.isEmpty()) and s.checkStereotype("GaExecHost")
+		
 		// Get the object representing the "GaExecHost" stereotype
 		var strtypeObj = s.getAppliedStereotypes().selectOne(i | i.name == "GaExecHost");	
 
@@ -27,24 +25,22 @@ rule Node2Processor
 		var castMul = new Native("java.math.BigInteger")(resMult);
 		
 		t.name = s.name;
-		t.task ::= artifs;
+		t.task ::= s.getComponents();
 		t.replication = castMul;
 	}
-	
-rule Artifact2Task
-	transform s: UML!Artifact
-	to t: LQN!TaskType
-	{	
-		// Each Artifact has a single manifestation
-		guard : s.manifestation.size() == 1
-		
-		var manif = s.manifestation.first;
-		var cmpnt = manif.supplier.first;
-		
-		var lifelines = cmpnt.getLifelines();
-		var entries = lifelines.collect(i | i.getCalls()).flatten;
 
-		t.name = cmpnt.name;
+rule Component2Task
+	transform s: UML!Component
+	to t: LQN!TaskType
+	{		
+		// Each Artifact has a single manifestation
+		guard : s.getLifelines().notEmpty()
+
+		var liflns = s.getLifelines();
+		// Get all the incomings and outcomings messages of a Lifeline
+		var entries = liflns.collect(i | i.getCalls()).flatten;
+	
+		t.name = s.name;
 		t.entry ::= entries;
 	}
 	
@@ -52,6 +48,7 @@ rule MsgSpec2Entry
 	transform msgSpec: UML!MessageOccurrenceSpecification
 	to entry: LQN!EntryType
 	{	
+		// Messages characteristics
 		var relatedMessage = msgSpec.message;
 		var msgSort = relatedMessage.messageSort;
 		
@@ -59,20 +56,17 @@ rule MsgSpec2Entry
 		var callSeq = new Sequence();
 		var activity = new LQN!ActivityPhasesType;
 		var call = new LQN!ActivityMakingCallType;
-		
+		// Set client and server name
 		var clientName = "client_" + relatedMessage.name;
 		var serverName = "server_" + relatedMessage.name;
 		
 		callSeq.add(call);
 		
-		
-		
 		entry.name = relatedMessage.name;		
 		entry.type = LQN!TypeType#PH1PH2;			
 		entry.entryPhaseActivities = new LQN!PhaseActivities;	
 		
-		
-		// The Message Specification is the sender
+		// Set sender characteristics
 		if(relatedMessage.sendEvent == msgSpec)
 		{
 			activity.name = clientName;
@@ -90,6 +84,7 @@ rule MsgSpec2Entry
 			}
 		}	
 		
+		// Set receiver characteristics
 		if(relatedMessage.receiveEvent == msgSpec)
 		{
 			activity.name = serverName;
@@ -100,6 +95,27 @@ rule MsgSpec2Entry
 					
 	}
 		
+operation UML!NamedElement checkStereotype(stereotypeName : String): Boolean
+{
+	return self.getAppliedStereotypes().exists(i|i.name = stereotypeName);
+}	
+
+// Get the associated artifact for each deployment of the Node
+operation UML!Node getComponents(): Sequence	
+{
+	// Given a Node, it takes all the deployed artifacts 
+	var artifs = self.deployment.collect(i | i.collectSuppliers()).flatten;
+	
+	// Given an Artifact, it retrieves the related component
+	// To Do: Check the existance of the component
+	return artifs.collect(i | i.manifestation.first.collectSuppliers()).flatten;
+}
+
+operation UML!Dependency collectSuppliers(): Sequence
+{
+	return self.collect(i | i.supplier).flatten;
+}
+	
 operation UML!Component getLifelines(): Sequence
 {
 	// All the lifelines of the Model
@@ -110,7 +126,7 @@ operation UML!Component getLifelines(): Sequence
 
 /* 
  * Given a Lifeline it returns all the messages sent and received by the lifeline;
- * The message should have a well-defined signature
+ * The message should have a signature
  * return: a set of UML!MessageOccurrenceSpecification
  */
 operation UML!Lifeline getCalls(): Set
@@ -122,7 +138,3 @@ operation UML!Lifeline getCalls(): Set
 	return messages.select(i | i.message.signature.isDefined());	
 }	
 	 
-operation UML!NamedElement checkStereotype(stereotypeName : String) : Boolean
-{
-	return self.getAppliedStereotypes().exists(i|i.name = stereotypeName);
-}		

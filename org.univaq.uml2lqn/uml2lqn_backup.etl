@@ -90,10 +90,14 @@ rule Message2ActivityPhase
 		}		
 	}
 
+
+
+
 operation UML!NamedElement checkStereotype(stereotypeName : String) : Boolean
 {
 	return self.getAppliedStereotypes().exists(i|i.name = stereotypeName);
 }
+
 /* 
  * Given a Lifeline it returns all the messages sent by the lifeline;
  * The message should have a well-defined signature
@@ -108,7 +112,8 @@ operation UML!Lifeline getCalls(): Set
 	var fullyDefMess = messages.select(i | i.message.signature.isDefined());	
 	// It selects only the messages sent by the lifeline
 	return fullyDefMess.select(i | i.message.sendEvent == i);	
-}			
+}
+			
 // Given an Artifact, the function returns the lifelines representing its behavior
 operation UML!Manifestation getLifelines(): Sequence
 {
