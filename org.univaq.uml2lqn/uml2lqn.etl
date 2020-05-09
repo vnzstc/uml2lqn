@@ -4,6 +4,7 @@ rule Model2Schema
 	{
 		t.name = s.name;
 		t.processor ::= UML!Node.all();
+		LQN.getElementById("1").println();
 	}
 	
 rule Node2Processor
@@ -21,19 +22,17 @@ rule Node2Processor
 		var speedFactor = s.getValue(strtypeObj, "speedFactor");
 		var schedulingType = s.getValue(strtypeObj, "otherSchedPolicy");
 		
-		// The replication attribute has type "BigInteger". This statement performs a cast. 
-		var castMul = new Native("java.math.BigInteger")(resMult);
-		
+		// The replication attribute has type "BigInteger". This statement performs a cast. 		
 		t.name = s.name;
 		t.task ::= s.getComponents();
-		t.replication = castMul;
+		t.replication = resMult.asBigInteger();
 	}
 
 rule Component2Task
 	transform s: UML!Component
 	to t: LQN!TaskType
 	{		
-		// Each Artifact has a single manifestation
+		// A task is created only if a component is involved in an Interaction
 		guard : s.getLifelines().notEmpty()
 
 		var liflns = s.getLifelines();
@@ -59,16 +58,18 @@ rule MsgSpec2Entry
 		// Set client and server name
 		var clientName = "client_" + relatedMessage.name;
 		var serverName = "server_" + relatedMessage.name;
-		
+				
 		callSeq.add(call);
 		
-		entry.name = relatedMessage.name;		
 		entry.type = LQN!TypeType#PH1PH2;			
 		entry.entryPhaseActivities = new LQN!PhaseActivities;	
+		
+		activity.phase = "1".asBigInteger();
 		
 		// Set sender characteristics
 		if(relatedMessage.sendEvent == msgSpec)
 		{
+			entry.name = clientName;		
 			activity.name = clientName;
 			
 			// Set the characteristics of the Activity
@@ -77,7 +78,7 @@ rule MsgSpec2Entry
 				case UML!MessageSort#synchCall :
 					activity.synchCall = callSeq;
 					activity.synchCall.first.dest = serverName;
-													
+																		
 				case UML!MessageSort#asynchCall :
 					activity.asynchCall = callSeq;
 					activity.asynchCall.first.dest = serverName;
@@ -88,13 +89,20 @@ rule MsgSpec2Entry
 		if(relatedMessage.receiveEvent == msgSpec)
 		{
 			activity.name = serverName;
+			entry.name = serverName;
 		}
 			
 		activitySeq.add(activity);
 		entry.entryPhaseActivities.activity = activitySeq;
 					
 	}
-		
+	
+
+operation Any asBigInteger() : Native("java.math.BigInteger")
+{
+	return new Native("java.math.BigInteger")(self);
+}
+	
 operation UML!NamedElement checkStereotype(stereotypeName : String): Boolean
 {
 	return self.getAppliedStereotypes().exists(i|i.name = stereotypeName);
