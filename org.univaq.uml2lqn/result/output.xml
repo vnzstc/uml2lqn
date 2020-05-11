@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LqnModelType name="PrecisionAgricultureModel">
+  <processor name="Client" replication="1">
+    <task name="user_application" scheduling="ref">
+      <entry name="client_start_drone" type="PH1PH2">
+        <entry-phase-activities>
+          <activity host-demand-mean="1.0" name="client_start_drone" phase="1">
+            <synch-call dest="server_start_drone" calls-mean="1.0"/>
+          </activity>
+        </entry-phase-activities>
+      </entry>
+    </task>
+  </processor>
   <processor name="ARMCortex-M" replication="3">
     <task name="env-sensor">
-      <entry type="PH1PH2">
+      <entry name="server_get_condition" type="PH1PH2">
         <entry-phase-activities>
-          <activity phase="1"/>
+          <activity host-demand-mean="1.0" name="server_get_condition" phase="1"/>
         </entry-phase-activities>
       </entry>
     </task>
   </processor>
   <processor name="nvidiaGeForce8800" replication="1">
     <task name="drone-controller">
-      <entry type="PH1PH2">
-        <entry-phase-activities>
-          <activity phase="1"/>
-        </entry-phase-activities>
-      </entry>
       <entry name="client_get_condition" type="PH1PH2">
         <entry-phase-activities>
-          <activity name="client_get_condition" phase="1">
-            <synch-call dest="client_get_condition" calls-mean="1.0"/>
+          <activity host-demand-mean="1.0" name="client_get_condition" phase="1">
+            <synch-call dest="server_get_condition" calls-mean="1.0"/>
           </activity>
+        </entry-phase-activities>
+      </entry>
+      <entry name="server_start_drone" type="PH1PH2">
+        <entry-phase-activities>
+          <activity host-demand-mean="1.0" name="server_start_drone" phase="1"/>
         </entry-phase-activities>
       </entry>
     </task>
