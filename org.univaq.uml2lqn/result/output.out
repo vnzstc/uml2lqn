@@ -5,7 +5,7 @@ Carleton University, Ottawa, Ontario, Canada. K1S 5B6
 
 Invoked as: lt-lqns ../../spe-workspace/org.univaq.uml2lqn/result/output.xml
 Input:  ../../spe-workspace/org.univaq.uml2lqn/result/output.xml
-Tue May 12 09:58:22 2020
+Tue May 12 11:34:49 2020
 
 
 Convergence test value: 0
@@ -15,43 +15,39 @@ Solver: xeder Linux 5.5.7-arch1-1
     User:        0:00:00.00
     System:      0:00:00.00
     Elapsed:     0:00:00.00
-    MaxRSS:     5256
+    MaxRSS:     5292
 
-    Submodels:  3
-    MVA Core():            6
-    MVA Step():           32
-    MVA Wait():          455
+    Submodels:  2
+    MVA Core():            4
+    MVA Step():           21
+    MVA Wait():          272
 
 Processor identifiers and scheduling algorithms:
 
 Processor Name  Type    Copies  Scheduling Rate
 Client          Uni       1     FCFS
-ARMCortex-M     Uni       3     FCFS
 nvidiaGeForce8800 Uni       1     FCFS
 
 
 Task information:
 
 Task Name       Type    Copies  Processor Name  Pri Entry List
-user_application Ref(1)    1     Client             client_start_drone
-env-sensor      Uni       1     ARMCortex-M        server_get_condition
-drone-controller Uni       1     nvidiaGeForce8800    client_get_condition, server_start_drone
+user_application Ref(1)    1     Client             start_drone     
+drone-controller Uni       1     nvidiaGeForce8800    get_condition, get_cond1
 
 
 Entry execution demands:
 
 Task Name       Entry Name      Phase 1     
-user_application client_start_drone 1           
-env-sensor      server_get_condition 1           
-drone-controller client_get_condition 1           
-                server_start_drone 1           
+user_application start_drone     1           
+drone-controller get_condition   1           
+                get_cond1       1           
 
 
 Mean number of rendezvous from entry to entry:
 
 Task Name       Source Entry    Target Entry    Phase 1     
-user_application client_start_drone server_start_drone 1           
-drone-controller client_get_condition server_get_condition 1           
+user_application start_drone     get_condition   1           
 
 
 Phase type flags:
@@ -69,63 +65,52 @@ All open arrival rates are 0.
 Type 1 throughput bounds: 
 
 Task Name       Entry Name      Throughput  
-user_application client_start_drone 0.5         
-env-sensor      server_get_condition 1           
-drone-controller client_get_condition 0.5         
-                server_start_drone 1           
+user_application start_drone     0.5         
+drone-controller get_condition   1           
+                get_cond1       1           
 
 
 Mean delay for a rendezvous:
 
 Task Name       Source Entry    Target Entry    Phase 1     
-user_application client_start_drone server_start_drone 0           
-drone-controller client_get_condition server_get_condition 0           
+user_application start_drone     get_condition   0           
 
 
 Service times:
 
 Task Name       Entry Name      Phase 1     
-user_application client_start_drone 2           
-env-sensor      server_get_condition 1           
-drone-controller client_get_condition 2           
-                server_start_drone 1           
+user_application start_drone     2           
+drone-controller get_condition   1           
+                get_cond1       1           
 
 
 Service time variance (per phase)
 and squared coefficient of variation (over all phases):
 
 Task Name       Entry Name      Phase 1     coeff of var **2
-user_application client_start_drone 6           1.5         
-env-sensor      server_get_condition 1           1           
-drone-controller client_get_condition 6           1.5         
-                server_start_drone 1           1           
+user_application start_drone     6           1.5         
+drone-controller get_condition   1           1           
+                get_cond1       1           1           
 
 
 Throughputs and utilizations per phase:
 
 Task Name       Entry Name      Throughput  Phase 1     Total       
-user_application client_start_drone 0.5         1           1
-env-sensor      server_get_condition 0           0           0
-drone-controller client_get_condition 0           0           0
-                server_start_drone 0.5         0.5         0.5
+user_application start_drone     0.5         1           1
+drone-controller get_condition   0.5         0.5         0.5
+                get_cond1       0           0           0
 Total:                          0.5         0.5         0.5
 
 
 Utilization and waiting per phase for processor:  Client
 
 Task Name       Pri n   Entry Name      Utilization Phase 1     
-user_application 0   1   client_start_drone 0.5         0           
-
-
-Utilization and waiting per phase for processor:  ARMCortex-M
-
-Task Name       Pri n   Entry Name      Utilization Phase 1     
-env-sensor      0   1   server_get_condition 0           0           
+user_application 0   1   start_drone     0.5         0           
 
 
 Utilization and waiting per phase for processor:  nvidiaGeForce8800
 
 Task Name       Pri n   Entry Name      Utilization Phase 1     
-drone-controller 0   1   client_get_condition 0           0           
-                        server_start_drone 0.5         0           
+drone-controller 0   1   get_condition   0.5         0           
+                        get_cond1       0           0           
 Task Total:                             0.5         
