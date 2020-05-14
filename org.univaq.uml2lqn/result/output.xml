@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LqnModelType name="PrecisionAgricultureModel">
   <processor name="ARMCortex-M" replication="3">
-    <task name="drone-stats"/>
-    <task name="env-sensor"/>
+    <task name="env-sensor">
+      <entry name="get_cond_2" type="PH1PH2"/>
+    </task>
   </processor>
   <processor name="nvidiaGeForce8800" replication="1">
-    <task name="drone-controller"/>
+    <task name="drone-controller">
+      <entry name="start_drone_end" type="PH1PH2">
+        <entry-phase-activities>
+          <activity name="controller_behavior">
+            <synch-call dest="get_cond_2" calls-mean="1.0"/>
+          </activity>
+        </entry-phase-activities>
+      </entry>
+    </task>
     <task name="user_request" scheduling="ref"/>
   </processor>
 </LqnModelType>

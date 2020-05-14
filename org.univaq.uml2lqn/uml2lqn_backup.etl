@@ -127,7 +127,6 @@ operation UML!NamedElement checkStereotype(stereotypeName: String): Boolean
 	return self.getAppliedStereotypes().exists(i|i.name = stereotypeName);
 }	
 
-
 operation UML!Manifestation isInteracting(): Boolean
 {
 	var lifelns = self.getLifelines();
