@@ -5,12 +5,13 @@ rule Model2Schema
 		modType.name = mod.name;
 		modType.processor ::= UML!Node.all.select(i | i.deployment.notEmpty());
 	}
-	
+		
 rule Node2Processor
 	transform s : UML!Node
 	to t: LQN!ProcessorType 
 	{		
 		guard: s.checkStereotype("GaExecHost")	
+		
 		// Get all the artifacts having a manifestation
 		var tasks = s.deployment.collect(i | i.collectSuppliers()).flatten;
 		// Get the object representing the "GaExecHost" stereotype
@@ -19,11 +20,12 @@ rule Node2Processor
 		var resMult = s.getValue(strtypeObj, "resMult");
 		var speedFactor = s.getValue(strtypeObj, "speedFactor");
 		var schedulingType = s.getValue(strtypeObj, "otherSchedPolicy");
-			
-		tasks.first.manifestation.first.collectSuppliers().println();		
-		tasks = tasks.select(i | i.manifestation.notEmpty() and 
-			isInteracting(i.manifestation.first.collectSuppliers()));			
 		
+		// Assumption that an artifact has single manifestation
+		tasks = tasks.select(i | i.manifestation.size() == 1);
+		tasks = tasks.collect(i | i.manifestation.first.collectSuppliers());
+		// Get components involved in an interaction
+		tasks = tasks.select(i | isInteracting(i));
 		// Add the sources of the LQN		
 		tasks.addAll(UML!Actor.all());
 		
@@ -32,86 +34,96 @@ rule Node2Processor
 		t.replication = resMult.asBigInteger();
 	}
 
-rule Lifeline2Task
-	transform artif: UML!Artifact
-	to task: LQN!TaskType
-	{	
-		var manifest = artif.manifestation.first;
-		var supplier =  manifest.supplier.first;		
-		var lifelns = getLifelines(supplier);
-		
-		var msgs = lifelns.collect(i | i.
-				getElements("MessageOccurrenceSpecification")).flatten;
-		
-		msgs =  msgs.select(i | i.message.messageSort = UML!MessageSort#synchCall);
-		
-		task.name = artif.name;
-		task.entry ::= msgs;
-	}
-	
 rule Actor2Task
 	transform actor: UML!Actor
 	to task: LQN!TaskType
 	{
 		var lifelns = getLifelines(actor);
+		var msgs = lifelns.collect(i | i.
+				getElements("MessageOccurrenceSpecification")).flatten;
+		
+		msgs =  msgs.select(i | i.message.messageSort = UML!MessageSort#synchCall);
+							
 		task.name = actor.name;
-		task.scheduling = LQN!TaskSchedulingType#ref;
+		task.scheduling = LQN!TaskSchedulingType#ref;			
+		task.entry ::= msgs;
 	}
-	
+
+rule Component2Task
+	transform comp: UML!Component
+	to task: LQN!TaskType
+	{		
+		var lifelns = getLifelines(comp);	
+		var msgs = lifelns.collect(i | i.
+				getElements("MessageOccurrenceSpecification")).flatten;
+		msgs = msgs.select(i | i.message.messageSort = UML!MessageSort#synchCall and 
+								i.isReceive());
+																									
+		task.name = comp.name;
+		task.entry ::= msgs;
+	}
+
 rule MsgSpec2Entry
 	transform msgSpec: UML!MessageOccurrenceSpecification
 	to entry: LQN!EntryType
-	{
-		guard: msgSpec.isReceive()
-					
+	{	
+		var msgName = msgSpec.message.name;				
 		var lifln = msgSpec.covered.first;
+		var lifeType = lifln.represents.type;
+		
 		var bes = lifln.getElements("BehaviorExecutionSpecification");
-				
+		var besMsgs = new Sequence();
+
 		bes = bes.selectOne(i | i.start = msgSpec and 
-					i.finish.isTypeOf(UML!MessageOccurrenceSpecification));
-			
-		if(bes.isDefined() and bes.getMessages().notEmpty())
+								i.finish.isTypeOf(UML!MessageOccurrenceSpecification));							
+		if(bes.isDefined())
+			besMsgs = bes.getMessages().select(i | i.isSend());	
+		
+		if(lifeType.isTypeOf(UML!Actor))
+			entry.name = "init_" + msgName;
+		else 
+			entry.name = msgName;
+																	
+		// If getMessages is empty, then the BES is a sink
+		if(besMsgs.notEmpty or lifeType.isTypeOf(UML!Actor))
 		{
 			var seq = new Sequence();
-			seq.add(bes);		
-
+			seq.add(bes);	
+			
 			entry.entryPhaseActivities = new LQN!PhaseActivities;
-			entry.entryPhaseActivities.activity ::= seq;	
-		}		
-		
-		entry.name = msgSpec.name;
-		entry.type = LQN!TypeType#PH1PH2;			
+			entry.entryPhaseActivities.activity ::= seq;			
+		} 
+
+		entry.type = LQN!TypeType#PH1PH2;	
 	}
-	
-rule BES2activity
+
+rule BES2Activity
 	transform bes: UML!BehaviorExecutionSpecification
 	to actv: LQN!ActivityPhasesType
-	{
-		guard: bes.getMessages().notEmpty()
-		
+	{				
 		var msgs = bes.getMessages().sortBy(i | getIndexOf(i));
 		msgs = msgs.select(i | i.isSend());	
+
+		var calls = msgs.collect(i | buildCall(i.message.name));
 		
-		var calls = msgs.collect(i | buildCall(i.message.receiveEvent.name));
-				
 		actv.name = bes.name;	
-		actv.synchCall = calls;			
+		actv.synchCall = calls;	
+		actv.phase = "1".asBigInteger();		
 	}
-	
+
 operation UML!BehaviorExecutionSpecification getMessages(): Collection
 {
 	var lifeln = self.covered.first;
 	
 	var msgs = lifeln.getElements("MessageOccurrenceSpecification");
-	// @ToDo: Methods to get synchCalls
+	// @ToDo: Methods to get other kind of calls
 	msgs = msgs.select(i | i.message.messageSort = UML!MessageSort#synchCall);
 	
 	var startIdx = getIndexOf(self.start);
 	var endIdx = getIndexOf(self.finish);
 
-	return msgs.select(i | startIdx < getIndexOf(i) and endIdx > getIndexOf(i));
+	return msgs.select(i | startIdx <= getIndexOf(i) and endIdx >= getIndexOf(i));
 }
-
 
 operation UML!Lifeline getElements(cType: String): Collection	
 {
