@@ -3,43 +3,81 @@
 <lqn-model name="../../spe-workspace/org.univaq.uml2lqn/result/output" description="lt-lqns 5.9.2 solution for model from: ../../spe-workspace/org.univaq.uml2lqn/result/output.xml." xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/usr/local/share/lqns/lqn.xsd">
    <solver-params comment="" conv_val="1e-05" it_limit="50" underrelax_coeff="0.9" print_int="0">
       <result-general valid="YES" conv-val="0" iterations="2" platform-info="xeder Linux 5.5.7-arch1-1" user-cpu-time="00:00:00.00" system-cpu-time="00:00:00.00" elapsed-time="00:00:00.00" max-rss="5292">
-         <mva-info submodels="2" core="4" step="21" step-squared="111" wait="272" wait-squared="18934" faults="0"/>
+         <mva-info submodels="3" core="6" step="34" step-squared="198" wait="984" wait-squared="317328" faults="0"/>
       </result-general>
    </solver-params>
-   <processor name="Client" scheduling="fcfs">
-      <result-processor utilization="0.5"/>
-      <task name="user_application" scheduling="ref">
-         <result-task throughput="0.5" utilization="1" phase1-utilization="1" proc-utilization="0.5"/>
-         <entry name="start_drone" type="PH1PH2">
-            <result-entry utilization="1" throughput="0.5" squared-coeff-variation="1.5" proc-utilization="0.5" throughput-bound="0.5"/>
+   <processor name="ARMCortex-M" scheduling="fcfs" replication="3">
+      <result-processor utilization="0"/>
+      <task name="env-sensor" scheduling="fcfs">
+         <result-task throughput="0" utilization="0" proc-utilization="0"/>
+         <entry name="get_condition_message1" type="PH1PH2">
+            <result-entry utilization="0" throughput="0" squared-coeff-variation="0" proc-utilization="0" throughput-bound="0"/>
             <entry-phase-activities>
-               <activity name="client_start_drone" phase="1" host-demand-mean="1">
-                  <result-activity proc-waiting="0" service-time="2" utilization="1" service-time-variance="6"/>
-                  <synch-call dest="get_condition" calls-mean="1">
+            </entry-phase-activities>
+         </entry>
+         <entry name="get_condition_message2" type="PH1PH2">
+            <result-entry utilization="0" throughput="0" squared-coeff-variation="0" proc-utilization="0" throughput-bound="0"/>
+            <entry-phase-activities>
+            </entry-phase-activities>
+         </entry>
+         <entry name="get_cond_1" type="PH1PH2">
+            <result-entry utilization="0" throughput="0" squared-coeff-variation="0" proc-utilization="0" throughput-bound="0"/>
+            <entry-phase-activities>
+            </entry-phase-activities>
+         </entry>
+      </task>
+   </processor>
+   <processor name="nvidiaGeForce8800" scheduling="fcfs">
+      <result-processor utilization="0"/>
+      <task name="drone-controller" scheduling="fcfs">
+         <result-task throughput="0" utilization="0" proc-utilization="0"/>
+         <entry name="start_drone2" type="PH1PH2">
+            <result-entry utilization="0" throughput="0" squared-coeff-variation="0" proc-utilization="0" throughput-bound="0"/>
+            <entry-phase-activities>
+               <activity name="controller_behavior2" phase="1">
+                  <result-activity proc-waiting="0" service-time="0" utilization="0"/>
+                  <synch-call dest="get_cond_1" calls-mean="1">
+                     <result-call waiting="0"/>
+                  </synch-call>
+               </activity>
+            </entry-phase-activities>
+         </entry>
+         <entry name="start_drone1" type="PH1PH2">
+            <result-entry utilization="0" throughput="0" squared-coeff-variation="0" proc-utilization="0" throughput-bound="0"/>
+            <entry-phase-activities>
+               <activity name="controller_behavior" phase="1">
+                  <result-activity proc-waiting="0" service-time="0" utilization="0"/>
+                  <synch-call dest="get_condition_message1" calls-mean="1">
+                     <result-call waiting="0"/>
+                  </synch-call>
+                  <synch-call dest="get_condition_message2" calls-mean="1">
                      <result-call waiting="0"/>
                   </synch-call>
                </activity>
             </entry-phase-activities>
          </entry>
       </task>
-   </processor>
-   <processor name="nvidiaGeForce8800" scheduling="fcfs">
-      <result-processor utilization="0.5"/>
-      <task name="drone-controller" scheduling="fcfs">
-         <result-task throughput="0.5" utilization="0.5" phase1-utilization="0.5" proc-utilization="0.5"/>
-         <entry name="get_condition" type="PH1PH2">
-            <result-entry utilization="0.5" throughput="0.5" squared-coeff-variation="1" proc-utilization="0.5" throughput-bound="1"/>
+      <task name="user_request" scheduling="ref">
+         <result-task throughput="inf" utilization="0" proc-utilization="0"/>
+         <entry name="init_start_drone1" type="PH1PH2">
+            <result-entry utilization="0" throughput="inf" squared-coeff-variation="0" proc-utilization="0" throughput-bound="0"/>
             <entry-phase-activities>
-               <activity name="client_get_condition" phase="1" host-demand-mean="1">
-                  <result-activity proc-waiting="0" service-time="1" utilization="0.5" service-time-variance="1"/>
+               <activity name="drone_behavior1" phase="1">
+                  <result-activity proc-waiting="0" service-time="0" utilization="0"/>
+                  <synch-call dest="start_drone1" calls-mean="1">
+                     <result-call waiting="0"/>
+                  </synch-call>
                </activity>
             </entry-phase-activities>
          </entry>
-         <entry name="get_cond1" type="PH1PH2">
-            <result-entry utilization="0" throughput="0" squared-coeff-variation="1" proc-utilization="0" throughput-bound="1"/>
+         <entry name="init_start_drone2" type="PH1PH2">
+            <result-entry utilization="0" throughput="inf" squared-coeff-variation="0" proc-utilization="0" throughput-bound="0"/>
             <entry-phase-activities>
-               <activity name="get_cond1" phase="1" host-demand-mean="1">
-                  <result-activity proc-waiting="0" service-time="1" utilization="0" service-time-variance="1"/>
+               <activity name="drone_behavior2" phase="1">
+                  <result-activity proc-waiting="0" service-time="0" utilization="0"/>
+                  <synch-call dest="start_drone2" calls-mean="1">
+                     <result-call waiting="0"/>
+                  </synch-call>
                </activity>
             </entry-phase-activities>
          </entry>

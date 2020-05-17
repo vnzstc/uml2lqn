@@ -75,25 +75,21 @@ rule MsgSpec2Entry
 		var besMsgs = new Sequence();
 
 		bes = bes.selectOne(i | i.start = msgSpec and 
-								i.finish.isTypeOf(UML!MessageOccurrenceSpecification));							
-		if(bes.isDefined())
+									i.finish.isTypeOf(UML!MessageOccurrenceSpecification));							
+		/* if(bes.isDefined())
 			besMsgs = bes.getMessages().select(i | i.isSend());	
+		*/
 		
 		if(lifeType.isTypeOf(UML!Actor))
 			entry.name = "init_" + msgName;
 		else 
 			entry.name = msgName;
 																	
-		// If getMessages is empty, then the BES is a sink
-		if(besMsgs.notEmpty or lifeType.isTypeOf(UML!Actor))
-		{
-			var seq = new Sequence();
-			seq.add(bes);	
+		var seq = new Sequence();
+		seq.add(bes);	
 			
-			entry.entryPhaseActivities = new LQN!PhaseActivities;
-			entry.entryPhaseActivities.activity ::= seq;			
-		} 
-
+		entry.entryPhaseActivities = new LQN!PhaseActivities;
+		entry.entryPhaseActivities.activity ::= seq;			 
 		entry.type = LQN!TypeType#PH1PH2;	
 	}
 
@@ -105,9 +101,11 @@ rule BES2Activity
 		msgs = msgs.select(i | i.isSend());	
 
 		var calls = msgs.collect(i | buildCall(i.message.name));
-		
-		actv.name = bes.name;	
-		actv.synchCall = calls;	
+
+		if(calls.notEmpty())
+			actv.synchCall = calls;	
+			
+		actv.name = bes.name;
 		actv.phase = "1".asBigInteger();		
 	}
 

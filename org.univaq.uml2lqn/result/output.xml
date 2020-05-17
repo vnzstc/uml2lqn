@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lqn-model name="PrecisionAgricultureModel">
+  <processor name="ARMCortex-M" replication="3">
+    <task name="env-sensor">
+      <entry name="get_condition_message1" type="PH1PH2">
+        <entry-phase-activities>
+          <activity name="farm_behavior" phase="1"/>
+        </entry-phase-activities>
+      </entry>
+      <entry name="get_condition_message2" type="PH1PH2">
+        <entry-phase-activities>
+          <activity name="" phase="1"/>
+        </entry-phase-activities>
+      </entry>
+      <entry name="get_cond_1" type="PH1PH2">
+        <entry-phase-activities>
+          <activity name="" phase="1"/>
+        </entry-phase-activities>
+      </entry>
+    </task>
+  </processor>
   <processor name="nvidiaGeForce8800" replication="1">
     <task name="drone-controller">
+      <entry name="start_drone2" type="PH1PH2">
+        <entry-phase-activities>
+          <activity name="controller_behavior2" phase="1">
+            <synch-call dest="get_cond_1" calls-mean="1.0"/>
+          </activity>
+        </entry-phase-activities>
+      </entry>
       <entry name="start_drone1" type="PH1PH2">
         <entry-phase-activities>
           <activity name="controller_behavior" phase="1">
@@ -10,22 +36,8 @@
           </activity>
         </entry-phase-activities>
       </entry>
-      <entry name="start_drone2" type="PH1PH2">
-        <entry-phase-activities>
-          <activity name="controller_behavior2" phase="1">
-            <synch-call dest="get_cond_1" calls-mean="1.0"/>
-          </activity>
-        </entry-phase-activities>
-      </entry>
     </task>
     <task name="user_request" scheduling="ref">
-      <entry name="init_start_drone2" type="PH1PH2">
-        <entry-phase-activities>
-          <activity name="drone_behavior2" phase="1">
-            <synch-call dest="start_drone2" calls-mean="1.0"/>
-          </activity>
-        </entry-phase-activities>
-      </entry>
       <entry name="init_start_drone1" type="PH1PH2">
         <entry-phase-activities>
           <activity name="drone_behavior1" phase="1">
@@ -33,13 +45,13 @@
           </activity>
         </entry-phase-activities>
       </entry>
-    </task>
-  </processor>
-  <processor name="ARMCortex-M" replication="3">
-    <task name="env-sensor">
-      <entry name="get_condition_message2" type="PH1PH2"/>
-      <entry name="get_cond_1" type="PH1PH2"/>
-      <entry name="get_condition_message1" type="PH1PH2"/>
+      <entry name="init_start_drone2" type="PH1PH2">
+        <entry-phase-activities>
+          <activity name="drone_behavior2" phase="1">
+            <synch-call dest="start_drone2" calls-mean="1.0"/>
+          </activity>
+        </entry-phase-activities>
+      </entry>
     </task>
   </processor>
 </lqn-model>
