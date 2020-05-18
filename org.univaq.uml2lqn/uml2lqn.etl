@@ -39,8 +39,7 @@ rule Actor2Task
 	to task: LQN!TaskType
 	{
 		var lifelns = getLifelines(actor);
-		var msgs = lifelns.collect(i | i.
-				getElements("MessageOccurrenceSpecification")).flatten;
+		var msgs = lifelns.collect(i | i.getElements("MessageOccurrenceSpecification")).flatten;
 		
 		msgs =  msgs.select(i | i.message.messageSort = UML!MessageSort#synchCall);
 							
@@ -54,11 +53,9 @@ rule Component2Task
 	to task: LQN!TaskType
 	{		
 		var lifelns = getLifelines(comp);	
-		var msgs = lifelns.collect(i | i.
-				getElements("MessageOccurrenceSpecification")).flatten;
+		var msgs = lifelns.collect(i | i.getElements("MessageOccurrenceSpecification")).flatten;
 		msgs = msgs.select(i | i.message.messageSort = UML!MessageSort#synchCall and 
-								i.isReceive());
-																									
+								i.isReceive());																									
 		task.name = comp.name;
 		task.entry ::= msgs;
 	}
@@ -67,23 +64,18 @@ rule MsgSpec2Entry
 	transform msgSpec: UML!MessageOccurrenceSpecification
 	to entry: LQN!EntryType
 	{	
-		var msgName = msgSpec.message.name;				
-		var lifln = msgSpec.covered.first;
-		var lifeType = lifln.represents.type;
+		var lifeln = msgSpec.covered.first;
+		var lifeType = lifeln.represents.type;
 		
-		var bes = lifln.getElements("BehaviorExecutionSpecification");
-		var besMsgs = new Sequence();
-
+		var msg = msgSpec.message.name;				
+		var bes = lifeln.getElements("BehaviorExecutionSpecification");
 		bes = bes.selectOne(i | i.start = msgSpec and 
-									i.finish.isTypeOf(UML!MessageOccurrenceSpecification));							
-		/* if(bes.isDefined())
-			besMsgs = bes.getMessages().select(i | i.isSend());	
-		*/
-		
+									i.finish.isTypeOf(UML!MessageOccurrenceSpecification));
+																		
 		if(lifeType.isTypeOf(UML!Actor))
-			entry.name = "init_" + msgName;
+			entry.name = "init_" + msg;
 		else 
-			entry.name = msgName;
+			entry.name = msg;
 																	
 		var seq = new Sequence();
 		seq.add(bes);	
@@ -97,29 +89,33 @@ rule BES2Activity
 	transform bes: UML!BehaviorExecutionSpecification
 	to actv: LQN!ActivityPhasesType
 	{				
-		var msgs = bes.getMessages().sortBy(i | getIndexOf(i));
-		msgs = msgs.select(i | i.isSend());	
-
+		var msgs = bes.getMessages().sortBy(i | getIndexOf(i));			
+		msgs = msgs.select(i | i.isSend());				
+		
 		var calls = msgs.collect(i | buildCall(i.message.name));
-
+	
 		if(calls.notEmpty())
+		{
+			bes.name.println("inside");
 			actv.synchCall = calls;	
+		}
 			
 		actv.name = bes.name;
-		actv.phase = "1".asBigInteger();		
+		actv.phase = "1".asBigInteger();
+			
 	}
 
 operation UML!BehaviorExecutionSpecification getMessages(): Collection
 {
 	var lifeln = self.covered.first;
-	
 	var msgs = lifeln.getElements("MessageOccurrenceSpecification");
+	
 	// @ToDo: Methods to get other kind of calls
 	msgs = msgs.select(i | i.message.messageSort = UML!MessageSort#synchCall);
-	
+		
 	var startIdx = getIndexOf(self.start);
 	var endIdx = getIndexOf(self.finish);
-
+	
 	return msgs.select(i | startIdx <= getIndexOf(i) and endIdx >= getIndexOf(i));
 }
 

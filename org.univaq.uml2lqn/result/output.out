@@ -5,7 +5,7 @@ Carleton University, Ottawa, Ontario, Canada. K1S 5B6
 
 Invoked as: lt-lqns ../../spe-workspace/org.univaq.uml2lqn/result/output.xml
 Input:  ../../spe-workspace/org.univaq.uml2lqn/result/output.xml
-Sun May 17 21:20:22 2020
+Mon May 18 14:43:33 2020
 
 
 Convergence test value: 0
@@ -15,12 +15,12 @@ Solver: xeder Linux 5.5.7-arch1-1
     User:        0:00:00.00
     System:      0:00:00.00
     Elapsed:     0:00:00.00
-    MaxRSS:     5292
+    MaxRSS:     5404
 
     Submodels:  3
     MVA Core():            6
-    MVA Step():           34
-    MVA Wait():          984
+    MVA Step():           39
+    MVA Wait():         1582
 
 Processor identifiers and scheduling algorithms:
 
@@ -32,31 +32,24 @@ nvidiaGeForce8800 Uni       1     FCFS
 Task information:
 
 Task Name       Type    Copies  Processor Name  Pri Entry List
-env-sensor      Uni       1     ARMCortex-M        get_condition_message1, get_condition_message2, get_cond_1
-drone-controller Uni       1     nvidiaGeForce8800    start_drone2, start_drone1
-user_request    Ref(1)    1     nvidiaGeForce8800    init_start_drone1, init_start_drone2
+env-sensor      Uni       1     ARMCortex-M        get_condition_message1
+drone-controller Uni       1     nvidiaGeForce8800    start_drone1    
+user_request    Ref(1)    1     nvidiaGeForce8800    init_start_drone1
 
 
 Entry execution demands:
 
 Task Name       Entry Name      Phase 1     
-env-sensor      get_condition_message1 0           
-                get_condition_message2 0           
-                get_cond_1      0           
-drone-controller start_drone2    0           
-                start_drone1    0           
-user_request    init_start_drone1 0           
-                init_start_drone2 0           
+env-sensor      get_condition_message1 1.2         
+drone-controller start_drone1    2.32        
+user_request    init_start_drone1 1.5         
 
 
 Mean number of rendezvous from entry to entry:
 
 Task Name       Source Entry    Target Entry    Phase 1     
-drone-controller start_drone2    get_cond_1      1           
-                start_drone1    get_condition_message1 1           
-                start_drone1    get_condition_message2 1           
-user_request    init_start_drone1 start_drone1    1           
-                init_start_drone2 start_drone2    1           
+drone-controller start_drone1    get_condition_message1 1           
+user_request    init_start_drone1 start_drone1    2           
 
 
 Phase type flags:
@@ -74,78 +67,52 @@ All open arrival rates are 0.
 Type 1 throughput bounds: 
 
 Task Name       Entry Name      Throughput  
-env-sensor      get_condition_message1 0           
-                get_condition_message2 0           
-                get_cond_1      0           
-drone-controller start_drone2    0           
-                start_drone1    0           
-user_request    init_start_drone1 0           
-                init_start_drone2 0           
+env-sensor      get_condition_message1 0.833333    
+drone-controller start_drone1    0.284091    
+user_request    init_start_drone1 0.117096    
 
 
 Mean delay for a rendezvous:
 
 Task Name       Source Entry    Target Entry    Phase 1     
-drone-controller start_drone2    get_cond_1      0           
-                start_drone1    get_condition_message1 0           
-                start_drone1    get_condition_message2 0           
+drone-controller start_drone1    get_condition_message1 0           
 user_request    init_start_drone1 start_drone1    0           
-                init_start_drone2 start_drone2    0           
 
 
 Service times:
 
 Task Name       Entry Name      Phase 1     
-env-sensor      get_condition_message1 0           
-                get_condition_message2 0           
-                get_cond_1      0           
-drone-controller start_drone2    0           
-                start_drone1    0           
-user_request    init_start_drone1 0           
-                init_start_drone2 0           
+env-sensor      get_condition_message1 1.2         
+drone-controller start_drone1    3.52        
+user_request    init_start_drone1 8.54        
 
 
 Service time variance (per phase)
 and squared coefficient of variation (over all phases):
 
 Task Name       Entry Name      Phase 1     coeff of var **2
-env-sensor      get_condition_message1 0           0           
-                get_condition_message2 0           0           
-                get_cond_1      0           0           
-drone-controller start_drone2    0           0           
-                start_drone1    0           0           
-user_request    init_start_drone1 0           0           
-                init_start_drone2 0           0           
+env-sensor      get_condition_message1 1.44        1           
+drone-controller start_drone1    15.2704     1.23244     
+user_request    init_start_drone1 128.253     1.75854     
 
 
 Throughputs and utilizations per phase:
 
 Task Name       Entry Name      Throughput  Phase 1     Total       
-env-sensor      get_condition_message1 0           0           0
-                get_condition_message2 0           0           0
-                get_cond_1      0           0           0
-drone-controller start_drone2    0           0           0
-                start_drone1    0           0           0
-user_request    init_start_drone1 inf         0           0
-                init_start_drone2 inf         0           0
+env-sensor      get_condition_message1 0.234192    0.28103     0.28103
+drone-controller start_drone1    0.234192    0.824356    0.824356
+user_request    init_start_drone1 0.117096    1           1
 
 
 Utilization and waiting per phase for processor:  ARMCortex-M
 
 Task Name       Pri n   Entry Name      Utilization Phase 1     
-env-sensor      0   1   get_condition_message1 0           0           
-                        get_condition_message2 0           0           
-                        get_cond_1      0           0           
-Task Total:                             0           
+env-sensor      0   1   get_condition_message1 0.0936768   0           
 
 
 Utilization and waiting per phase for processor:  nvidiaGeForce8800
 
 Task Name       Pri n   Entry Name      Utilization Phase 1     
-drone-controller 0   1   start_drone2    0           0           
-                        start_drone1    0           0           
-Task Total:                             0           
-user_request    0   1   init_start_drone1 0           0           
-                        init_start_drone2 0           0           
-Task Total:                             0           
-Processor Total:                        0
+drone-controller 0   1   start_drone1    0.543326    0           
+user_request    0   1   init_start_drone1 0.175644    0           
+Processor Total:                        0.71897
