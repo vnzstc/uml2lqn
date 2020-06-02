@@ -1,106 +1,141 @@
 rule Model2Schema 
-	transform uml : UML!Model
-	to lqn : LQN!LqnModelType
+	transform uml: UML!Model
+	to lqn: LQN!LqnModelType
 	{
 		lqn.name = uml.name;
-		lqn.processor ::= UML!Node.all.select(i | i.deployment.notEmpty());
-	}
-		
-rule Node2Processor
-	transform s : UML!Node
-	to t: LQN!ProcessorType 
-	{		
-		guard: s.checkStereotype("GaExecHost")	
-		// Get all the artifacts having a manifestation
-		var tasks = s.deployment.collect(i | i.collectSuppliers()).flatten;
-		// Get the object representing the "GaExecHost" stereotype
-		var strtypeObj = s.getAppliedStereotypes().selectOne(i | i.name == "GaExecHost");	
-		// Stereotype tags 
-		var resMult = s.getValue(strtypeObj, "resMult");
-		var speedFactor = s.getValue(strtypeObj, "speedFactor");
-		var schedulingType = s.getValue(strtypeObj, "otherSchedPolicy");
-		
-		// Assumption that an artifact has single manifestation
-		tasks = tasks.select(i | i.manifestation.size() == 1);
-		tasks = tasks.collect(i | i.manifestation.first.collectSuppliers());
-		// Get components involved in an interaction
-		tasks = tasks.select(i | isInteracting(i));
-		// Add the sources of the LQN		
-		tasks.addAll(UML!Actor.all());
-		
-		t.name = s.name;
-		t.task ::= tasks;
-		t.replication = resMult.asBigInteger();
+		lqn.processor ::= UML!Node.all;
 	}
 
+// @Assumption: A Node deploys a single Artifact that has only one Manifestation;
+rule Node2Processor
+	transform node: UML!Node
+	to proc: LQN!ProcessorType 
+	{	
+		// Gets all the nodes deploying an artifact involved in some interaction 	
+		guard: node.deployment.notEmpty() and 
+			isInteracting(node.getDeployedElement()) and 
+				node.checkStereotype("GaExecHost")
+		
+		var elemnt = node.getDeployedElement();
+		var compnt = new Sequence();				
+		compnt.add(elemnt);
+		
+		// Get the object representing the "GaExecHost" stereotype
+		var strtypeObj = node.getAppliedStereotypes().selectOne(i | i.name == "GaExecHost");	
+		// Stereotype tags 
+		var resMult = node.getValue(strtypeObj, "resMult");
+		
+		// If the Component is triggered by an Actor, then eventually add an Actor
+		var trigger = getLifelines(elemnt);
+		trigger = trigger.collect(i | i.getElements("BehaviorExecutionSpecification")).flatten;
+		trigger = trigger.collect(i | i.start.message.sendEvent.covered).flatten;
+		trigger = trigger.represents.collect(i | i.getType());
+		trigger = trigger.selectOne(i | i.isTypeOf(Actor));
+		
+		if(trigger.isDefined())
+			compnt.add(trigger);
+		
+		proc.name = node.name;
+		proc.task ::= compnt;
+		proc.replication = resMult.asBigInteger();
+	}
+	
 rule Actor2Task
 	transform actor: UML!Actor
 	to task: LQN!TaskType
 	{
 		var lifelns = getLifelines(actor);
-		var msgs = lifelns.collect(i | i.getElements("MessageOccurrenceSpecification")).flatten;
-		
-		msgs =  msgs.select(i | i.message.messageSort = UML!MessageSort#synchCall);
+		// The actor's lifeline represents the source of the model
+		var bess = lifelns.collect(i | i.getElements("BehaviorExecutionSpecification")).flatten;
 							
 		task.name = actor.name;
 		task.scheduling = LQN!TaskSchedulingType#ref;			
-		task.entry ::= msgs;
+		task.entry ::= bess;
 	}
 
 rule Component2Task
-	transform comp: UML!Component
+	transform compnt: UML!Component
 	to task: LQN!TaskType
 	{		
-		var lifelns = getLifelines(comp);	
-		var msgs = lifelns.collect(i | i.getElements("MessageOccurrenceSpecification")).flatten;
-		msgs = msgs.select(i | i.message.messageSort = UML!MessageSort#synchCall and 
-								i.isReceive());																									
-		task.name = comp.name;
-		task.entry ::= msgs;
-	}
+		var lifelns = getLifelines(compnt);	
+		var bess = lifelns.collect(i | i.getElements("BehaviorExecutionSpecification")).flatten;
 
-rule MsgSpec2Entry
-	transform msgSpec: UML!MessageOccurrenceSpecification
+		task.name = compnt.name;
+		task.entry ::= bess;
+	}
+	
+rule BES2Entry
+	transform bes: UML!BehaviorExecutionSpecification
 	to entry: LQN!EntryType
 	{	
-		var lifeln = msgSpec.covered.first;
-		var lifeType = lifeln.represents.type;
+		// Concerning only those BES having a MessageOccurrenceSpecification as Start and End
+		guard: bes.start.isTypeOf(MessageOccurrenceSpecification) and 
+				bes.finish.isTypeOf(MessageOccurrenceSpecification)
+	
+		// Gets the element (i.e., component or actor)
+		var lifeln = bes.covered.first;
+		var lifeType = lifeln.represents.type;		
+		// Gets messages arriving or departing from the BES
+		var msgs = bes.getMessages().sortBy(i | getIndexOf(i));
 		
-		var msg = msgSpec.message.name;				
-		var bes = lifeln.getElements("BehaviorExecutionSpecification");
-		bes = bes.selectOne(i | i.start = msgSpec and 
-									i.finish.isTypeOf(UML!MessageOccurrenceSpecification));
-																		
-		if(lifeType.isTypeOf(UML!Actor))
-			entry.name = "init_" + msg;
-		else 
-			entry.name = msg;
-																	
-		var seq = new Sequence();
-		seq.add(bes);	
+		// Gets only the messages that are sent
+		msgs = msgs.select(i | i.isSend());						
+		
+		entry.name = bes.name;
+		
+		// If msgs is empty, then the BES is a sink 
+		if(msgs.isEmpty)
+			msgs.add(bes.start);
 			
 		entry.entryPhaseActivities = new LQN!PhaseActivities;
-		entry.entryPhaseActivities.activity ::= seq;			 
-		entry.type = LQN!TypeType#PH1PH2;	
+		entry.entryPhaseActivities.activity ::= msgs;	
 	}
 
-rule BES2Activity
-	transform bes: UML!BehaviorExecutionSpecification
+rule Message2Activity
+	transform msgo: UML!MessageOccurrenceSpecification
 	to actv: LQN!ActivityPhasesType
-	{				
-		var msgs = bes.getMessages().sortBy(i | getIndexOf(i));			
-		msgs = msgs.select(i | i.isSend());				
+	{
+		guard: msgo.message.checkStereotype("GaStep")
+
+		var msg = msgo.message;
+		var calls = new Sequence();
 		
-		var calls = msgs.collect(i | buildCall(i.message.name));
-	
-		if(calls.notEmpty())
-			actv.synchCall = calls;	
-			
-		actv.name = bes.name;
+		// Get tags value
+		var strtypeObj = msg.getAppliedStereotypes().selectOne(i | i.name == "GaStep");
+		var utilization = msg.getValue(strtypeObj, "utilizationOnHost");
+		var rep = msg.getValue(strtypeObj, "rep");
+		
+		actv.name = msg.name;
 		actv.phase = "1".asBigInteger();
+		actv.hostDemandMean = utilization.first;
+		
+		if(msgo.isSend())
+		{
+			var lifeln = msg.receiveEvent.covered;
+			// Gets the BES starting with the message
+			var bes = lifeln.first.getElements("BehaviorExecutionSpecification");
+			bes = bes.selectOne(i | i.start == msg.receiveEvent and
+				i.finish.isTypeOf(MessageOccurrenceSpecification));
 			
+			// Create the call to set the callsMean
+			var call = new LQN!ActivityMakingCallType;		
+			call.callsMean = rep;
+			call.dest = bes.name;
+			calls.add(call);
+		
+			actv.synchCall = calls;
+		}
+		
 	}
 
+operation UML!Node getDeployedElement(): UML!Component
+{
+	var deplyd = self.deployment.first.supplier.first;
+	var compnt = deplyd.manifestation.first.supplier.first;
+	
+	return compnt;	
+}
+	
 operation UML!BehaviorExecutionSpecification getMessages(): Collection
 {
 	// Gets all the messages of a BehaviorExecutionSpecification
@@ -132,33 +167,10 @@ operation getIndexOf(element: UML!NamedElement): Integer
 	return ownerFragment.indexOf(element);						
 }	
 	
-operation buildCall(dest: String): LQN!ActivityMakingCallType
-{
-	// Create an ActivityMakingCallType setting the callsMean 
-	// and the dest
-	var call = new LQN!ActivityMakingCallType;
-	
-	call.dest = dest;
-	call.callsMean = "1".asDouble();
-	
-	return call;
-}
-
 operation Any asBigInteger(): Native("java.math.BigInteger")
 {
 	// Converts an element to the java native type BigInteger
 	return new Native("java.math.BigInteger")(self);
-}
-	
-operation UML!Dependency collectSuppliers(): Any
-{
-	// Given a Dependency, it return a collection of suppliers. 
-	// In case it is just one, it returns directly the supplier object
-	var output = self.collect(i | i.supplier).flatten;
-	if(output.size() == 1)
-		return output.first;
-		
-	return output;
 }
 
 operation UML!NamedElement checkStereotype(stereotypeName: String): Boolean
@@ -171,6 +183,7 @@ operation isInteracting(element: UML!NamedElement): Boolean
 	// Checks if there is at least an interaction describing the behavior 
 	// of "element"
 	var lifelns = getLifelines(element);
+		
 	if(lifelns.isEmpty())
 		return false;
 	return true;

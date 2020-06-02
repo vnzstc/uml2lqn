@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MagicDrawProfile="http://www.omg.org/spec/UML/20131001/MagicDrawProfile" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.omg.org/spec/UML/20131001/MagicDrawProfile UML_Standard_Profile.MagicDraw_Profile.profile.uml#_oHh4hX8SEeq9Y870Wvusyw">
+  <uml:Model xmi:id="eee_1045467100313_135436_1" name="PrecisionAgricultureModel" visibility="public" URI="" viewpoint="">
+    <ownedComment xmi:id="_18_1beta_8c90288_1415101994820_370998_4336" annotatedElement="eee_1045467100313_135436_1" body="Author:xeder.&#xA;Created:4/13/20 4:07 PM.&#xA;Title:.&#xA;Comment:.&#xA;"/>
+    <packageImport xmi:id="_0primitiveTypesPrecisionAgricultureModel">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:id="_0javaPrimitiveTypesPrecisionAgricultureModel">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_19_0_3_6590219_1586944414207_594912_4861" name="StaticView" visibility="public" URI="">
+      <packagedElement xmi:type="uml:Class" xmi:id="_19_0_3_6590219_1586793818001_248611_4951" name="Stationary" visibility="public">
+        <generalization xmi:id="_19_0_3_6590219_1586793907674_899517_5005" general="_19_0_3_6590219_1586793816354_11657_4925"/>
+        <ownedOperation xmi:id="_19_0_3_6590219_1586794095782_867093_5027" name="checkConditions" visibility="public">
+          <ownedParameter xmi:id="_19_0_3_6590219_1586794112340_889189_5029" name="" visibility="public" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_19_0_3_6590219_1586795216643_307105_5142" name="moveToBase" visibility="public">
+          <ownedParameter xmi:id="_19_0_3_6590219_1586795224543_129328_5144" name="" visibility="public" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_19_0_3_6590219_1586793816354_11657_4925" name="Drone" visibility="public">
+        <ownedAttribute xmi:id="_19_0_3_6590219_1586793917008_941666_5011" name="" visibility="private" type="_19_0_3_6590219_1586793870910_101784_4977" association="_19_0_3_6590219_1586793917008_793638_5010">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1586794008234_419435_5023" name="" visibility="public" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1586794008234_763166_5024" name="" visibility="public" value="1"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_19_0_3_6590219_1586793870910_101784_4977" name="Environment" visibility="public">
+        <ownedAttribute xmi:id="_19_0_3_6590219_1586793917009_323073_5012" name="" visibility="private" type="_19_0_3_6590219_1586793816354_11657_4925" association="_19_0_3_6590219_1586793917008_793638_5010">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1586794000310_770365_5019" name="" visibility="public" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1586794000311_789280_5020" name="" visibility="public" value="1"/>
+        </ownedAttribute>
+        <ownedOperation xmi:id="_19_0_3_6590219_1586794162131_244652_5030" name="getConditions" visibility="public"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_19_0_3_6590219_1586794680077_769570_5107" name="Flying" visibility="public">
+        <generalization xmi:id="_19_0_3_6590219_1586794688705_921318_5134" general="_19_0_3_6590219_1586793816354_11657_4925"/>
+        <ownedOperation xmi:id="_19_0_3_6590219_1586794814736_128675_5135" name="visitNodes" visibility="public"/>
+        <ownedOperation xmi:id="_19_0_3_6590219_1586794999622_975288_5137" name="buildFertilizationPlan" visibility="public">
+          <ownedParameter xmi:id="_19_0_3_6590219_1586795024742_303361_5139" name="" visibility="public" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_19_0_3_6590219_1586795045675_357563_5140" name="fertilization" visibility="public"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_19_0_3_6590219_1586793917008_793638_5010" name="" visibility="public" memberEnd="_19_0_3_6590219_1586793917008_941666_5011 _19_0_3_6590219_1586793917009_323073_5012"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_19_0_3_6590219_1586944436364_40974_4872" name="DynamicView" visibility="public" URI="">
+      <packagedElement xmi:type="uml:Collaboration" xmi:id="_19_0_3_6590219_1586786888107_266109_4797" name="Fertilization" visibility="public">
+        <ownedBehavior xmi:type="uml:Interaction" xmi:id="_19_0_3_6590219_1586940479435_316553_4831" name="Fertilization" visibility="public" isReentrant="true">
+          <ownedAttribute xmi:id="_19_0_3_6590219_1586940517904_298619_4866" name="state1" visibility="private" type="_19_0_3_6590219_1586793818001_248611_4951">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_19_0_3_6590219_1586940567977_845579_4888" name="" visibility="public" value="3"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_19_0_3_6590219_1586940567980_122246_4889" name="" visibility="public" value="3"/>
+          </ownedAttribute>
+          <lifeline xmi:id="_19_0_3_6590219_1586940517896_493316_4865" name="state1Lifeline" visibility="public" represents="_19_0_3_6590219_1586940517904_298619_4866"/>
+        </ownedBehavior>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_19_0_3_6590219_1586944461759_833433_4905" name="DeploymentView" visibility="public" URI="">
+      <packagedElement xmi:type="uml:Device" xmi:id="_19_0_3_6590219_1586944544360_281182_4908" name="Leon3" visibility="public">
+        <deployment xmi:id="_19_0_3_6590219_1586952668314_75990_5006" name="" visibility="public" client="_19_0_3_6590219_1586944544360_281182_4908" supplier="_19_0_3_6590219_1586952655709_150300_4984" deployedArtifact="_19_0_3_6590219_1586952655709_150300_4984"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Artifact" xmi:id="_19_0_3_6590219_1586952655709_150300_4984" name="stat1" visibility="public" fileName="">
+        <manifestation xmi:id="_19_0_3_6590219_1586952775739_594607_5010" name="" visibility="public" client="_19_0_3_6590219_1586952655709_150300_4984" supplier="_19_0_3_6590219_1586793818001_248611_4951" utilizedElement="_19_0_3_6590219_1586793818001_248611_4951"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="magicdraw_uml_standard_profile_v_0001" name="UML Standard Profile" visibility="public" URI="">
+      <ownedComment xmi:id="_be00301_1078843546940_242228_131" annotatedElement="magicdraw_uml_standard_profile_v_0001" body="UML Standard Profile contains a UML metamodel (metaclasses without properties and associations), Standard UML stereotypes defined in the annex C of UML specification, validation suites for UML model correctness and completeness checking, and stereotypes used by MagicDraw internally."/>
+    </packagedElement>
+    <profileApplication xmi:id="_17_0_4beta_8ca0285_1361349406965_180847_3086profileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_oHqbMH8SEeq9Y870Wvusyw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.Dependency_Matrix_Profile.profile.uml#_oHhRaX8SEeq9Y870Wvusyw"/>
+      </eAnnotations>
+      <appliedProfile href="UML_Standard_Profile.Dependency_Matrix_Profile.profile.uml#_17_0_4beta_8ca0285_1361349406965_180847_3086"/>
+    </profileApplication>
+    <profileApplication xmi:id="_11_5_f720368_1159529670215_231387_1profileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_oHrpUX8SEeq9Y870Wvusyw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.Validation_Profile.profile.uml#_oHomK38SEeq9Y870Wvusyw"/>
+      </eAnnotations>
+      <appliedProfile href="UML_Standard_Profile.Validation_Profile.profile.uml#_11_5_f720368_1159529670215_231387_1"/>
+    </profileApplication>
+    <profileApplication xmi:id="_19_0beta_8bb027e_1484121177637_661582_4502profileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_oHrpU38SEeq9Y870Wvusyw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.MagicDraw_Profile.Find_By_Text.profile.uml#_oHp0In8SEeq9Y870Wvusyw"/>
+      </eAnnotations>
+      <appliedProfile href="UML_Standard_Profile.MagicDraw_Profile.Find_By_Text.profile.uml#_19_0beta_8bb027e_1484121177637_661582_4502"/>
+    </profileApplication>
+    <profileApplication xmi:id="_be00301_1073394351331_445580_2profileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_oHsQYX8SEeq9Y870Wvusyw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.MagicDraw_Profile.profile.uml#_oHh4hX8SEeq9Y870Wvusyw"/>
+      </eAnnotations>
+      <appliedProfile href="UML_Standard_Profile.MagicDraw_Profile.profile.uml#_be00301_1073394351331_445580_2"/>
+    </profileApplication>
+    <profileApplication xmi:id="_16_6_8f90291_1254846042821_86742_517profileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_oHs3cH8SEeq9Y870Wvusyw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.MagicDraw_Profile.Traceability_customization.profile.uml#_oHgDQn8SEeq9Y870Wvusyw"/>
+      </eAnnotations>
+      <appliedProfile href="UML_Standard_Profile.MagicDraw_Profile.Traceability_customization.profile.uml#_16_6_8f90291_1254846042821_86742_517"/>
+    </profileApplication>
+    <profileApplication xmi:id="_11_5_be00301_1153310565718_226811_161profileApplicationPrecisionAgricultureModel">
+      <eAnnotations xmi:id="_oHs3cn8SEeq9Y870Wvusyw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.MagicDraw_Profile.DSL_Customization.profile.uml#_oHe1An8SEeq9Y870Wvusyw"/>
+      </eAnnotations>
+      <appliedProfile href="UML_Standard_Profile.MagicDraw_Profile.DSL_Customization.profile.uml#_11_5_be00301_1153310565718_226811_161"/>
+    </profileApplication>
+  </uml:Model>
+  <MagicDrawProfile:auxiliaryResource xmi:id="_oIZbAH8SEeq9Y870Wvusyw" base_Element="magicdraw_uml_standard_profile_v_0001"/>
+</xmi:XMI>
