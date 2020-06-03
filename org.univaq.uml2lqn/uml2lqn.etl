@@ -103,12 +103,16 @@ rule Message2Activity
 		// Get tags value
 		var strtypeObj = msg.getAppliedStereotypes().selectOne(i | i.name == "GaStep");
 		var utilization = msg.getValue(strtypeObj, "utilizationOnHost");
-		var rep = msg.getValue(strtypeObj, "rep");
+		var rep = msg.getValue(strtypeObj, "rep");		
+		
+		var hostDemandMean = utilization.first.asDouble() * rep.asDouble(); 
 		
 		actv.name = msg.name;
 		actv.phase = "1".asBigInteger();
-		actv.hostDemandMean = utilization.first;
-		
+		// @Assumption: The respTime tag is a collection of elements. 
+		// It is assumed that for each GaStep it is assigned only one 
+		actv.hostDemandMean = hostDemandMean;
+	
 		if(msgo.isSend())
 		{
 			var lifeln = msg.receiveEvent.covered;

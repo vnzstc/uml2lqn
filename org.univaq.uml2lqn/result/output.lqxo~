@@ -2,34 +2,34 @@
 <!-- lt-lqns -->
 <lqn-model name="../../spe-workspace/org.univaq.uml2lqn/result/output" description="lt-lqns 5.9.2 solution for model from: ../../spe-workspace/org.univaq.uml2lqn/result/output.xml." xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/usr/local/share/lqns/lqn.xsd">
    <solver-params comment="" conv_val="1e-05" it_limit="50" underrelax_coeff="0.9" print_int="0">
-      <result-general valid="YES" conv-val="0" iterations="2" platform-info="xeder Linux 5.5.7-arch1-1" user-cpu-time="00:00:00.00" system-cpu-time="00:00:00.00" elapsed-time="00:00:00.00" max-rss="5404">
+      <result-general valid="YES" conv-val="0" iterations="2" platform-info="xeder Linux 5.6.14-arch1-1" user-cpu-time="00:00:00.00" system-cpu-time="00:00:00.00" elapsed-time="00:00:00.00" max-rss="5320">
          <mva-info submodels="3" core="6" step="39" step-squared="281" wait="1582" wait-squared="1.10337e+06" faults="0"/>
       </result-general>
    </solver-params>
    <processor name="ARMCortex-M" scheduling="fcfs" replication="3">
-      <result-processor utilization="0.0936768"/>
+      <result-processor utilization="0.177936"/>
       <task name="env-sensor" scheduling="fcfs">
-         <result-task throughput="0.234192" utilization="0.28103" phase1-utilization="0.28103" proc-utilization="0.0936768"/>
-         <entry name="get_condition_message1" type="PH1PH2">
-            <result-entry utilization="0.28103" throughput="0.234192" squared-coeff-variation="1" proc-utilization="0.0936768" throughput-bound="0.833333"/>
+         <result-task throughput="0.133452" utilization="0.533808" phase1-utilization="0.533808" proc-utilization="0.177936"/>
+         <entry name="farm_behavior" type="PH1PH2">
+            <result-entry utilization="0.533808" throughput="0.133452" squared-coeff-variation="1" proc-utilization="0.177936" throughput-bound="0.25"/>
             <entry-phase-activities>
-               <activity name="farm_behavior" phase="1" host-demand-mean="1.2">
-                  <result-activity proc-waiting="0" service-time="1.2" utilization="0.28103" service-time-variance="1.44"/>
+               <activity name="get_cond1_receive" phase="1" host-demand-mean="4">
+                  <result-activity proc-waiting="0" service-time="4" utilization="0.533808" service-time-variance="16"/>
                </activity>
             </entry-phase-activities>
          </entry>
       </task>
    </processor>
    <processor name="nvidiaGeForce8800" scheduling="fcfs">
-      <result-processor utilization="0.71897"/>
+      <result-processor utilization="0.466192"/>
       <task name="drone-controller" scheduling="fcfs">
-         <result-task throughput="0.234192" utilization="0.824356" phase1-utilization="0.824356" proc-utilization="0.543326"/>
-         <entry name="start_drone1" type="PH1PH2">
-            <result-entry utilization="0.824356" throughput="0.234192" squared-coeff-variation="1.23244" proc-utilization="0.543326" throughput-bound="0.284091"/>
+         <result-task throughput="0.088968" utilization="0.88968" phase1-utilization="0.88968" proc-utilization="0.355872"/>
+         <entry name="controller_behavior" type="PH1PH2">
+            <result-entry utilization="0.88968" throughput="0.088968" squared-coeff-variation="1.48" proc-utilization="0.355872" throughput-bound="0.1"/>
             <entry-phase-activities>
-               <activity name="controller_behavior" phase="1" host-demand-mean="2.32">
-                  <result-activity proc-waiting="0" service-time="3.52" utilization="0.824356" service-time-variance="15.2704"/>
-                  <synch-call dest="get_condition_message1" calls-mean="1">
+               <activity name="get_cond1_send" phase="1" host-demand-mean="4">
+                  <result-activity proc-waiting="0" service-time="10" utilization="0.88968" service-time-variance="148"/>
+                  <synch-call dest="farm_behavior" calls-mean="1.5">
                      <result-call waiting="0"/>
                   </synch-call>
                </activity>
@@ -37,13 +37,13 @@
          </entry>
       </task>
       <task name="user_request" scheduling="ref">
-         <result-task throughput="0.117096" utilization="1" phase1-utilization="1" proc-utilization="0.175644"/>
-         <entry name="init_start_drone1" type="PH1PH2">
-            <result-entry utilization="1" throughput="0.117096" squared-coeff-variation="1.75854" proc-utilization="0.175644" throughput-bound="0.117096"/>
+         <result-task throughput="0.0355872" utilization="1" phase1-utilization="1" proc-utilization="0.11032"/>
+         <entry name="drone_behavior1" type="PH1PH2">
+            <result-entry utilization="1" throughput="0.0355872" squared-coeff-variation="1.7852" proc-utilization="0.11032" throughput-bound="0.0355872"/>
             <entry-phase-activities>
-               <activity name="drone_behavior1" phase="1" host-demand-mean="1.5">
-                  <result-activity proc-waiting="0" service-time="8.54" utilization="1" service-time-variance="128.253"/>
-                  <synch-call dest="start_drone1" calls-mean="2">
+               <activity name="start_drone_init" phase="1" host-demand-mean="3.1">
+                  <result-activity proc-waiting="0" service-time="28.1" utilization="1" service-time-variance="1409.61"/>
+                  <synch-call dest="controller_behavior" calls-mean="2.5">
                      <result-call waiting="0"/>
                   </synch-call>
                </activity>

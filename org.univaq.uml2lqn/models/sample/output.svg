@@ -1,0 +1,57 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20000303 Stylable//EN"
+"http://www.w3.org/TR/2000/03/WD-SVG-20000303/DTD/svg-20000303-stylable.dtd">
+<!-- Title: /home/xeder/tmp.lqnx -->
+<!-- Creator: lqn2ps Version 5.9.2 -->
+<!-- Tue Jun  2 21:11:34 2020 -->
+<!-- For: xeder -->
+<!-- Invoked as: lqn2ps -Osvg -o/home/xeder/Desktop/projects/swperf/spe-workspace/org.univaq.uml2lqn/models/sample/output.svg /home/xeder/tmp.lqnx -->
+<svg xmlns="http://www.w3.org/2000/svg" width="2.25in" height="3.88in" viewBox="0 0 4050 6975">
+<desc> </desc>
+<!-- Task user_request r drone_behavior1 -1 nvidiaGeForce8800 -->
+<polygon  fill="#ffffff" stroke="black" stroke-width="25" points="1.24e+03,450 1.12e+03,1.58e+03 2.81e+03,1.58e+03 2.92e+03,450 "/>
+<text x="2025" y="1444" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle">user_request</text>
+<!-- Entry drone_behavior1 s [3.1] -->
+<polyline  stroke="black" stroke-width="25" fill="none" points="1.55e+03,450 1.49e+03,1.12e+03 2.54e+03,1.12e+03 2.61e+03,450 "/>
+<text x="2048" y="1069" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle">Z=[0]</text>
+<text x="2048" y="844" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle">[3.1]</text>
+<text x="2048" y="619" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle">drone_behavior1</text>
+<!-- Call drone_behavior1 controller_behavior y (2.5) -->
+<line x1="2.05e+03" y1="1.12e+03" x2="2.05e+03" y2="2.92e+03" stroke="black" stroke-width="25"/>
+<polygon fill="black" stroke="black" stroke-width="25" points="2.05e+03,2.92e+03 2.1e+03,2.78e+03 2.05e+03,2.8e+03 2e+03,2.78e+03 "/>
+<text x="2048" y="2569" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle">(2.5)</text>
+<!-- Call user_request nvidiaGeForce8800 -->
+<line x1="1.58e+03" y1="1.58e+03" x2="1.08e+03" y2="5.4e+03" stroke="black" stroke-width="25"/>
+<polygon fill="black" stroke="black" stroke-width="25" points="1.08e+03,5.4e+03 1.15e+03,5.26e+03 1.1e+03,5.28e+03 1.05e+03,5.25e+03 "/>
+<text x="1520" y="1919" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle"></text>
+<text x="1913" y="6619" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle"></text>
+<!-- Task drone-controller n controller_behavior -1 nvidiaGeForce8800 -->
+<polygon  fill="#ffffff" stroke="black" stroke-width="25" points="1.24e+03,2.92e+03 1.12e+03,4.05e+03 2.81e+03,4.05e+03 2.92e+03,2.92e+03 "/>
+<text x="2025" y="3919" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle">drone-controller</text>
+<!-- Entry controller_behavior s [4] -->
+<polyline  stroke="black" stroke-width="25" fill="none" points="1.55e+03,2.92e+03 1.49e+03,3.6e+03 2.54e+03,3.6e+03 2.61e+03,2.92e+03 "/>
+<text x="2048" y="3544" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle">Z=[0]</text>
+<text x="2048" y="3319" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle">[4]</text>
+<text x="2048" y="3094" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle">controller_behavior</text>
+<!-- Call controller_behavior farm_behavior y (1.5) -->
+<line x1="2.05e+03" y1="3.6e+03" x2="2.72e+03" y2="5.4e+03" stroke="black" stroke-width="25"/>
+<polygon fill="black" stroke="black" stroke-width="25" points="2.72e+03,5.4e+03 2.72e+03,5.24e+03 2.68e+03,5.28e+03 2.62e+03,5.28e+03 "/>
+<text x="2554" y="5044" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle">(1.5)</text>
+<!-- Call drone-controller nvidiaGeForce8800 -->
+<line x1="1.58e+03" y1="4.05e+03" x2="1.17e+03" y2="5.42e+03" stroke="black" stroke-width="25"/>
+<polygon fill="black" stroke="black" stroke-width="25" points="1.17e+03,5.42e+03 1.26e+03,5.29e+03 1.21e+03,5.3e+03 1.17e+03,5.26e+03 "/>
+<text x="1458" y="4394" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle"></text>
+<text x="1913" y="6619" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle"></text>
+<!-- Processor nvidiaGeForce8800 f -->
+<circle cx="1013" cy="5963" r="563"  fill="#ffffff" stroke="black" stroke-width="25"/>
+<text x="1013" y="6056" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle">nvidiaGeForce8800</text>
+<!-- Task env-sensor n farm_behavior -1 ARMCortex-M -->
+<polygon  fill="#ffffff" stroke="black" stroke-width="25" points="1.91e+03,5.4e+03 1.8e+03,6.52e+03 3.49e+03,6.52e+03 3.6e+03,5.4e+03 "/>
+<text x="2700" y="6394" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle">env-sensor</text>
+<!-- Entry farm_behavior s [4] -->
+<polyline  stroke="black" stroke-width="25" fill="none" points="2.23e+03,5.4e+03 2.16e+03,6.08e+03 3.22e+03,6.08e+03 3.28e+03,5.4e+03 "/>
+<text x="2723" y="6019" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle">Z=[0]</text>
+<text x="2723" y="5794" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle">[4]</text>
+<text x="2723" y="5569" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle">farm_behavior</text>
+<text x="563" y="6619" font-family="Times" font-style="Roman" font-size="225" fill="black" text-anchor="middle"></text>
+</svg>

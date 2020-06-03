@@ -1,105 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LqnModelType name="Model">
-  <processor name="container-web" replication="1">
-    <task name="web">
-      <entry name="web-bes">
+<LqnModelType name="PrecisionAgricultureModel">
+  <processor name="nvidiaGeForce8800" replication="1">
+    <task name="drone-controller">
+      <entry name="controller_behavior">
         <entry-phase-activities>
-          <activity name="findProducts" phase="1">
-            <synch-call dest="prod1-bes" calls-mean="1.0"/>
-          </activity>
-          <activity name="findItems" phase="1">
-            <synch-call dest="item1-bes" calls-mean="1.0"/>
-          </activity>
-          <activity name="getcategory" phase="1">
-            <synch-call dest="cat-bes" calls-mean="1.0"/>
-          </activity>
-          <activity name="findFeatures" phase="1">
-            <synch-call dest="item2-bes" calls-mean="1.0"/>
-          </activity>
-          <activity name="findItemsRandom" phase="1">
-            <synch-call dest="item3-bes" calls-mean="1.0"/>
-          </activity>
-          <activity name="findProductsRandom" phase="1">
-            <synch-call dest="prod2-bes" calls-mean="1.0"/>
+          <activity host-demand-mean="22.5" name="get_condition_message1" phase="1">
+            <synch-call dest="farm_behavior" calls-mean="1.5"/>
           </activity>
         </entry-phase-activities>
       </entry>
     </task>
-    <task name="User" scheduling="ref">
-      <entry name="user-bes">
+    <task name="user_request" scheduling="ref">
+      <entry name="drone_behavior1">
         <entry-phase-activities>
-          <activity name="getHomepageMsg" phase="1">
-            <synch-call dest="web-bes" calls-mean="1.0"/>
-          </activity>
-        </entry-phase-activities>
-      </entry>
-    </task>
-  </processor>
-  <processor name="container-categories" replication="1">
-    <task name="categories">
-      <entry name="cat-bes">
-        <entry-phase-activities>
-          <activity name="getcategory" phase="1"/>
-        </entry-phase-activities>
-      </entry>
-    </task>
-  </processor>
-  <processor name="container-items" replication="1">
-    <task name="items">
-      <entry name="item1-bes">
-        <entry-phase-activities>
-          <activity name="findItems" phase="1"/>
-        </entry-phase-activities>
-      </entry>
-      <entry name="item3-bes">
-        <entry-phase-activities>
-          <activity name="findItemsRandom" phase="1"/>
-        </entry-phase-activities>
-      </entry>
-      <entry name="item2-bes">
-        <entry-phase-activities>
-          <activity name="findFeatures" phase="1"/>
-        </entry-phase-activities>
-      </entry>
-      <entry name="navigate-items-bes">
-        <entry-phase-activities>
-          <activity name="findItemsRandomByProductId" phase="1"/>
-        </entry-phase-activities>
-      </entry>
-    </task>
-    <task name="Mobile-User" scheduling="ref">
-      <entry name="mobile-user-items">
-        <entry-phase-activities>
-          <activity name="findItemsRandomByProductId" phase="1">
-            <synch-call dest="navigate-items-bes" calls-mean="1.0"/>
-          </activity>
-        </entry-phase-activities>
-      </entry>
-    </task>
-  </processor>
-  <processor name="container-products" replication="1">
-    <task name="products">
-      <entry name="prod1-bes">
-        <entry-phase-activities>
-          <activity name="findProducts" phase="1"/>
-        </entry-phase-activities>
-      </entry>
-      <entry name="prod2-bes">
-        <entry-phase-activities>
-          <activity name="findProductsRandom" phase="1"/>
-        </entry-phase-activities>
-      </entry>
-      <entry name="show-product-bes">
-        <entry-phase-activities>
-          <activity name="findProductShow" phase="1"/>
-        </entry-phase-activities>
-      </entry>
-    </task>
-    <task name="Warehouse worker" scheduling="ref">
-      <entry name="">
-        <entry-phase-activities>
-          <activity name="findProductShow" phase="1">
-            <synch-call dest="show-product-bes" calls-mean="1.0"/>
+          <activity host-demand-mean="50.0" name="start_drone1" phase="1">
+            <synch-call dest="controller_behavior" calls-mean="2.5"/>
           </activity>
         </entry-phase-activities>
       </entry>
