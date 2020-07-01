@@ -1,0 +1,12 @@
+"Changing LqnModelType tag to lqn-model...".println();
+
+var current_root = PlainLQN.root;
+var subtree = current_root.children;
+
+var new_tag = new `t_lqn-model`;
+new_tag.a_name = current_root.a_name;
+
+subtree.forAll(child | new_tag.appendChild(child));
+PlainLQN.root = new_tag;
+
+"Done!".println();

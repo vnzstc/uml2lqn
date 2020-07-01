@@ -5,73 +5,51 @@ Carleton University, Ottawa, Ontario, Canada. K1S 5B6
 
 Invoked as: lt-lqns ../../spe-workspace/org.univaq.uml2lqn/result/output.xml
 Input:  ../../spe-workspace/org.univaq.uml2lqn/result/output.xml
-Tue Jun  2 21:20:54 2020
+Wed Jun  3 11:14:33 2020
 
 
-Convergence test value: 3.0384e-06
-Number of iterations:   7
+Convergence test value: 0
+Number of iterations:   2
 
 Solver: xeder Linux 5.6.14-arch1-1
-    User:        0:00:00.01
+    User:        0:00:00.00
     System:      0:00:00.00
     Elapsed:     0:00:00.00
-    MaxRSS:     5856
+    MaxRSS:     5268
 
     Submodels:  3
-    MVA Core():           21
-    MVA Step():          314
-    MVA Wait():       224310
+    MVA Core():            6
+    MVA Step():           39
+    MVA Wait():         1582
 
 Processor identifiers and scheduling algorithms:
 
 Processor Name  Type    Copies  Scheduling Rate
-container-web   Uni       1     FCFS
-container-categories Uni       1     FCFS
-container-items Uni       1     FCFS
-container-products Uni       1     FCFS
+ARMCortex-M     Uni       3     FCFS
+nvidiaGeForce8800 Uni       1     FCFS
 
 
 Task information:
 
 Task Name       Type    Copies  Processor Name  Pri Entry List
-web             Uni       1     container-web      web-bes         
-User            Ref(1)    1     container-web      user-bes        
-categories      Uni       1     container-categories    cat-bes         
-items           Uni       1     container-items    item3-bes, item2-bes, item1-bes, navigate-items-bes
-Mobile-User     Ref(1)    1     container-items    mobile-user-items
-products        Uni       1     container-products    prod2-bes, prod1-bes, show-product-bes
-Warehouse worker Ref(1)    1     container-products                    
+env-sensor      Uni       1     ARMCortex-M        farm_behavior   
+drone-controller Uni       1     nvidiaGeForce8800    controller_behavior
+user_request    Ref(1)    1     nvidiaGeForce8800    drone_behavior1 
 
 
 Entry execution demands:
 
 Task Name       Entry Name      Phase 1     
-web             web-bes         16          
-User            user-bes        12          
-categories      cat-bes         24          
-items           item3-bes       16          
-                item2-bes       14          
-                item1-bes       15          
-                navigate-items-bes 15          
-Mobile-User     mobile-user-items 15          
-products        prod2-bes       16          
-                prod1-bes       20          
-                show-product-bes 18          
-Warehouse worker                 18          
+env-sensor      farm_behavior   22.5        
+drone-controller controller_behavior 22.5        
+user_request    drone_behavior1 50          
 
 
 Mean number of rendezvous from entry to entry:
 
 Task Name       Source Entry    Target Entry    Phase 1     
-web             web-bes         prod1-bes       1775        
-                web-bes         item1-bes       1903        
-                web-bes         cat-bes         2605        
-                web-bes         item2-bes       2890        
-                web-bes         item3-bes       2089        
-                web-bes         prod2-bes       1700        
-User            user-bes        web-bes         202601      
-Mobile-User     mobile-user-items navigate-items-bes 20          
-Warehouse worker                 show-product-bes 2000        
+drone-controller controller_behavior farm_behavior   1.5         
+user_request    drone_behavior1 controller_behavior 2.5         
 
 
 Phase type flags:
@@ -89,120 +67,52 @@ All open arrival rates are 0.
 Type 1 throughput bounds: 
 
 Task Name       Entry Name      Throughput  
-web             web-bes         4.39242e-06 
-User            user-bes        2.16801e-11 
-categories      cat-bes         0.0416667   
-items           item3-bes       0.0625      
-                item2-bes       0.0714286   
-                item1-bes       0.0666667   
-                navigate-items-bes 0.0666667   
-Mobile-User     mobile-user-items 0.0031746   
-products        prod2-bes       0.0625      
-                prod1-bes       0.05        
-                show-product-bes 0.0555556   
-Warehouse worker                 2.77639e-05 
+env-sensor      farm_behavior   0.0444444   
+drone-controller controller_behavior 0.0177778   
+user_request    drone_behavior1 0.0052459   
 
 
 Mean delay for a rendezvous:
 
 Task Name       Source Entry    Target Entry    Phase 1     
-web             web-bes         prod1-bes       12.1259     
-                web-bes         item1-bes       9.18421     
-                web-bes         cat-bes         0           
-                web-bes         item2-bes       9.18421     
-                web-bes         item3-bes       9.18421     
-                web-bes         prod2-bes       12.1259     
-User            user-bes        web-bes         1.32103     
-Mobile-User     mobile-user-items navigate-items-bes 5.64455     
-Warehouse worker                 show-product-bes 3.90083     
+drone-controller controller_behavior farm_behavior   0           
+user_request    drone_behavior1 controller_behavior 0           
 
 
 Service times:
 
 Task Name       Entry Name      Phase 1     
-web             web-bes         333094      
-User            user-bes        6.74854e+10 
-categories      cat-bes         24          
-items           item3-bes       16.0125     
-                item2-bes       14.0125     
-                item1-bes       15.0125     
-                navigate-items-bes 15.0125     
-Mobile-User     mobile-user-items 603.356     
-products        prod2-bes       16          
-                prod1-bes       20          
-                show-product-bes 18          
-Warehouse worker                 61241       
+env-sensor      farm_behavior   22.5        
+drone-controller controller_behavior 56.25       
+user_request    drone_behavior1 190.625     
 
 
 Service time variance (per phase)
 and squared coefficient of variation (over all phases):
 
 Task Name       Entry Name      Phase 1     coeff of var **2
-web             web-bes         1.88473e+10 0.169869    
-User            user-bes        4.55432e+21 1.00001     
-categories      cat-bes         576         1           
-items           item3-bes       256         0.998438    
-                item2-bes       196         0.998216    
-                item1-bes       225         0.998334    
-                navigate-items-bes 225         0.998334    
-Mobile-User     mobile-user-items 377460      1.03687     
-products        prod2-bes       256         1           
-                prod1-bes       400         1           
-                show-product-bes 324         1           
-Warehouse worker                 3.7521e+09  1.00044     
+env-sensor      farm_behavior   506.25      1           
+drone-controller controller_behavior 4682.81     1.48        
+user_request    drone_behavior1 55955.1     1.53985     
 
 
 Throughputs and utilizations per phase:
 
 Task Name       Entry Name      Throughput  Phase 1     Total       
-web             web-bes         3.00214e-06 0.999996    0.999996
-User            user-bes        1.4818e-11  1           1
-categories      cat-bes         0.00782061  0.187695    0.187695
-items           item3-bes       0.0062715   0.100422    0.100422
-                item2-bes       0.00867622  0.121576    0.121576
-                item1-bes       0.0057131   0.0857679   0.0857679
-                navigate-items-bes 0.0331479   0.497634    0.497634
-Total:                          0.0538088   0.8054      0.8054
-Mobile-User     mobile-user-items 0.0016574   1           1
-products        prod2-bes       0.00510366  0.0816586   0.0816586
-                prod1-bes       0.00532882  0.106576    0.106576
-                show-product-bes 0.0326578   0.587841    0.587841
-Total:                          0.0430903   0.776076    0.776076
-Warehouse worker                 1.63289e-05 1           1
+env-sensor      farm_behavior   0.0196721   0.442623    0.442623
+drone-controller controller_behavior 0.0131148   0.737705    0.737705
+user_request    drone_behavior1 0.0052459   1           1
 
 
-Utilization and waiting per phase for processor:  container-web
+Utilization and waiting per phase for processor:  ARMCortex-M
 
 Task Name       Pri n   Entry Name      Utilization Phase 1     
-web             0   1   web-bes         4.80342e-05 0           
-User            0   1   user-bes        1.77816e-10 0           
-Processor Total:                        4.80344e-05
+env-sensor      0   1   farm_behavior   0.147541    0           
 
 
-Utilization and waiting per phase for processor:  container-categories
+Utilization and waiting per phase for processor:  nvidiaGeForce8800
 
 Task Name       Pri n   Entry Name      Utilization Phase 1     
-categories      0   1   cat-bes         0.187695    0           
-
-
-Utilization and waiting per phase for processor:  container-items
-
-Task Name       Pri n   Entry Name      Utilization Phase 1     
-items           0   1   item3-bes       0.100344    0.0125126   
-                        item2-bes       0.121467    0.0125126   
-                        item1-bes       0.0856965   0.0125126   
-                        navigate-items-bes 0.497219    0.0125126   
-Task Total:                             0.804727    
-Mobile-User     0   1   mobile-user-items 0.0248609   175.215     
-Processor Total:                        0.829588
-
-
-Utilization and waiting per phase for processor:  container-products
-
-Task Name       Pri n   Entry Name      Utilization Phase 1     
-products        0   1   prod2-bes       0.0816586   1.84756e-06 
-                        prod1-bes       0.106576    1.84756e-06 
-                        show-product-bes 0.587841    1.84756e-06 
-Task Total:                             0.776076    
-Warehouse worker 0   1                   0.000293921 17421.4     
-Processor Total:                        0.776369
+drone-controller 0   1   controller_behavior 0.295082    0           
+user_request    0   1   drone_behavior1 0.262295    0           
+Processor Total:                        0.557377

@@ -1,0 +1,72 @@
+// LQN Processors --> UML Nodes
+var xml_processors = `t_processor`.all;
+var proc_results = xml_processors.forAll(p | annotate_nodes(p));
+
+// LQN Entry --> UML BES
+var entries = `t_entry`.all;
+var entries_results = entries.forAll(t | annotate_entries(t));
+
+// LQN Activity --> UML Message
+var activities = `t_activity`.all;
+var entries_results = activities.forAll(t | annotate_activity(t));
+
+// Adds utilization to nodes
+operation annotate_nodes(proc)
+{	
+	var node_object = UML!Node.all.selectOne(i | i.name = proc.a_name);	
+	
+	var stereotype = node_object.getAppliedStereotypes()
+		.selectOne(i | i.name == "GaExecHost");
+	
+	var utilization = proc.children.flatten
+		.select(i | i.name = "result-processor").a_utilization;	
+	
+	node_object.setValue(stereotype, "utilization", utilization);
+	
+	UML.store().println("Processor: " + proc.a_name + " Utilization: " +
+		utilization.first + " Stored: ");
+}
+
+// Adds throughput and utilization to BES instances
+operation annotate_entries(entry)
+{
+	var bes_object = UML!BehaviorExecutionSpecification.all
+		.selectOne(i | i.name = entry.a_name);
+			
+	var stereotype = bes_object.getAppliedStereotypes()
+		.selectOne(i | i.name == "GaScenario");
+	
+	var results = entry.children.flatten
+		.select(i | i.name = "result-entry");	
+	
+	var utilization = results.a_utilization;
+	var throughput = results.a_throughput;
+	
+	bes_object.setValue(stereotype, "utilization", utilization);
+	bes_object.setValue(stereotype, "throughput", throughput);
+	
+	UML.store().println("Entry: " + entry.a_name + " Utilization: " +
+		utilization.first + " Throughput: " + throughput.first + 
+			" Stored: ");
+}
+
+// Adds service time to messages
+operation annotate_activity(activity)
+{
+	var activity_object = UML!MessageOccurrenceSpecification.all
+		.selectOne(i | i.name = activity.a_name);	
+	
+	var associated_message = activity_object.message;	
+		
+	var stereotype = associated_message.getAppliedStereotypes()
+		.selectOne(i | i.name == "GaStep");	
+		
+	var results = activity.children.flatten
+		.select(i | i.name = "result-activity");
+	
+	var service_time = results.`a_service-time`;
+	associated_message.setValue(stereotype, "respT", service_time);	
+	
+	UML.store().println("Activity: " + activity.a_name + " ServiceTime: " +
+		service_time.first + " Stored: ");
+}
