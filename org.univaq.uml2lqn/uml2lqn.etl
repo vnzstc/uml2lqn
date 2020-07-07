@@ -1,3 +1,16 @@
+import "operations.eol";
+
+pre
+{
+	"Begin Transformation...".println();
+	var modelMessages = UML!MessageOccurrenceSpecification.all();
+}
+
+post
+{
+	"Done!".println();	
+}
+
 rule Model2Schema 
 	transform uml: UML!Model
 	to lqn: LQN!LqnModelType
@@ -11,193 +24,109 @@ rule Node2Processor
 	transform node: UML!Node
 	to proc: LQN!ProcessorType 
 	{	
-		// Gets all the nodes deploying an artifact involved in some interaction 	
-		guard: node.deployment.notEmpty() and
-				isInteracting(node.getDeployedElement()) and 
-				node.checkStereotype("GaExecHost")
-							
-		var elemnt = node.getDeployedElement();
-		var compnt = new Sequence();				
-		compnt.add(elemnt);
+		/* 
+		 * This guard is needed to avoid the following situations: 
+		 * - A <<GaExecHost>> Node without deployments
+         * - A <<GaExecHost>> Node deploying elements that are not interacting
+		 * - Nodes that are not instance of the GaExecHost stereotype
+		 */
+		guard {
+			var deployed = node.getDeployed();
+			return (deployed <> null) and deployed.isInteracting()
+				 and node.checkStereotypeApplication("GaExecHost");
+		}
+		// Gets the object representing the "GaExecHost" stereotype
+		var stereotype = node.checkAndGetStereotype("GaExecHost");
+		var resTag = node.getValue(stereotype, "resMult");
+		var deployed = node.getDeployed();
+		var tasks : Sequence = Sequence{deployed};
+				
+		var sources = deployed.getSources();
 		
-		// Get the object representing the "GaExecHost" stereotype
-		var strtypeObj = node.getAppliedStereotypes().selectOne(i | i.name == "GaExecHost");	
-		// Stereotype tags 
-		var resMult = node.getValue(strtypeObj, "resMult");
-		
-		// If the Component is triggered by an Actor,
-		// then eventually add an Actor
-		var trigger = getLifelines(elemnt);
-		trigger = trigger.collect(i | i.getElements("BehaviorExecutionSpecification")).flatten;
-		trigger = trigger.collect(i | i.start.message.sendEvent.covered).flatten;
-		trigger = trigger.represents.collect(i | i.getType());
-		trigger = trigger.selectOne(i | i.isTypeOf(Actor));
-		
-		if(trigger.isDefined())
-			compnt.add(trigger);
+		if(sources.notEmpty()) 
+			tasks.addAll(sources);
 		
 		proc.name = node.name;
-		proc.task ::= compnt;
-		proc.replication = resMult.asBigInteger();
+		proc.task ::= tasks;
+		proc.replication = resTag.asBigInteger();
 	}
 	
 rule Actor2Task
 	transform actor: UML!Actor
 	to task: LQN!TaskType
 	{
-		var lifelns = getLifelines(actor);
-		// The actor's lifeline represents the source of the model
-		var bess = lifelns.collect(i | i.getElements("BehaviorExecutionSpecification")).flatten;
+		var lifelines = actor.getLifelines();
+		var beses = lifelines.collect(i | i.getElements("BehaviorExecutionSpecification")).flatten;
 							
 		task.name = actor.name;
 		task.scheduling = LQN!TaskSchedulingType#ref;			
-		task.entry ::= bess;
+		task.entry ::= beses;
 	}
 
 rule Component2Task
-	transform compnt: UML!Component
+	transform component: UML!Component
 	to task: LQN!TaskType
 	{		
-		var lifelns = getLifelines(compnt);	
-		var bess = lifelns.collect(i | i.getElements("BehaviorExecutionSpecification")).flatten;
+		var lifelines = component.getLifelines();	
+		var beses = lifelines.collect(i | i.getElements("BehaviorExecutionSpecification")).flatten;
 
-		task.name = compnt.name;
-		task.entry ::= bess;
+		task.name = component.name;
+		task.entry ::= beses;
 	}
-	
+
 rule BES2Entry
 	transform bes: UML!BehaviorExecutionSpecification
 	to entry: LQN!EntryType
 	{	
-		// Concerning only those BES having a MessageOccurrenceSpecification as Start and End
-		guard: bes.start.isTypeOf(MessageOccurrenceSpecification) and 
-				bes.finish.isTypeOf(MessageOccurrenceSpecification)
-	
-		// Gets the element (i.e., component or actor)
-		var lifeln = bes.covered.first;
-		var lifeType = lifeln.represents.type;		
-		// Gets messages arriving or departing from the BES
-		var msgs = bes.getMessages().sortBy(i | getIndexOf(i));
-		
+		guard: bes.isAllowed()
+				
+		var messages = bes.getMessages();
 		// Gets only the messages that are sent
-		msgs = msgs.select(i | i.isSend());						
-		
-		entry.name = bes.name;
-		
-		// If msgs is empty, then the BES is a sink 
-		if(msgs.isEmpty)
-			msgs.add(bes.start);
-			
-		entry.entryPhaseActivities = new LQN!PhaseActivities;
-		entry.entryPhaseActivities.activity ::= msgs;	
-	}
+		messages = messages.select(i | i.isSend() and i.message.messageSort <> UML!MessageSort#reply);	
 
+		// If msgs is empty, then the BES is a sink 
+		if(messages.isEmpty())
+			messages.add(bes.start);
+					
+		entry.name = bes.name;		
+		entry.entryPhaseActivities = new LQN!PhaseActivities;
+		entry.entryPhaseActivities.activity ::= messages;
+	} 
+	
 rule Message2Activity
 	transform msgo: UML!MessageOccurrenceSpecification
 	to actv: LQN!ActivityPhasesType
 	{
-		guard: msgo.message.checkStereotype("GaStep")
-
-		var msg = msgo.message;
-		var calls = new Sequence();
+		guard {
+			var message = msgo.message;
+			return message.checkStereotypeApplication("GaStep");
+		}
 		
-		// Get tags value
-		var strtypeObj = msg.getAppliedStereotypes().selectOne(i | i.name == "GaStep");
-
-		var execTime = msg.getValue(strtypeObj, "execTime").first;
-				
-		var rep = msg.getValue(strtypeObj, "rep");				
+		var message = msgo.message;
+		// Get Stereotype Tags value
+		var stereotype = message.checkAndGetStereotype("GaStep");
+		var execTime = message.getValue(stereotype, "execTime").first;
+		var rep = message.getValue(stereotype, "rep");				
 		var hostDemandMean = execTime.asDouble() * rep.asDouble(); 
-		
-		actv.name = msg.name;
+					
+		actv.name = message.name;
 		actv.phase = "1".asBigInteger();
-		// @Assumption: The respTime tag is a collection of elements. 
-		// It is assumed that for each GaStep it is assigned only one 
 		actv.hostDemandMean = hostDemandMean;
-	
+
+		/**
+	 	 * Builds the synchCall object, getting the target Lifeline
+		 */	
 		if(msgo.isSend())
-		{
-			var lifeln = msg.receiveEvent.covered;
-			// Gets the BES starting with the message
-			var bes = lifeln.first.getElements("BehaviorExecutionSpecification");
-			bes = bes.selectOne(i | i.start == msg.receiveEvent and
-				i.finish.isTypeOf(MessageOccurrenceSpecification));
-			
-			// Create the call to set the callsMean
+		{		
 			var call = new LQN!ActivityMakingCallType;		
-			call.callsMean = rep;
-			call.dest = bes.name;
-			calls.add(call);
-		
-			actv.synchCall = calls;
+			var lifeline = message.receiveEvent.covered;
+			// Gets the BES starting with the message
+			var bes = lifeline.first.getElements("BehaviorExecutionSpecification");	
+			// Gets the target BES				
+			bes = bes.selectOne(i | i.start == message.receiveEvent and
+				i.finish.isTypeOf(MessageOccurrenceSpecification));
+							
+			call.dest = bes.name;						
+			actv.synchCall = Sequence{call};
 		}
 	}
-
-operation UML!Node getDeployedElement(): UML!Component
-{
-	var deplyd = self.deployment.first.supplier.first;
-	var compnt = deplyd.manifestation.first.supplier.first;
-	
-	return compnt;	
-}
-	
-operation UML!BehaviorExecutionSpecification getMessages(): Collection
-{
-	// Gets all the messages of a BehaviorExecutionSpecification
-	var lifeln = self.covered.first;
-	var msgs = lifeln.getElements("MessageOccurrenceSpecification");
-	
-	// @ToDo: Methods to get other kind of calls
-	msgs = msgs.select(i | i.message.messageSort = UML!MessageSort#synchCall);
-		
-	var startIdx = getIndexOf(self.start);
-	var endIdx = getIndexOf(self.finish);
-	
-	return msgs.select(i | startIdx <= getIndexOf(i) and endIdx >= getIndexOf(i));
-}
-
-operation UML!Lifeline getElements(cType: String): Collection	
-{
-	// It returns the elements with the type cType in the lifeline
-	return self.coveredBy.flatten.
-					select(i | i.eClass.name == cType);
-}
-	
-operation getIndexOf(element: UML!NamedElement): Integer
-{
-	// Returns the index of "element"
-	// The elements are contained in a collection of the owner (i.e., the fragment)
-	// In the latter, they are ordered by integers
-	var ownerFragment = element.getOwner().getFragments();
-	return ownerFragment.indexOf(element);						
-}	
-	
-operation Any asBigInteger(): Native("java.math.BigInteger")
-{
-	// Converts an element to the java native type BigInteger
-	return new Native("java.math.BigInteger")(self);
-}
-
-operation UML!NamedElement checkStereotype(stereotypeName: String): Boolean
-{
-	return self.getAppliedStereotypes().exists(i|i.name = stereotypeName);
-}	
-
-operation isInteracting(element: UML!NamedElement): Boolean
-{
-	// Checks if there is at least an interaction describing the behavior 
-	// of "element"
-	var lifelns = getLifelines(element);
-		
-	if(lifelns.isEmpty())
-		return false;
-	return true;
-}
-
-operation getLifelines(element: UML!NamedElement): Collection
-{
-	// All the lifelines of the Model
-	var lifelns = UML!Lifeline.all();
-	// Get all the lifelines involving "element"
-	return lifelns.select(i | i.represents.type = element);
-} 

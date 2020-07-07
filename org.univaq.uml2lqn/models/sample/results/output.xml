@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lqn-model name="PrecisionAgricultureModel">
+  
+  <processor name="ARMCortex-M" replication="3">
+  
+    <task name="env-sensor">
+  
+      <entry name="farm_behavior">
+        <entry-phase-activities>
+          <activity host-demand-mean="4.0" name="get_cond1_receive" phase="1"/>
+        </entry-phase-activities>
+      </entry>
+  
+    </task>
+  
+  </processor>
+  
+  <processor name="nvidiaGeForce8800" replication="1">
+  
+    <task name="drone-controller">
+  
+      <entry name="controller_behavior">
+        <entry-phase-activities>
+          <activity host-demand-mean="4.0" name="get_cond1_send" phase="1">
+            <synch-call dest="farm_behavior" calls-mean="1.5"/>
+          </activity>
+        </entry-phase-activities>
+      </entry>
+  
+    </task>
+  
+    <task name="user_request" scheduling="ref">
+      <entry name="drone_behavior1">
+        <entry-phase-activities>
+          <activity host-demand-mean="3.1" name="start_drone_init" phase="1">
+            <synch-call dest="controller_behavior" calls-mean="2.5"/>
+          </activity>
+        </entry-phase-activities>
+      </entry>
+    </task>
+  </processor>
+</lqn-model>
