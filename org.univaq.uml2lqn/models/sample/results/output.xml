@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LqnModelType name="PrecisionAgricultureModel">
+<lqn-model name="PrecisionAgricultureModel">
   <processor name="ARMCortex-M" replication="3">
     <task name="env-sensor">
       <entry name="farm_behavior">
@@ -14,7 +14,7 @@
       <entry name="controller_behavior">
         <entry-phase-activities>
           <activity host-demand-mean="7.5" name="get_condition_message1" phase="1">
-            <synch-call dest="farm_behavior"/>
+            <synch-call dest="farm_behavior" calls-mean="1.0"/>
           </activity>
         </entry-phase-activities>
       </entry>
@@ -23,10 +23,10 @@
       <entry name="drone_behavior1">
         <entry-phase-activities>
           <activity host-demand-mean="5.0" name="start_drone1" phase="1">
-            <synch-call dest="controller_behavior"/>
+            <synch-call dest="controller_behavior" calls-mean="1.0"/>
           </activity>
         </entry-phase-activities>
       </entry>
     </task>
   </processor>
-</LqnModelType>
+</lqn-model>

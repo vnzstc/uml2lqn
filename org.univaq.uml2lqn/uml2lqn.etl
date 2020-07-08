@@ -32,20 +32,22 @@ rule Node2Processor
 		 */
 		guard {
 			var deployed = node.getDeployed();
-			return (deployed <> null) and deployed.isInteracting()
-				 and node.checkStereotypeApplication("GaExecHost");
+			var interacting = new Sequence();
+
+			if(deployed.notEmpty())
+				interacting = deployed.select(i | i.isInteracting());
+
+			return node.checkStereotypeApplication("GaExecHost") and interacting.notEmpty();
 		}
 		// Gets the object representing the "GaExecHost" stereotype
 		var stereotype = node.checkAndGetStereotype("GaExecHost");
 		var resTag = node.getValue(stereotype, "resMult");
-		var deployed = node.getDeployed();
-		var tasks : Sequence = Sequence{deployed};
-				
-		var sources = deployed.getSources();
+		var tasks = node.getDeployed();	
+		var sources = tasks.collect(i | i.getSources()).flatten;
 		
 		if(sources.notEmpty()) 
 			tasks.addAll(sources);
-		
+				
 		proc.name = node.name;
 		proc.task ::= tasks;
 		proc.replication = resTag.asBigInteger();
@@ -126,7 +128,8 @@ rule Message2Activity
 			bes = bes.selectOne(i | i.start == message.receiveEvent and
 				i.finish.isTypeOf(MessageOccurrenceSpecification));
 							
-			call.dest = bes.name;						
+			call.dest = bes.name;
+			call.callsMean = rep;						
 			actv.synchCall = Sequence{call};
 		}
 	}

@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LqnModelType name="Model">
+<lqn-model name="Model">
   <processor name="AutomatedGuidedVehicle" replication="1">
     <task name="vehicle-control">
       <entry name="controller0_bes">
         <entry-phase-activities>
           <activity host-demand-mean="1.0" name="start_motor_message" phase="1">
-            <synch-call dest="motor0_bes"/>
+            <synch-call dest="motor0_bes" calls-mean="1.0"/>
           </activity>
         </entry-phase-activities>
       </entry>
       <entry name="controller1_bes">
         <entry-phase-activities>
           <activity host-demand-mean="2.0" name="stop_motor" phase="1">
-            <synch-call dest="motor1_bes"/>
+            <synch-call dest="motor1_bes" calls-mean="1.0"/>
           </activity>
           <activity host-demand-mean="5.0" name="load_message" phase="1">
-            <synch-call dest="arm_bes"/>
+            <synch-call dest="arm_bes" calls-mean="1.0"/>
           </activity>
         </entry-phase-activities>
       </entry>
       <entry name="controller2_bes">
         <entry-phase-activities>
           <activity host-demand-mean="2.0" name="status_message" phase="1">
-            <synch-call dest="status_ bes"/>
+            <synch-call dest="status_bes" calls-mean="1.0"/>
           </activity>
           <activity host-demand-mean="5.0" name="display_message" phase="1">
-            <synch-call dest="ds_bes"/>
+            <synch-call dest="ds_bes" calls-mean="1.0"/>
           </activity>
         </entry-phase-activities>
       </entry>
@@ -35,7 +35,7 @@
       <entry name="agv_as_arrival">
         <entry-phase-activities>
           <activity host-demand-mean="4.0" name="arrived_message" phase="1">
-            <synch-call dest="controller1_bes"/>
+            <synch-call dest="controller1_bes" calls-mean="1.0"/>
           </activity>
         </entry-phase-activities>
       </entry>
@@ -44,7 +44,7 @@
       <entry name="clk_bes">
         <entry-phase-activities>
           <activity host-demand-mean="11.0" name="expired_message" phase="1">
-            <synch-call dest="controller2_bes"/>
+            <synch-call dest="controller2_bes" calls-mean="1.0"/>
           </activity>
         </entry-phase-activities>
       </entry>
@@ -73,4 +73,4 @@
       </entry>
     </task>
   </processor>
-</LqnModelType>
+</lqn-model>

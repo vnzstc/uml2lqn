@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project default="main">
 	<target name="UML_2_LQN">
-		<epsilon.emf.loadModel name="UML" modelFile="UMLModel/sample.uml" 
+		<epsilon.emf.loadModel name="UML" modelFile="UMLModel/automatedGuidedVehicle.uml" 
 			metamodelUri="http://www.eclipse.org/uml2/5.0.0/UML" read="true" store="false"/>	
 		
 		<epsilon.emf.loadXmlModel name="LQN" modelFile="result/output.xml" 

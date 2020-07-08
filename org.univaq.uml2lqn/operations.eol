@@ -34,19 +34,19 @@ operation Any asBigInteger(): Native("java.math.BigInteger")
  * Retrieves the manifestation of the artifact deployed on a Node
  * @return the object representing the deployed component or null
  */
-operation UML!Node getDeployed(): UML!Component
+operation UML!Node getDeployed(): Collection
 {
 	// If the deployment dependency does not exists, then the deployed element is 
 	if(self.deployment.isEmpty())
-		return null;
+		return new Sequence();
 		
 	// This variable represents the 'deployment' association between a Node and an Artifact
-	var deployment = self.deployment.first;
+	var deployment = self.deployment;
 	// It is the object of the artifact deployed on self (Node)
-	var artifact = deployment.getSuppliers().first;
-	var manifestation = artifact.manifestation.first;
-
-	return manifestation.getSuppliers().first;	
+	var artifacts = deployment.collect(i | i.getSuppliers()).flatten;
+	var manifestation = artifacts.manifestation.flatten;
+	
+	return manifestation.collect(i | i.getSuppliers()).flatten;	
 }
 
 /**
