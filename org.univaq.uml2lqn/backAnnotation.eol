@@ -8,6 +8,7 @@ var entries_results = entries.forAll(t | annotate_entries(t));
 
 // LQN Activity --> UML Message
 var activities = `t_activity`.all;
+activities.a_name.println();
 var entries_results = activities.forAll(t | annotate_activity(t));
 
 // Adds utilization to nodes
@@ -53,19 +54,17 @@ operation annotate_entries(entry)
 // Adds service time to messages
 operation annotate_activity(activity)
 {
-	var activity_object = UML!MessageOccurrenceSpecification.all
+	var activity_object = UML!Message.all
 		.selectOne(i | i.name = activity.a_name);	
-	
-	var associated_message = activity_object.message;	
-		
-	var stereotype = associated_message.getAppliedStereotypes()
+				
+	var stereotype = activity_object.getAppliedStereotypes()
 		.selectOne(i | i.name == "GaStep");	
 		
 	var results = activity.children.flatten
 		.select(i | i.name = "result-activity");
 	
 	var service_time = results.`a_service-time`;
-	associated_message.setValue(stereotype, "respT", service_time);	
+	activity_object.setValue(stereotype, "respT", service_time);	
 	
 	UML.store().println("Activity: " + activity.a_name + " ServiceTime: " +
 		service_time.first + " Stored: ");
