@@ -23,8 +23,7 @@
 		</epsilon.eol>
 		
 		<epsilon.storeModel model="PlainLQN"/>	
-		<!-- <eclipse.refreshLocal resource="${output}/output.xml" depth="infinite"/> -->
-		
+		<!-- <eclipse.refreshLocal resource="${output}/output.xml" depth="infinite"/> -->	
 	</target>
 	
 	<target name="Solver" depends="ChangeRoot">
@@ -41,6 +40,5 @@
 			<model ref="LQXO"/>
 			<model ref="UML"/>
 		</epsilon.eol>
-	</target>
-	
+	</target>	
 </project>
