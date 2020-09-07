@@ -50,8 +50,6 @@ rule Node2Processor
 		if(sources.notEmpty()) 
 			tasks.addAll(sources);
 		
-		proc.name.println();
-		tasks.name.println("tasks: ");
 		proc.name = node.name;		
 		proc.task ::= tasks;
 		proc.replication = resTag.asBigInteger();
