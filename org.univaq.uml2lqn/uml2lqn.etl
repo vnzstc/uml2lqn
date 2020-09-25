@@ -83,6 +83,9 @@ rule Component2Task
 		var artifacts = component.getArtifacts();
 		var multiplicity = artifacts.size();
 		
+		component.println("component: ");
+		beses.println("beses: ");
+		
 		task.name = component.name;
 		task.multiplicity = multiplicity.toString();
 		task.entry ::= beses;
@@ -94,15 +97,17 @@ rule BES2Entry
 	{	
 		guard: bes.isAllowed()
 		
-				
+		bes.name.println("bes ");
 		var messages = bes.getMessages();
 		// Gets only the messages that are sent
 		messages = messages.select(i | i.isSend() and i.message.messageSort <> UML!MessageSort#reply);	
+		
+		messages.println();
 
 		// If msgs is empty, then the BES is a sink 
 		if(messages.isEmpty())
 			messages.add(bes.start);
-		
+	
 		entry.name = bes.name;					
 		entry.entryPhaseActivities = new LQN!PhaseActivities;
 		entry.entryPhaseActivities.activity ::= messages;
