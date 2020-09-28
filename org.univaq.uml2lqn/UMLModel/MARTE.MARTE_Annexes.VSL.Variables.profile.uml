@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_9UgzYA-MEdyLh7muGbCqMw" name="Variables" visibility="public" URI="" metamodelReference="_9UgzYA-MEdyLh7muGbCqMw_packageImportcreatedOnLoad">
-  <eAnnotations xmi:id="_yUw_sPgkEeqlY72rqChlsg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-    <contents xmi:type="ecore:EPackage" xmi:id="_yUw_sfgkEeqlY72rqChlsg" name="Variables" nsURI="http:///schemas/Variables/_x-ra8fgkEeqlY72rqChlsg/0" nsPrefix="Variables">
-      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_yUw_svgkEeqlY72rqChlsg" name="VariableDirectionKind">
-        <eAnnotations xmi:id="_yUw_s_gkEeqlY72rqChlsg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_zT7mkBBNEdyt6tGzWCpUVA"/>
-        <eLiterals xmi:id="_yUw_tPgkEeqlY72rqChlsg" name="in"/>
-        <eLiterals xmi:id="_yUw_tfgkEeqlY72rqChlsg" name="out" value="1"/>
-        <eLiterals xmi:id="_yUw_tvgkEeqlY72rqChlsg" name="inout" value="2"/>
+  <eAnnotations xmi:id="_XlZvBQGgEeuypoKfPSEvjQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_XlZvBgGgEeuypoKfPSEvjQ" name="Variables" nsURI="http:///schemas/Variables/_XX9vwAGgEeuypoKfPSEvjQ/0" nsPrefix="Variables">
+      <eClassifiers xmi:type="ecore:EEnum" xmi:id="_XlZvBwGgEeuypoKfPSEvjQ" name="VariableDirectionKind">
+        <eAnnotations xmi:id="_XlZvCAGgEeuypoKfPSEvjQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_zT7mkBBNEdyt6tGzWCpUVA"/>
+        <eLiterals xmi:id="_XlZvCQGgEeuypoKfPSEvjQ" name="in"/>
+        <eLiterals xmi:id="_XlZvCgGgEeuypoKfPSEvjQ" name="out" value="1"/>
+        <eLiterals xmi:id="_XlZvCwGgEeuypoKfPSEvjQ" name="inout" value="2"/>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_yUw_t_gkEeqlY72rqChlsg" name="Var">
-        <eAnnotations xmi:id="_yUw_uPgkEeqlY72rqChlsg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_7-_5QBBNEdyt6tGzWCpUVA"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_yUw_ufgkEeqlY72rqChlsg" name="dir" ordered="false" unique="false" eType="_yUw_svgkEeqlY72rqChlsg" defaultValueLiteral="inout"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_yUw_u_gkEeqlY72rqChlsg" name="base_Property" ordered="false" unique="false" lowerBound="1">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_XlZvDAGgEeuypoKfPSEvjQ" name="Var">
+        <eAnnotations xmi:id="_XlZvDQGgEeuypoKfPSEvjQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_7-_5QBBNEdyt6tGzWCpUVA"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_XlZvDgGgEeuypoKfPSEvjQ" name="dir" ordered="false" unique="false" eType="_XlZvBwGgEeuypoKfPSEvjQ" defaultValueLiteral="inout"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_XlZvEAGgEeuypoKfPSEvjQ" name="base_Property" ordered="false" unique="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_yUw_vfgkEeqlY72rqChlsg" name="ExpressionContext">
-        <eAnnotations xmi:id="_yUw_vvgkEeqlY72rqChlsg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UXvlwBBOEdyt6tGzWCpUVA"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_yUw_v_gkEeqlY72rqChlsg" name="base_NamedElement" ordered="false" unique="false" lowerBound="1">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_XlZvEgGgEeuypoKfPSEvjQ" name="ExpressionContext">
+        <eAnnotations xmi:id="_XlZvEwGgEeuypoKfPSEvjQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_UXvlwBBOEdyt6tGzWCpUVA"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_XlZvFAGgEeuypoKfPSEvjQ" name="base_NamedElement" ordered="false" unique="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
         </eStructuralFeatures>
       </eClassifiers>
