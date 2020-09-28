@@ -172,13 +172,12 @@ operation UML!Node getArtifacts()
 // Checks if self is a clone
 operation UML!Node isClone(node : UML!Node) : Boolean 
 {
-
 	if(self.id = node.id)
 		return false;
-		
+	
 	var selfArtifacts = self.getArtifacts();
 	var nodeArtifacts = node.getArtifacts();
-
+		
 	if(self.getSpeedFactor() = node.getSpeedFactor() 
 		and nodeArtifacts.includesAll(selfArtifacts))
 		return true; 
@@ -194,7 +193,7 @@ operation UML!Node getOrigins() : Sequence
 
 operation UML!Node getCopies() : Sequence
 {
-	var stereotypedNodes = UML!Node.all.select(i | i.checkStereotypeApplication("GaExecHost"));
+	var stereotypedNodes = UML!Node.all.select(i | i.checkStereotypeApplication("GaExecHost") and i.getArtifacts().notEmpty());
 	return stereotypedNodes.select(i | i.isClone(self));	
 }
 

@@ -51,6 +51,10 @@ rule Node2Processor
 		// Retrieves the clones of this node;
 		var replication = node.getCopies().size();
 		replication = replication == 0 ? "1" else replication.asString();
+		
+		node.name.println("name: ");
+		node.getArtifacts().println();
+		node.getCopies().println("copies: ");
 					
 		var tasks = node.getDeployed();
 		
