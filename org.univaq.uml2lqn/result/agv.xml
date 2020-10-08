@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <lqn-model name="automatedGuidedVehicle">
-  <processor multiplicity="1" name="VehicleController">
+  <processor name="VehicleController" replication="1">
         
-    <task multiplicity="1" name="vehicle-control">
+    <task multiplicity="1" name="vehicle-control" replication="1">
+            
+      <fan-out dest="vehicle-status" value="3"/>
+            
+      <fan-out dest="robot-arm" value="2"/>
             
       <entry name="move_bes">
                 
@@ -57,10 +61,20 @@
         </entry-phase-activities>
               
       </entry>
+            
+      <entry name="display_status_bes">
+                
+        <entry-phase-activities>
+                    
+          <activity host-demand-mean="0.742" name="display_message" phase="1"/>
+                  
+        </entry-phase-activities>
+              
+      </entry>
           
     </task>
         
-    <task name="SupervisorySystem" scheduling="ref">
+    <task name="SupervisorySystem" replication="1" scheduling="ref">
             
       <entry name="supervisor-system_bes">
                 
@@ -78,7 +92,7 @@
           
     </task>
         
-    <task name="ArrivalSensor" scheduling="ref">
+    <task name="ArrivalSensor" replication="1" scheduling="ref">
             
       <entry name="arrival-sensor_bes">
                 
@@ -96,7 +110,7 @@
           
     </task>
         
-    <task name="Clock" scheduling="ref">
+    <task name="Clock" replication="1" scheduling="ref">
             
       <entry name="clock_bes">
                 
@@ -115,15 +129,15 @@
     </task>
       
   </processor>
-  <processor multiplicity="1" name="DisplaySystem">
+  <processor name="Motor" replication="1">
         
-    <task multiplicity="1" name="display-system">
+    <task multiplicity="1" name="motor" replication="1">
             
-      <entry name="display_status_bes">
+      <entry name="stop_motor_bes">
                 
         <entry-phase-activities>
                     
-          <activity host-demand-mean="0.742" name="display_message" phase="1"/>
+          <activity host-demand-mean="0.96" name="stop_message" phase="1"/>
                   
         </entry-phase-activities>
               
@@ -132,9 +146,19 @@
     </task>
       
   </processor>
-  <processor multiplicity="2" name="VehicleStatus">
+  <processor name="New-Node_oqcbaciapp" replication="3">
         
-    <task multiplicity="1" name="vehicle-status">
+    <task multiplicity="1" name="vehicle-status" replication="3">
+            
+      <entry name="start_motor_bes">
+                
+        <entry-phase-activities>
+                    
+          <activity host-demand-mean="0.159" name="start_motor_message" phase="1"/>
+                  
+        </entry-phase-activities>
+              
+      </entry>
             
       <entry name="get_status_bes">
                 
@@ -149,42 +173,15 @@
     </task>
       
   </processor>
-  <processor multiplicity="1" name="RobotArm">
+  <processor name="RobotArm_nyhetmpmjs" replication="2">
         
-    <task multiplicity="1" name="robot-arm">
+    <task multiplicity="1" name="robot-arm" replication="2">
             
       <entry name="load_bes">
                 
         <entry-phase-activities>
                     
           <activity host-demand-mean="0.741" name="load_message" phase="1"/>
-                  
-        </entry-phase-activities>
-              
-      </entry>
-          
-    </task>
-      
-  </processor>
-  <processor multiplicity="1" name="Motor">
-        
-    <task multiplicity="1" name="motor">
-            
-      <entry name="stop_motor_bes">
-                
-        <entry-phase-activities>
-                    
-          <activity host-demand-mean="0.96" name="stop_message" phase="1"/>
-                  
-        </entry-phase-activities>
-              
-      </entry>
-            
-      <entry name="start_motor_bes">
-                
-        <entry-phase-activities>
-                    
-          <activity host-demand-mean="0.159" name="start_motor_message" phase="1"/>
                   
         </entry-phase-activities>
               
