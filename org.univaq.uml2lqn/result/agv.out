@@ -5,71 +5,72 @@ Carleton University, Ottawa, Ontario, Canada. K1S 5B6
 
 Invoked as: lqns --pragma=cycles=yes result/agv.xml
 Input:  result/agv.xml
-Thu Oct  8 12:35:00 2020
+Sun Oct 25 11:05:44 2020
 
 Comment: 
 
-Convergence test value: 5.37937e-06
-Number of iterations:   19
+Convergence test value: 2.02868e-06
+Number of iterations:   3
 
 Pragma:
     cycles=yes
 
 Solver: xeder-workstation Linux 5.8.6-1-MANJARO
-    User:        0:00:00.010
-    Elapsed:     0:00:00.011
+    User:        0:00:00.015
+    System:      0:00:00.000
+    Elapsed:     0:00:00.015
 
 
     Submodels:  3
-    MVA Core():           60
-    MVA Step():          970
-    MVA Wait():       438368
+    MVA Core():            9
+    MVA Step():          169
+    MVA Wait():       262186
 
 Processor identifiers and scheduling algorithms:
 
 Processor Name  Type    Copies  Scheduling
-VehicleController Uni       1     FCFS
-Motor           Uni       1     FCFS
-New-Node_oqcbaciapp Uni       3     FCFS
-RobotArm_nyhetmpmjs Uni       2     FCFS
+VehicleController Mult(6)   1     FCFS
+DisplaySystem   Uni       1     FCFS
+VehicleStatus   Mult(4)   1     FCFS
 
 
 Task information:
 
 Task Name       Type    Copies  Processor Name  Pri Entry List
-vehicle-control Uni       1     VehicleController 0   move_bes, arrived_bes, expired_bes, display_status_bes
-SupervisorySystem Ref(1)    1     VehicleController 0   supervisor-system_bes
-ArrivalSensor   Ref(1)    1     VehicleController 0   arrival-sensor_bes
-Clock           Ref(1)    1     VehicleController 0   clock_bes
-motor           Uni       1     Motor           0   stop_motor_bes
-vehicle-status  Uni       3     New-Node_oqcbaciapp 0   start_motor_bes, get_status_bes
-robot-arm       Uni       2     RobotArm_nyhetmpmjs 0   load_bes
+robot-arm       Uni       1     VehicleController 0   load_bes
+motor           Uni       1     VehicleController 0   stop_motor_bes, start_motor_bes
+display-system  Uni       1     DisplaySystem   0   display_status_bes
+vehicle-control Uni       1     VehicleStatus   0   move_bes, arrived_bes, expired_bes
+vehicle-status  Uni       1     VehicleStatus   0   get_status_bes
+SupervisorySystem Ref(1)    1     VehicleStatus   0   supervisor-system_bes
+ArrivalSensor   Ref(1)    1     VehicleStatus   0   arrival-sensor_bes
+Clock           Ref(1)    1     VehicleStatus   0   clock_bes
 
 
 Entry execution demands:
 
 Task Name       Entry Name      Phase 1     
+robot-arm       load_bes        0.741       
+motor           stop_motor_bes  0.96        
+                start_motor_bes 0.159       
+display-system  display_status_bes 0.742       
 vehicle-control move_bes        0.159       
                 arrived_bes     0.741       
                 expired_bes     0.742       
-                display_status_bes 0.742       
+vehicle-status  get_status_bes  0.654       
 SupervisorySystem supervisor-system_bes 0.423       
 ArrivalSensor   arrival-sensor_bes 0.5         
 Clock           clock_bes       0.358       
-motor           stop_motor_bes  0.96        
-vehicle-status  start_motor_bes 0.159       
-                get_status_bes  0.654       
-robot-arm       load_bes        0.741       
 
 
 Mean number of rendezvous from entry to entry:
 
 Task Name       Source Entry    Target Entry    Phase 1     
 vehicle-control move_bes        start_motor_bes 1           
-                arrived_bes     stop_motor_bes  1           
                 arrived_bes     load_bes        1           
-                expired_bes     get_status_bes  1           
+                arrived_bes     stop_motor_bes  1           
                 expired_bes     display_status_bes 1           
+                expired_bes     get_status_bes  1           
 SupervisorySystem supervisor-system_bes move_bes        1           
 ArrivalSensor   arrival-sensor_bes arrived_bes     1           
 Clock           clock_bes       expired_bes     1           
@@ -90,112 +91,108 @@ All open arrival rates are 0.
 Type 1 throughput bounds: 
 
 Task Name       Entry Name      Throughput  
-vehicle-control move_bes        1.57233     
-                arrived_bes     0.314169    
-                expired_bes     0.369822    
-                display_status_bes 1.34771     
-SupervisorySystem supervisor-system_bes 0.944287    
-ArrivalSensor   arrival-sensor_bes 0.271518    
-Clock           clock_bes       0.326584    
-motor           stop_motor_bes  1.04167     
-vehicle-status  start_motor_bes 6.28931     
-                get_status_bes  1.52905     
 robot-arm       load_bes        1.34953     
+motor           stop_motor_bes  1.04167     
+                start_motor_bes 6.28931     
+display-system  display_status_bes 1.34771     
+vehicle-control move_bes        3.14465     
+                arrived_bes     0.4095      
+                expired_bes     0.467727    
+vehicle-status  get_status_bes  1.52905     
+SupervisorySystem supervisor-system_bes 1.34953     
+ArrivalSensor   arrival-sensor_bes 0.339905    
+Clock           clock_bes       0.400641    
 
 
 Mean delay for a rendezvous:
 
 Task Name       Source Entry    Target Entry    Phase 1     
 vehicle-control move_bes        start_motor_bes 0           
-                arrived_bes     stop_motor_bes  0           
                 arrived_bes     load_bes        0           
+                arrived_bes     stop_motor_bes  0           
+                expired_bes     display_status_bes 0           
                 expired_bes     get_status_bes  0           
-                expired_bes     display_status_bes 1.45904e+06 
-SupervisorySystem supervisor-system_bes move_bes        1.45904e+06 
-ArrivalSensor   arrival-sensor_bes arrived_bes     1.45904e+06 
-Clock           clock_bes       expired_bes     0           
+SupervisorySystem supervisor-system_bes move_bes        3.97123     
+ArrivalSensor   arrival-sensor_bes arrived_bes     2.09559     
+Clock           clock_bes       expired_bes     2.29378     
 
 
 Service times:
 
 Task Name       Entry Name      Phase 1     
-vehicle-control move_bes        0.636001    
-                arrived_bes     3.183       
-                expired_bes     1.38019e+06 
-                display_status_bes 0.742       
-SupervisorySystem supervisor-system_bes 1.38018e+06 
-ArrivalSensor   arrival-sensor_bes 1.38018e+06 
-Clock           clock_bes       634198      
-motor           stop_motor_bes  0.96        
-vehicle-status  start_motor_bes 0.159       
-                get_status_bes  0.654       
 robot-arm       load_bes        0.741       
+motor           stop_motor_bes  0.96        
+                start_motor_bes 0.159       
+display-system  display_status_bes 0.742       
+vehicle-control move_bes        0.318004    
+                arrived_bes     2.44201     
+                expired_bes     2.13802     
+vehicle-status  get_status_bes  0.65401     
+SupervisorySystem supervisor-system_bes 4.71225     
+ArrivalSensor   arrival-sensor_bes 5.03763     
+Clock           clock_bes       4.78985     
 
 
 Service time variance (per phase)
 and squared coefficient of variation (over all phases):
 
 Task Name       Entry Name      Phase 1     coeff of var **2
-vehicle-control move_bes        0.556183    1.375       
-                arrived_bes     9.92787     0.979901    
-                expired_bes     6.38643e+12 3.35261     
-                display_status_bes 0.550564    0.999999    
-SupervisorySystem supervisor-system_bes 6.38643e+12 3.35262     
-ArrivalSensor   arrival-sensor_bes 6.38643e+12 3.35262     
-Clock           clock_bes       2.40589e+12 5.98171     
-motor           stop_motor_bes  0.9216      1           
-vehicle-status  start_motor_bes 0.025281    1           
-                get_status_bes  0.427716    1           
 robot-arm       load_bes        0.549081    1           
+motor           stop_motor_bes  0.9216      1           
+                start_motor_bes 0.025281    1           
+display-system  display_status_bes 0.550564    1           
+vehicle-control move_bes        0.151688    1.49998     
+                arrived_bes     6.51971     1.09329     
+                expired_bes     4.74422     1.03787     
+vehicle-status  get_status_bes  0.427716    0.999971    
+SupervisorySystem supervisor-system_bes 56.5254     2.54558     
+ArrivalSensor   arrival-sensor_bes 56.8787     2.24128     
+Clock           clock_bes       52.5892     2.2922      
 
 
 Throughputs and utilizations per phase:
 
 Task Name       Entry Name      Throughput  Phase 1     Total       
-vehicle-control move_bes        6.8538e-07  4.35903e-07 4.35903e-07
-                arrived_bes     6.8538e-07  2.18156e-06 2.18156e-06
-                expired_bes     1.49157e-06 2.05864     2.05864
-                display_status_bes 6.85378e-07 5.08551e-07 5.08551e-07
-Total:                          3.54771e-06 2.05865     2.05865
-SupervisorySystem supervisor-system_bes 7.24542e-07 1           1
-ArrivalSensor   arrival-sensor_bes 7.24541e-07 1           1
-Clock           clock_bes       1.5768e-06  1           1
-motor           stop_motor_bes  3.32927e-07 3.1961e-07  3.1961e-07
-vehicle-status  start_motor_bes 3.32928e-07 5.29355e-08 5.29355e-08
-                get_status_bes  7.24539e-07 4.73849e-07 4.73849e-07
-Total:                          1.05747e-06 5.26784e-07 5.26784e-07
-robot-arm       load_bes        3.32927e-07 2.46699e-07 2.46699e-07
+robot-arm       load_bes        0.198506    0.147093    0.147093
+motor           stop_motor_bes  0.198506    0.190566    0.190566
+                start_motor_bes 0.212212    0.0337417   0.0337417
+Total:                          0.410718    0.224307    0.224307
+display-system  display_status_bes 0.208775    0.154911    0.154911
+vehicle-control move_bes        0.212212    0.0674842   0.0674842
+                arrived_bes     0.198506    0.484753    0.484753
+                expired_bes     0.208775    0.446364    0.446364
+Total:                          0.619492    0.998601    0.998601
+vehicle-status  get_status_bes  0.208775    0.136541    0.136541
+SupervisorySystem supervisor-system_bes 0.212213    1           1
+ArrivalSensor   arrival-sensor_bes 0.198506    1           1
+Clock           clock_bes       0.208775    1           1
 
 
 Utilization and waiting per phase for processor:  VehicleController
 
 Task Name       Pri n   Entry Name      Utilization Phase 1     
-vehicle-control 0   1   move_bes        1.08975e-07 0           
-                        arrived_bes     5.07866e-07 0           
-                        expired_bes     1.10675e-06 0           
-                        display_status_bes 5.0855e-07  0           
-Task Total:                             2.23214e-06 
-SupervisorySystem 0   1   supervisor-system_bes 3.06481e-07 0           
-ArrivalSensor   0   1   arrival-sensor_bes 3.62271e-07 0           
-Clock           0   1   clock_bes       5.64493e-07 0           
-Processor Total:                        3.46538e-06
+robot-arm       0   1   load_bes        0.147093    0           
+motor           0   1   stop_motor_bes  0.190566    0           
+                        start_motor_bes 0.0337417   0           
+Task Total:                             0.224307    
+Processor Total:                        0.3714
 
 
-Utilization and waiting per phase for processor:  Motor
+Utilization and waiting per phase for processor:  DisplaySystem
 
 Task Name       Pri n   Entry Name      Utilization Phase 1     
-motor           0   1   stop_motor_bes  3.1961e-07  0           
+display-system  0   1   display_status_bes 0.154911    0           
 
 
-Utilization and waiting per phase for processor:  New-Node_oqcbaciapp
-
-Task Name       Pri n   Entry Name      Utilization Phase 1     
-vehicle-status  0   1   start_motor_bes 5.29355e-08 0           
-                        get_status_bes  4.73849e-07 0           
-Task Total:                             5.26784e-07 
-
-
-Utilization and waiting per phase for processor:  RobotArm_nyhetmpmjs
+Utilization and waiting per phase for processor:  VehicleStatus
 
 Task Name       Pri n   Entry Name      Utilization Phase 1     
-robot-arm       0   1   load_bes        2.46699e-07 0           
+vehicle-control 0   1   move_bes        0.0337417   0           
+                        arrived_bes     0.147093    0           
+                        expired_bes     0.154911    0           
+Task Total:                             0.335745    
+vehicle-status  0   1   get_status_bes  0.136539    0           
+SupervisorySystem 0   1   supervisor-system_bes 0.089766    4.30905e-05 
+ArrivalSensor   0   1   arrival-sensor_bes 0.099253    0           
+Clock           0   1   clock_bes       0.0747414   4.8867e-05  
+Processor Total:                        0.736045

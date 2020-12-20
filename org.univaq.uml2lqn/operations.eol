@@ -62,6 +62,9 @@ operation UML!NamedElement getArtifacts(): Collection
 		var manifestation = artifact.manifestation;
 		manifestation = manifestation.select(i | i.supplier.first = self);
 		
+		manifestation.println();
+
+		
 		if(manifestation.notEmpty)
 			output.add(artifact);
 	}	
@@ -140,6 +143,7 @@ operation UML!Node exclusiveDeployment(component: UML!Component) : Boolean
 operation UML!Node getSpeedFactor()
 {
 	var stereotype = self.checkAndGetStereotype("GaExecHost");
+
 	return self.getValue(stereotype, "speedFactor");
 }
 

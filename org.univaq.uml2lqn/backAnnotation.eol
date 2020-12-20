@@ -2,11 +2,13 @@ import "operations.eol";
 
 // Annotates all the UML!UseCase stereotyped with GaScenario
 var scenarios = UML!UseCase.all().select(i | i.checkStereotypeApplication("GaScenario"));
+
 for(scenario in scenarios)
 	scenario.annotateScenario();
-	
+
 // Annotates all the UML!Node stereotyped with GaExecHost
 var processors = UML!Node.all().select(i | i.checkStereotypeApplication("GaExecHost"));
+
 for(processor in processors)
 	processor.annotateNode();
 
@@ -66,6 +68,7 @@ operation UML!UseCase getScenarioRespTime()
  */
 operation UML!UseCase annotateScenario()
 {
+	self.name.println();
 	var stereotype = self.getAppliedStereotypes().selectOne(i | i.name = "GaScenario");
 	// Sets Response Time
 	var resptime = self.getScenarioRespTime();		
@@ -73,6 +76,9 @@ operation UML!UseCase annotateScenario()
 		
 	// Sets Throughput
 	var root = self.getValue(stereotype, "root");
+	
+	root.println("root: ");
+	
 	// Calculates Throughput
 	var throughput = root.rep.asDouble() / resptime; 
 	self.setValue(stereotype, "throughput", Sequence{throughput.asString()});
@@ -89,23 +95,33 @@ operation UML!Node annotateNode()
 {	
 	var stereotype = self.getAppliedStereotypes().selectOne(i | i.name == "GaExecHost");
 	
+	var clones = UML!Node.all().select(i | i.checkStereotypeApplication("GaExecHost"));
+	clones = clones.select(i | i.getSpeedFactor() = self.getSpeedFactor() and i.getDeployed() = self.getDeployed());
 	var processor =`t_processor`.all().selectOne(i | i.`a_name` = self.name);
+	
 	var utilization = Sequence{"0.0"};
 	
 	/*
 	 * If the node is actually transformed, then it retrieves and sets the utilization
 	 * otherwise, the utilization is set to zero
      */
+
 	if(processor.isDefined())
 	{
 		// Sets the utilization
 		var subtree = getChildren(processor, "result-processor");
-		utilization = subtree.select(i | i.name = "result-processor").a_utilization;		
+		utilization = subtree.select(i | i.name = "result-processor").a_utilization;
 	}
 		
-	self.setValue(stereotype, "utilization", utilization);
+	if(utilization.first.asDouble() != 0.0)
+	{
+		for(element in clones)
+		{
+			element.setValue(stereotype, "utilization", utilization);
+		}
+	}
 	
-	UML.store().println("Processor: " + self.name + " Utilization: " + utilization.first + " Stored: ");
+	UML.store();
 }
 
 /**
@@ -116,6 +132,9 @@ operation UML!Message annotateActivity()
 	var activity =`t_activity`.all().selectOne(i | i.`a_name` = self.name);
 	var stereotype = self.getAppliedStereotypes().selectOne(i | i.name == "GaStep");	
 		
+	self.println();
+	activity.println("a: ");
+	activity.println("p: ");
 	var subtree = getChildren(activity, "result-activity");
 	var serviceTime = subtree.`a_service-time`;
 	

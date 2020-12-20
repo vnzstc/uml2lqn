@@ -127,7 +127,6 @@ rule Node2Processor
 		// Gets the object representign the stereotype GaExecHost
 		var stereotype = node.checkAndGetStereotype("GaExecHost");
 		// Gets the values of the tags resMult and speedFactor
-		var resTag = node.getValue(stereotype, "resMult");
 		var speedFactor = node.getSpeedFactor();
 		
 		// The collections components contains the components deployed on the current node
@@ -161,8 +160,8 @@ rule Node2Processor
 			
 		proc.name = node.name;
 		proc.task ::= components;
-		// proc.multiplicity = size.asBigInteger();
-		proc.replication = size.asBigInteger();
+		proc.multiplicity = size.asBigInteger();
+		// proc.replication = size.asBigInteger();
 	}
 	
 rule Actor2Task
@@ -204,8 +203,7 @@ rule Component2Task
 		// The multiplicity of a task is given by the number of artifacts on which it is deployed
 		var artifacts = component.getArtifacts();
 		var multiplicity = artifacts.size().asString();
-		
-					
+							
 		task.name = component.name;
 		task.entry ::= beses;
 		task.multiplicity = multiplicity.asBigInteger();
@@ -271,9 +269,14 @@ rule Message2Activity
 		var execTime = message.getValue(stereotype, "execTime").first;
 		var rep = message.getValue(stereotype, "rep");				
 		
+		
+		execTime = "1.0";
+		rep = "1.0";
+		
 		// Calculates the service demand		
 		var hostDemandMean = execTime.asDouble() * rep.asDouble(); 
-					
+		
+							
 		actv.name = message.name;
 		actv.phase = "1".asBigInteger();
 		actv.hostDemandMean = hostDemandMean;
@@ -286,11 +289,11 @@ rule Message2Activity
 			
 			// Gets the BES starting with the message
 			var bes = lifeline.first.getElements("BehaviorExecutionSpecification");
-			
-			// Gets the target BES				
+
+			// Gets the target BES
 			bes = bes.selectOne(i | i.start == message.receiveEvent and
 				i.finish.isTypeOf(MessageOccurrenceSpecification));
-						
+	
 			call.dest = bes.name;
 			call.callsMean = rep;
 			actv.synchCall = Sequence{call};

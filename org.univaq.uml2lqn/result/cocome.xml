@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<lqn-model name="Model">
+  <processor multiplicity="1" name="CashBox">
+        
+    <task multiplicity="1" name="CashBoxController" replication="1">
+            
+      <entry name="cashBoxBes0">
+                
+        <entry-phase-activities>
+                    
+          <activity host-demand-mean="1.0" name="saleStartedApplication" phase="1">
+                        
+            <synch-call calls-mean="1.0" dest="cashDeskBesStart"/>
+                      
+          </activity>
+                    
+          <activity host-demand-mean="1.0" name="saleStartedEventPrinter" phase="1">
+                        
+            <synch-call calls-mean="1.0" dest="printerDeskBesStart"/>
+                      
+          </activity>
+                    
+          <activity host-demand-mean="1.0" name="startStartEventCashDesk" phase="1">
+                        
+            <synch-call calls-mean="1.0" dest="guiBes0"/>
+                      
+          </activity>
+                  
+        </entry-phase-activities>
+              
+      </entry>
+          
+    </task>
+      
+  </processor>
+  <processor multiplicity="1" name="BarCodeScanner">
+        
+    <task multiplicity="1" name="ScannerController" replication="1">
+            
+      <entry name="scannerBes0">
+                
+        <entry-phase-activities>
+                    
+          <activity host-demand-mean="1.0" name="productBarCodeMessage" phase="1">
+                        
+            <synch-call calls-mean="1.0" dest="cashDeskBes1"/>
+                      
+          </activity>
+                  
+        </entry-phase-activities>
+              
+      </entry>
+          
+    </task>
+      
+  </processor>
+  <processor multiplicity="1" name="StoreServer">
+        
+    <task multiplicity="1" name="Inventory" replication="1">
+            
+      <entry name="inventoryBes0">
+                
+        <entry-phase-activities>
+                    
+          <activity host-demand-mean="1.0" name="getProductWithStockItem" phase="1"/>
+                  
+        </entry-phase-activities>
+              
+      </entry>
+          
+    </task>
+      
+  </processor>
+  <processor multiplicity="1" name="CashDeskPC">
+        
+    <task multiplicity="1" name="CashDeskApplication" replication="1">
+            
+      <entry name="cashDeskBes1">
+                
+        <entry-phase-activities>
+                    
+          <activity host-demand-mean="1.0" name="getProductWithStockItem" phase="1">
+                        
+            <synch-call calls-mean="1.0" dest="inventoryBes0"/>
+                      
+          </activity>
+                    
+          <activity host-demand-mean="1.0" name="printRunningTotal" phase="1">
+                        
+            <synch-call calls-mean="1.0" dest="printerBes1"/>
+                      
+          </activity>
+                    
+          <activity host-demand-mean="1.0" name="printRunningTotal" phase="1">
+                        
+            <synch-call calls-mean="1.0" dest="guiBes1"/>
+                      
+          </activity>
+                  
+        </entry-phase-activities>
+              
+      </entry>
+            
+      <entry name="cashDeskBesStart">
+                
+        <entry-phase-activities>
+                    
+          <activity host-demand-mean="1.0" name="saleStartedApplication" phase="1"/>
+                  
+        </entry-phase-activities>
+              
+      </entry>
+            
+      <entry name="stopSaleBes">
+                
+        <entry-phase-activities>
+                    
+          <activity host-demand-mean="1.0" name="stopSale" phase="1"/>
+                  
+        </entry-phase-activities>
+              
+      </entry>
+          
+    </task>
+        
+    <task name="Cashier" replication="1" scheduling="ref">
+            
+      <entry name="cashierBes0">
+                
+        <entry-phase-activities>
+                    
+          <activity host-demand-mean="1.0" name="startSale" phase="1">
+                        
+            <synch-call calls-mean="1.0" dest="cashBoxBes0"/>
+                      
+          </activity>
+                  
+        </entry-phase-activities>
+              
+      </entry>
+            
+      <entry name="cashierBes1">
+                
+        <entry-phase-activities>
+                    
+          <activity host-demand-mean="1.0" name="scanProduct" phase="1">
+                        
+            <synch-call calls-mean="1.0" dest="scannerBes0"/>
+                      
+          </activity>
+                  
+        </entry-phase-activities>
+              
+      </entry>
+            
+      <entry name="CashierBes2">
+                
+        <entry-phase-activities>
+                    
+          <activity host-demand-mean="1.0" name="stopSale" phase="1">
+                        
+            <synch-call calls-mean="1.0" dest="stopSaleBes"/>
+                      
+          </activity>
+                  
+        </entry-phase-activities>
+              
+      </entry>
+          
+    </task>
+      
+  </processor>
+  <processor multiplicity="1" name="Printer">
+        
+    <task multiplicity="1" name="PrinterController" replication="1">
+            
+      <entry name="printerDeskBesStart">
+                
+        <entry-phase-activities>
+                    
+          <activity host-demand-mean="1.0" name="saleStartedEventPrinter" phase="1"/>
+                  
+        </entry-phase-activities>
+              
+      </entry>
+            
+      <entry name="printerBes1">
+                
+        <entry-phase-activities>
+                    
+          <activity host-demand-mean="1.0" name="printRunningTotal" phase="1"/>
+                  
+        </entry-phase-activities>
+              
+      </entry>
+          
+    </task>
+      
+  </processor>
+  <processor multiplicity="1" name="LightDisplay">
+        
+    <task multiplicity="1" name="CashDeskGUI" replication="1">
+            
+      <entry name="guiBes0">
+                
+        <entry-phase-activities>
+                    
+          <activity host-demand-mean="1.0" name="startStartEventCashDesk" phase="1"/>
+                  
+        </entry-phase-activities>
+              
+      </entry>
+            
+      <entry name="guiBes1">
+                
+        <entry-phase-activities>
+                    
+          <activity host-demand-mean="1.0" name="printRunningTotal" phase="1"/>
+                  
+        </entry-phase-activities>
+              
+      </entry>
+          
+    </task>
+      
+  </processor>
+</lqn-model>
